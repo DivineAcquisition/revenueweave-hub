@@ -6,16 +6,16 @@ const Footer = () => {
           {/* Logo */}
           <div className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-lg bg-accent flex items-center justify-center">
-              <span className="text-accent-foreground font-display font-bold text-lg">L</span>
+              <span className="text-accent-foreground font-display font-bold text-lg">D</span>
             </div>
-            <span className="text-primary-foreground font-display font-bold text-lg">
-              LeadConvert
+            <span className="text-foreground font-display font-bold text-lg">
+              DivineAcquisition
             </span>
           </div>
           
           {/* Copyright */}
           <p className="text-primary-foreground/60 text-sm">
-            © {new Date().getFullYear()} LeadConvert. All rights reserved.
+            © {new Date().getFullYear()} DivineAcquisition. All rights reserved.
           </p>
         </div>
       </div>
