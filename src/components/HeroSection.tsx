@@ -1,5 +1,6 @@
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "./ui/button";
+import logoIcon from "@/assets/logo-icon.png";
 
 const HeroSection = () => {
   const trustBadges = [
@@ -12,13 +13,18 @@ const HeroSection = () => {
     <section className="hero-gradient min-h-screen flex items-center pt-20 pb-16 px-4">
       <div className="container mx-auto">
         <div className="max-w-4xl mx-auto text-center">
+          {/* Logo */}
+          <div className="flex justify-center mb-8 animate-fade-up">
+            <img src={logoIcon} alt="DivineAcquisition" className="h-20 md:h-28 w-auto" />
+          </div>
+          
           {/* Pre-headline */}
-          <p className="text-accent font-medium text-sm md:text-base mb-6 animate-fade-up">
+          <p className="text-accent font-medium text-sm md:text-base mb-6 animate-fade-up animate-fade-up-delay-1">
             For HVAC, Plumbing & Cleaning Companies Doing $25K-$250K/Month
           </p>
           
           {/* Main Headline */}
-          <h1 className="text-primary-foreground font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 animate-fade-up animate-fade-up-delay-1 text-balance">
+          <h1 className="text-primary-foreground font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 animate-fade-up animate-fade-up-delay-2 text-balance">
             You're Paying For Leads.
             <br />
             <span className="text-accent">We Make Sure They Actually Convert.</span>
