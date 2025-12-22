@@ -1,6 +1,6 @@
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "./ui/button";
-import logoIcon from "@/assets/logo-icon.png";
+import logoFull from "@/assets/logo-full.png";
 
 const HeroSection = () => {
   const trustBadges = [
@@ -15,7 +15,7 @@ const HeroSection = () => {
         <div className="max-w-4xl mx-auto text-center">
           {/* Logo */}
           <div className="flex justify-center mb-8 animate-fade-up">
-            <img src={logoIcon} alt="DivineAcquisition" className="h-20 md:h-28 w-auto" />
+            <img src={logoFull} alt="DivineAcquisition" className="h-14 md:h-20 w-auto" />
           </div>
           
           {/* Pre-headline */}
