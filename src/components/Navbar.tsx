@@ -1,4 +1,3 @@
-import { Phone } from "lucide-react";
 import { Button } from "./ui/button";
 import logoIcon from "@/assets/logo-icon.png";
 
@@ -10,18 +9,9 @@ const Navbar = () => {
           <img src={logoIcon} alt="DivineAcquisition" className="h-10 w-auto" />
         </div>
         
-        <div className="flex items-center gap-4">
-          <a 
-            href="tel:+1234567890" 
-            className="hidden md:flex items-center gap-2 text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-          >
-            <Phone className="h-4 w-4" />
-            <span className="font-medium">(123) 456-7890</span>
-          </a>
-          <Button variant="cta" size="sm" asChild>
-            <a href="#apply">Get Started</a>
-          </Button>
-        </div>
+        <Button variant="cta" size="sm" asChild>
+          <a href="#apply">Get Started</a>
+        </Button>
       </div>
     </nav>
   );
