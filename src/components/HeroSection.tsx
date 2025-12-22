@@ -1,0 +1,65 @@
+import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { Button } from "./ui/button";
+
+const HeroSection = () => {
+  const trustBadges = [
+    "Built for Home Service Companies",
+    "Works With Your Existing Ads",
+    "Implemented in 14 Days",
+  ];
+
+  return (
+    <section className="hero-gradient min-h-screen flex items-center pt-20 pb-16 px-4">
+      <div className="container mx-auto">
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Pre-headline */}
+          <p className="text-accent font-medium text-sm md:text-base mb-6 animate-fade-up">
+            For HVAC, Plumbing & Cleaning Companies Doing $25K-$250K/Month
+          </p>
+          
+          {/* Main Headline */}
+          <h1 className="text-primary-foreground font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 animate-fade-up animate-fade-up-delay-1 text-balance">
+            You're Paying For Leads.
+            <br />
+            <span className="text-accent">We Make Sure They Actually Convert.</span>
+          </h1>
+          
+          {/* Subheadline */}
+          <p className="text-primary-foreground/90 text-lg md:text-xl lg:text-2xl font-medium mb-6 animate-fade-up animate-fade-up-delay-2 text-balance">
+            The backend system that turns more ad leads into booked jobs — and more jobs into repeat customers who pay you every month.
+          </p>
+          
+          {/* Supporting Text */}
+          <p className="text-primary-foreground/70 text-base md:text-lg max-w-3xl mx-auto mb-10 animate-fade-up animate-fade-up-delay-3">
+            Most home service companies lose 60%+ of their ad leads to missed calls, slow follow-up, and zero retention. We fix that with AI-powered capture, automated conversion sequences, and retention systems that work 24/7.
+          </p>
+          
+          {/* Trust Badges */}
+          <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-10 animate-fade-up animate-fade-up-delay-4">
+            {trustBadges.map((badge, index) => (
+              <div 
+                key={index}
+                className="flex items-center gap-2 text-primary-foreground/80"
+              >
+                <CheckCircle2 className="h-5 w-5 text-success" />
+                <span className="text-sm md:text-base font-medium">{badge}</span>
+              </div>
+            ))}
+          </div>
+          
+          {/* CTA Button */}
+          <div className="animate-fade-up animate-fade-up-delay-4">
+            <Button variant="cta-hero" size="xl" asChild>
+              <a href="#apply" className="group">
+                See If You Qualify
+                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </a>
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default HeroSection;
