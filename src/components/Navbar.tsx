@@ -7,10 +7,10 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="h-10 w-10 rounded-lg bg-accent flex items-center justify-center">
-            <span className="text-accent-foreground font-display font-bold text-xl">L</span>
+            <span className="text-accent-foreground font-display font-bold text-xl">D</span>
           </div>
-          <span className="text-primary-foreground font-display font-bold text-xl hidden sm:block">
-            LeadConvert
+          <span className="text-foreground font-display font-bold text-xl hidden sm:block">
+            DivineAcquisition
           </span>
         </div>
         
