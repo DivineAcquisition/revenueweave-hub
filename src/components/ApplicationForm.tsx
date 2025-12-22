@@ -25,10 +25,10 @@ const ApplicationForm = () => {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-foreground mb-4">
-            See If You <span className="text-accent">Qualify</span>
+            Book Your <span className="text-accent">Strategy Call</span>
           </h2>
           <p className="text-muted-foreground text-lg md:text-xl">
-            Book a call with us. We only work with companies we can actually help.
+            Schedule a free 15-minute call to see how we can help grow your business.
           </p>
         </div>
         
