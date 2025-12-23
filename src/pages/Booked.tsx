@@ -1,26 +1,110 @@
 import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useEffect } from "react";
 
 const Booked = () => {
+  useEffect(() => {
+    // Load Wistia scripts
+    const wistiaPlayerScript = document.createElement('script');
+    wistiaPlayerScript.src = 'https://fast.wistia.com/player.js';
+    wistiaPlayerScript.async = true;
+    document.head.appendChild(wistiaPlayerScript);
+
+    const wistiaEmbedScript = document.createElement('script');
+    wistiaEmbedScript.src = 'https://fast.wistia.com/embed/pk21l05fbv.js';
+    wistiaEmbedScript.async = true;
+    wistiaEmbedScript.type = 'module';
+    document.head.appendChild(wistiaEmbedScript);
+
+    // Load iClosed widget script
+    const iClosedScript = document.createElement('script');
+    iClosedScript.src = 'https://app.iclosed.io/assets/widget.js';
+    iClosedScript.async = true;
+    document.body.appendChild(iClosedScript);
+
+    return () => {
+      // Cleanup scripts on unmount
+      if (wistiaPlayerScript.parentNode) wistiaPlayerScript.parentNode.removeChild(wistiaPlayerScript);
+      if (wistiaEmbedScript.parentNode) wistiaEmbedScript.parentNode.removeChild(wistiaEmbedScript);
+      if (iClosedScript.parentNode) iClosedScript.parentNode.removeChild(iClosedScript);
+    };
+  }, []);
+
   return (
     <>
       <Helmet>
         <title>You're Booked — Here's What Happens Next | DivineAcquisition</title>
         <meta name="description" content="Your strategy call is confirmed. Here's how to prepare and what we'll cover." />
+        <style>{`
+          wistia-player[media-id='pk21l05fbv']:not(:defined) {
+            background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/pk21l05fbv/swatch');
+            display: block;
+            filter: blur(5px);
+            padding-top: 56.25%;
+          }
+        `}</style>
       </Helmet>
       
       <Navbar />
       
-      <main className="min-h-screen bg-background pt-24 pb-16">
+      {/* Important Banner */}
+      <div className="bg-destructive text-destructive-foreground py-3 px-4 text-center mt-16">
+        <p className="font-semibold text-sm md:text-base">
+          ⚠️ IMPORTANT: Please Make Sure You've Watched Our Training Assets Or Content Before Attending Your Call
+        </p>
+      </div>
+      
+      <main className="min-h-screen bg-background pt-8 pb-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center mb-12">
+          <div className="max-w-3xl mx-auto text-center mb-8">
             <h1 className="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-foreground mb-4">
               ✅ You're Booked — Here's What Happens Next
             </h1>
             <p className="text-muted-foreground text-lg md:text-xl">
               Your strategy call is confirmed. Check your email for the details.
             </p>
+          </div>
+
+          {/* Pre-Call Video Section */}
+          <div className="max-w-3xl mx-auto mb-8">
+            <div className="bg-card border border-border rounded-2xl p-6 md:p-8">
+              <h2 className="font-display font-semibold text-xl md:text-2xl text-foreground mb-4 text-center">
+                📺 Watch This Before Your Call
+              </h2>
+              <div 
+                className="rounded-xl overflow-hidden"
+                dangerouslySetInnerHTML={{
+                  __html: '<wistia-player media-id="pk21l05fbv" aspect="1.7777777777777777"></wistia-player>'
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Bonus Offer Section */}
+          <div className="max-w-3xl mx-auto mb-8">
+            <div className="bg-gradient-to-r from-accent/20 to-primary/20 border border-accent/30 rounded-2xl p-6 md:p-8 text-center">
+              <h2 className="font-display font-semibold text-xl md:text-2xl text-foreground mb-3 flex items-center justify-center gap-2">
+                <span>🎁</span> Exclusive Bonus
+              </h2>
+              <p className="text-foreground text-lg">
+                Show up to your call and partner with us — we'll give you <span className="font-bold text-accent">30 days FREE access</span> to our system!
+              </p>
+            </div>
+          </div>
+
+          {/* iClosed Booking Confirmation Widget */}
+          <div className="max-w-3xl mx-auto mb-8">
+            <div className="bg-card border border-border rounded-2xl p-6 md:p-8">
+              <h2 className="font-display font-semibold text-xl md:text-2xl text-foreground mb-4 text-center">
+                📅 Your Booking Details
+              </h2>
+              <div 
+                className="call-details-widget" 
+                data-url="https://app.iclosed.io/embed" 
+                style={{ width: '100%', height: '340px' }}
+              ></div>
+            </div>
           </div>
 
           <div className="max-w-2xl mx-auto space-y-8">
