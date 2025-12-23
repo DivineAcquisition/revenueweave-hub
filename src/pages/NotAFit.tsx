@@ -72,9 +72,11 @@ const NotAFit = () => {
                 Just $197/month — no big setup fee.
               </p>
 
-              <Button size="lg" className="w-full sm:w-auto">
-                Learn More About Selestial
-                <ArrowRight className="ml-2 h-5 w-5" />
+              <Button size="lg" className="w-full sm:w-auto" asChild>
+                <a href="https://selestial.io" target="_blank" rel="noopener noreferrer">
+                  Learn More About Selestial
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
               </Button>
             </div>
 
