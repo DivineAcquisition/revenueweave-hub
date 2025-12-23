@@ -593,6 +593,87 @@ const LeakageAudit = () => {
         );
 
       case 7:
+        const recommendations = [
+          {
+            label: "Missed Calls",
+            value: results?.missed_calls_leakage || 0,
+            icon: Phone,
+            color: "text-red-500",
+            bgColor: "bg-red-500/10",
+            fixes: [
+              "Implement 24/7 AI-powered call answering to capture every lead",
+              "Set up instant SMS/email notifications for missed calls",
+              "Create an after-hours voicemail-to-text system with auto-response",
+              "Use call tracking to identify peak hours and staff accordingly",
+            ],
+          },
+          {
+            label: "Slow Response Time",
+            value: results?.response_time_leakage || 0,
+            icon: Clock,
+            color: "text-orange-500",
+            bgColor: "bg-orange-500/10",
+            fixes: [
+              "Deploy instant auto-responder SMS within 60 seconds of inquiry",
+              "Set up automated email with next steps and booking link",
+              "Implement lead routing to available team members in real-time",
+              "Create templated responses for common inquiries to speed up reply time",
+            ],
+          },
+          {
+            label: "Quote Follow-Up Failure",
+            value: results?.quote_followup_leakage || 0,
+            icon: FileText,
+            color: "text-yellow-500",
+            bgColor: "bg-yellow-500/10",
+            fixes: [
+              "Build 7-touch automated follow-up sequence (Day 1, 2, 4, 7, 14, 21, 30)",
+              "Include value-adds in follow-ups: testimonials, FAQs, case studies",
+              "Add urgency triggers: limited-time pricing, seasonal discounts",
+              "Implement CRM tagging to track quote status and trigger appropriate sequences",
+            ],
+          },
+          {
+            label: "Appointment No-Shows",
+            value: results?.no_show_leakage || 0,
+            icon: Calendar,
+            color: "text-purple-500",
+            bgColor: "bg-purple-500/10",
+            fixes: [
+              "Send automated reminders: 48hrs, 24hrs, and 2hrs before appointment",
+              "Require confirmation reply or one-click reschedule link",
+              "Collect deposits or card-on-file for high-value appointments",
+              "Implement easy self-service rescheduling to reduce ghosting",
+            ],
+          },
+          {
+            label: "Lost Customer Retention",
+            value: results?.retention_leakage || 0,
+            icon: Users,
+            color: "text-green-500",
+            bgColor: "bg-green-500/10",
+            fixes: [
+              "Build automated reactivation campaigns at 30, 60, 90 day marks",
+              "Create loyalty/referral program with rewards for repeat business",
+              "Send personalized maintenance reminders based on service history",
+              "Implement birthday/anniversary offers to stay top-of-mind",
+            ],
+          },
+          {
+            label: "Review/Reputation Gap",
+            value: results?.review_opportunity || 0,
+            icon: Star,
+            color: "text-amber-500",
+            bgColor: "bg-amber-500/10",
+            fixes: [
+              "Automate review requests via SMS/email post-service completion",
+              "Respond to ALL reviews within 24 hours (positive and negative)",
+              "Create a review response template library for consistency",
+              "Implement review monitoring alerts for immediate reputation management",
+            ],
+          },
+        ];
+
         return (
           <div className="space-y-8">
             <div className="text-center mb-8">
@@ -603,7 +684,7 @@ const LeakageAudit = () => {
                 Your Revenue Leakage Report
               </h2>
               <p className="text-muted-foreground">
-                Based on your answers, here's where you're losing money.
+                Based on your answers, here's where you're losing money — and how to fix it.
               </p>
             </div>
 
@@ -618,43 +699,69 @@ const LeakageAudit = () => {
                   <p className="text-muted-foreground mt-2">per year in recoverable revenue</p>
                 </div>
 
-                {/* Breakdown */}
-                <div className="space-y-4">
-                  <h3 className="font-display font-semibold text-lg text-foreground">Leakage Breakdown:</h3>
+                {/* Detailed Breakdown with Recommendations */}
+                <div className="space-y-6">
+                  <h3 className="font-display font-semibold text-xl text-foreground">Breakdown & Fix Recommendations:</h3>
                   
-                  {[
-                    { label: "Missed Calls", value: results.missed_calls_leakage, icon: Phone, color: "text-red-500" },
-                    { label: "Slow Response Time", value: results.response_time_leakage, icon: Clock, color: "text-orange-500" },
-                    { label: "Quote Follow-Up Failure", value: results.quote_followup_leakage, icon: FileText, color: "text-yellow-500" },
-                    { label: "Appointment No-Shows", value: results.no_show_leakage, icon: Calendar, color: "text-purple-500" },
-                    { label: "Lost Customer Retention", value: results.retention_leakage, icon: Users, color: "text-green-500" },
-                    { label: "Review/Reputation Gap", value: results.review_opportunity, icon: Star, color: "text-amber-500" },
-                  ].map((item) => (
-                    <div key={item.label} className="flex items-center justify-between bg-card border border-border rounded-xl p-4">
-                      <div className="flex items-center gap-3">
-                        <item.icon className={`w-5 h-5 ${item.color}`} />
-                        <span className="text-foreground">{item.label}</span>
+                  {recommendations.map((item) => (
+                    <div key={item.label} className={`${item.bgColor} border border-border rounded-2xl p-5`}>
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center gap-3">
+                          <item.icon className={`w-6 h-6 ${item.color}`} />
+                          <span className="font-semibold text-foreground text-lg">{item.label}</span>
+                        </div>
+                        <span className="font-bold text-destructive text-lg">{formatCurrency(item.value)}/yr</span>
                       </div>
-                      <span className="font-semibold text-destructive">{formatCurrency(item.value)}</span>
+                      
+                      <div className="space-y-2">
+                        <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">How to Fix:</p>
+                        <ul className="space-y-2">
+                          {item.fixes.map((fix, idx) => (
+                            <li key={idx} className="flex items-start gap-2 text-sm text-foreground">
+                              <CheckCircle className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
+                              <span>{fix}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   ))}
                 </div>
 
-                {/* CTA */}
-                <div className="bg-accent/10 border border-accent/30 rounded-2xl p-6 text-center">
+                {/* CTA with Calendar */}
+                <div id="calendar-section" className="bg-accent/10 border border-accent/30 rounded-2xl p-6 text-center">
                   <AlertTriangle className="w-8 h-8 text-accent mx-auto mb-3" />
                   <h3 className="font-display font-semibold text-xl text-foreground mb-2">
-                    Want to Fix These Leaks?
+                    Want Help Implementing These Fixes?
                   </h3>
-                  <p className="text-muted-foreground mb-4">
-                    Book a free strategy call and we'll show you exactly how to recover this revenue.
+                  <p className="text-muted-foreground mb-6">
+                    Book a free strategy call and we'll build a custom plan to recover your {formatCurrency(results.total_annual_leakage)}.
                   </p>
-                  <Button size="lg" asChild>
-                    <a href="/backend-system/thank-you">
-                      Book Your Strategy Call
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </a>
+                  <Button
+                    size="lg"
+                    onClick={() => {
+                      document.getElementById("booking-calendar")?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                  >
+                    Book Your Strategy Call
+                    <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
+                </div>
+
+                {/* Embedded Calendar */}
+                <div id="booking-calendar" className="bg-card border border-border rounded-2xl p-6 md:p-8">
+                  <h3 className="font-display font-semibold text-xl text-foreground mb-4 text-center">
+                    Schedule Your Free Strategy Call
+                  </h3>
+                  <div className="aspect-video w-full">
+                    <iframe
+                      src="https://calendly.com/divineacquisition/strategy-call"
+                      width="100%"
+                      height="100%"
+                      frameBorder="0"
+                      className="rounded-xl min-h-[600px]"
+                    ></iframe>
+                  </div>
                 </div>
               </>
             )}
