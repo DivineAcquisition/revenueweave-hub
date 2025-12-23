@@ -14,7 +14,105 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      leakage_audits: {
+        Row: {
+          annual_customers: number | null
+          avg_response_time_minutes: number | null
+          company_name: string | null
+          created_at: string
+          current_close_rate: number | null
+          current_google_rating: number | null
+          email: string
+          follow_up_touches: number | null
+          has_after_hours_answering: boolean | null
+          has_automated_follow_up: boolean | null
+          has_automated_response: boolean | null
+          has_reminder_system: boolean | null
+          has_retention_system: boolean | null
+          id: string
+          missed_call_percentage: number | null
+          missed_calls_leakage: number | null
+          monthly_appointments: number | null
+          monthly_calls: number | null
+          monthly_quotes: number | null
+          monthly_revenue: number | null
+          monthly_reviews: number | null
+          no_show_leakage: number | null
+          no_show_percentage: number | null
+          quote_followup_leakage: number | null
+          repeat_customer_percentage: number | null
+          responds_to_reviews: boolean | null
+          response_time_leakage: number | null
+          retention_leakage: number | null
+          review_opportunity: number | null
+          total_annual_leakage: number | null
+        }
+        Insert: {
+          annual_customers?: number | null
+          avg_response_time_minutes?: number | null
+          company_name?: string | null
+          created_at?: string
+          current_close_rate?: number | null
+          current_google_rating?: number | null
+          email: string
+          follow_up_touches?: number | null
+          has_after_hours_answering?: boolean | null
+          has_automated_follow_up?: boolean | null
+          has_automated_response?: boolean | null
+          has_reminder_system?: boolean | null
+          has_retention_system?: boolean | null
+          id?: string
+          missed_call_percentage?: number | null
+          missed_calls_leakage?: number | null
+          monthly_appointments?: number | null
+          monthly_calls?: number | null
+          monthly_quotes?: number | null
+          monthly_revenue?: number | null
+          monthly_reviews?: number | null
+          no_show_leakage?: number | null
+          no_show_percentage?: number | null
+          quote_followup_leakage?: number | null
+          repeat_customer_percentage?: number | null
+          responds_to_reviews?: boolean | null
+          response_time_leakage?: number | null
+          retention_leakage?: number | null
+          review_opportunity?: number | null
+          total_annual_leakage?: number | null
+        }
+        Update: {
+          annual_customers?: number | null
+          avg_response_time_minutes?: number | null
+          company_name?: string | null
+          created_at?: string
+          current_close_rate?: number | null
+          current_google_rating?: number | null
+          email?: string
+          follow_up_touches?: number | null
+          has_after_hours_answering?: boolean | null
+          has_automated_follow_up?: boolean | null
+          has_automated_response?: boolean | null
+          has_reminder_system?: boolean | null
+          has_retention_system?: boolean | null
+          id?: string
+          missed_call_percentage?: number | null
+          missed_calls_leakage?: number | null
+          monthly_appointments?: number | null
+          monthly_calls?: number | null
+          monthly_quotes?: number | null
+          monthly_revenue?: number | null
+          monthly_reviews?: number | null
+          no_show_leakage?: number | null
+          no_show_percentage?: number | null
+          quote_followup_leakage?: number | null
+          repeat_customer_percentage?: number | null
+          responds_to_reviews?: boolean | null
+          response_time_leakage?: number | null
+          retention_leakage?: number | null
+          review_opportunity?: number | null
+          total_annual_leakage?: number | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

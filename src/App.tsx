@@ -9,6 +9,7 @@ import ThankYou from "./pages/ThankYou";
 import Booked from "./pages/Booked";
 import NotAFit from "./pages/NotAFit";
 import NotReady from "./pages/NotReady";
+import LeakageAudit from "./pages/LeakageAudit";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/backend-system/booked" element={<Booked />} />
             <Route path="/backend-system/not-a-fit" element={<NotAFit />} />
             <Route path="/backend-system/not-ready" element={<NotReady />} />
+            <Route path="/backend-system/leakage-audit" element={<LeakageAudit />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
