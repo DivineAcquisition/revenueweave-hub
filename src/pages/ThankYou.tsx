@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import Navbar from "@/components/Navbar";
+
 import Footer from "@/components/Footer";
 
 const ThankYou = () => {
@@ -28,9 +28,9 @@ const ThankYou = () => {
         <meta name="description" content="We got your application. Next step: pick a time to talk about your lead conversion system." />
       </Helmet>
       
-      <Navbar />
       
-      <main className="min-h-screen bg-background pt-24 pb-16">
+      
+      <main className="min-h-screen bg-background pt-16 pb-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h1 className="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-foreground mb-4">
