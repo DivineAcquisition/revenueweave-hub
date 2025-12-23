@@ -171,6 +171,23 @@ const LeakageAudit = () => {
       });
 
       if (error) throw error;
+
+      // Send email report
+      try {
+        await supabase.functions.invoke("send-audit-report", {
+          body: {
+            email: data.email,
+            company_name: data.company_name,
+            results: leakageResults,
+          },
+        });
+        toast({
+          title: "Report Sent!",
+          description: "Check your email for a copy of your audit results.",
+        });
+      } catch (emailError) {
+        console.error("Failed to send email:", emailError);
+      }
       
       setResults(leakageResults);
       setStep(totalSteps - 1);
@@ -593,7 +610,8 @@ const LeakageAudit = () => {
         );
 
       case 7:
-        const recommendations = [
+        // Sort by leakage amount to determine priority
+        const sortedRecommendations = [
           {
             label: "Missed Calls",
             value: results?.missed_calls_leakage || 0,
@@ -672,7 +690,14 @@ const LeakageAudit = () => {
               "Implement review monitoring alerts for immediate reputation management",
             ],
           },
-        ];
+        ].sort((a, b) => b.value - a.value);
+
+        const getPriorityBadge = (index: number) => {
+          if (index === 0) return { label: "🔴 FIX FIRST", className: "bg-red-600 text-white" };
+          if (index === 1) return { label: "🟠 FIX SECOND", className: "bg-orange-500 text-white" };
+          if (index === 2) return { label: "🟡 FIX THIRD", className: "bg-yellow-500 text-black" };
+          return { label: "🟢 OPTIMIZE LATER", className: "bg-green-500 text-white" };
+        };
 
         return (
           <div className="space-y-8">
@@ -684,7 +709,7 @@ const LeakageAudit = () => {
                 Your Revenue Leakage Report
               </h2>
               <p className="text-muted-foreground">
-                Based on your answers, here's where you're losing money — and how to fix it.
+                Based on your answers, here's where you're losing money — prioritized by impact.
               </p>
             </div>
 
@@ -699,33 +724,39 @@ const LeakageAudit = () => {
                   <p className="text-muted-foreground mt-2">per year in recoverable revenue</p>
                 </div>
 
-                {/* Detailed Breakdown with Recommendations */}
+                {/* Detailed Breakdown with Priority Scores */}
                 <div className="space-y-6">
-                  <h3 className="font-display font-semibold text-xl text-foreground">Breakdown & Fix Recommendations:</h3>
+                  <h3 className="font-display font-semibold text-xl text-foreground">Priority Breakdown (Fix in This Order):</h3>
                   
-                  {recommendations.map((item) => (
-                    <div key={item.label} className={`${item.bgColor} border border-border rounded-2xl p-5`}>
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center gap-3">
-                          <item.icon className={`w-6 h-6 ${item.color}`} />
-                          <span className="font-semibold text-foreground text-lg">{item.label}</span>
+                  {sortedRecommendations.map((item, index) => {
+                    const priority = getPriorityBadge(index);
+                    return (
+                      <div key={item.label} className={`${item.bgColor} border border-border rounded-2xl p-5`}>
+                        <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
+                          <div className="flex items-center gap-3">
+                            <span className={`px-3 py-1 rounded-full text-xs font-bold ${priority.className}`}>
+                              {priority.label}
+                            </span>
+                            <item.icon className={`w-6 h-6 ${item.color}`} />
+                            <span className="font-semibold text-foreground text-lg">{item.label}</span>
+                          </div>
+                          <span className="font-bold text-destructive text-lg">{formatCurrency(item.value)}/yr</span>
                         </div>
-                        <span className="font-bold text-destructive text-lg">{formatCurrency(item.value)}/yr</span>
+                        
+                        <div className="space-y-2">
+                          <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">How to Fix:</p>
+                          <ul className="space-y-2">
+                            {item.fixes.map((fix, idx) => (
+                              <li key={idx} className="flex items-start gap-2 text-sm text-foreground">
+                                <CheckCircle className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
+                                <span>{fix}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
-                      
-                      <div className="space-y-2">
-                        <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">How to Fix:</p>
-                        <ul className="space-y-2">
-                          {item.fixes.map((fix, idx) => (
-                            <li key={idx} className="flex items-start gap-2 text-sm text-foreground">
-                              <CheckCircle className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
-                              <span>{fix}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
 
                 {/* CTA with Calendar */}
@@ -753,13 +784,12 @@ const LeakageAudit = () => {
                   <h3 className="font-display font-semibold text-xl text-foreground mb-4 text-center">
                     Schedule Your Free Strategy Call
                   </h3>
-                  <div className="aspect-video w-full">
+                  <div className="w-full min-h-[700px]">
                     <iframe
-                      src="https://calendly.com/divineacquisition/strategy-call"
-                      width="100%"
-                      height="100%"
-                      frameBorder="0"
-                      className="rounded-xl min-h-[600px]"
+                      src="https://link.msgsndr.divineacquisition.io/widget/booking/8HRU6QplAvtDfVINjDbk"
+                      style={{ width: "100%", border: "none", overflow: "hidden", minHeight: "700px" }}
+                      scrolling="no"
+                      id="booking-iframe"
                     ></iframe>
                   </div>
                 </div>
@@ -767,7 +797,6 @@ const LeakageAudit = () => {
             )}
           </div>
         );
-
       default:
         return null;
     }
