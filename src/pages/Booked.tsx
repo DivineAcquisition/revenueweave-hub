@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import Navbar from "@/components/Navbar";
+
 import Footer from "@/components/Footer";
 import { useEffect } from "react";
 
@@ -46,10 +46,10 @@ const Booked = () => {
         `}</style>
       </Helmet>
       
-      <Navbar />
+      
       
       {/* Important Banner */}
-      <div className="bg-destructive text-destructive-foreground py-3 px-4 text-center mt-16">
+      <div className="bg-destructive text-destructive-foreground py-3 px-4 text-center">
         <p className="font-semibold text-sm md:text-base">
           ⚠️ IMPORTANT: Please Make Sure You've Watched Our Training Assets Or Content Before Attending Your Call
         </p>

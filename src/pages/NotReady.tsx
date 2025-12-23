@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import Navbar from "@/components/Navbar";
+
 import Footer from "@/components/Footer";
 
 const NotReady = () => {
@@ -45,9 +45,9 @@ const NotReady = () => {
         <meta name="description" content="When you're ready to fix your backend, we'll be here. Get our free Lead Leakage Audit guide in the meantime." />
       </Helmet>
       
-      <Navbar />
       
-      <main className="min-h-screen bg-background pt-24 pb-16">
+      
+      <main className="min-h-screen bg-background pt-16 pb-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h1 className="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-foreground mb-4">
