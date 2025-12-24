@@ -9,6 +9,7 @@ import ProcessSection from "@/components/ProcessSection";
 import ApplicationForm from "@/components/ApplicationForm";
 import FAQSection from "@/components/FAQSection";
 import FinalCTASection from "@/components/FinalCTASection";
+import CalendarSection from "@/components/CalendarSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -35,7 +36,6 @@ const Index = () => {
       </Helmet>
       
       <main className="overflow-hidden">
-        
         <HeroSection />
         <ProblemSection />
         <SolutionSection />
@@ -45,6 +45,7 @@ const Index = () => {
         <ApplicationForm />
         <FAQSection />
         <FinalCTASection />
+        <CalendarSection />
         <Footer />
       </main>
     </>
