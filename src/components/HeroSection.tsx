@@ -1,4 +1,5 @@
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, DollarSign } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import logoFull from "@/assets/logo-full.png";
 
@@ -60,8 +61,8 @@ const HeroSection = () => {
             ))}
           </div>
           
-          {/* CTA Button */}
-          <div className="animate-fade-up animate-fade-up-delay-4">
+          {/* CTA Buttons */}
+          <div className="flex flex-col gap-4 items-center animate-fade-up animate-fade-up-delay-4">
             <Button 
               variant="cta-hero" 
               size="xl" 
@@ -70,6 +71,17 @@ const HeroSection = () => {
             >
               See If You Qualify
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+            </Button>
+            <Button 
+              variant="cta-outline" 
+              size="xl" 
+              asChild
+              className="group"
+            >
+              <Link to="/backend-system/leakage-audit">
+                <DollarSign className="h-5 w-5" />
+                See How Much Money I'm Losing
+              </Link>
             </Button>
           </div>
         </div>
