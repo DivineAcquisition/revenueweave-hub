@@ -7,7 +7,8 @@ const HeroSection = () => {
     const calendarSection = document.getElementById("book-call");
     if (calendarSection) {
       calendarSection.scrollIntoView({
-        behavior: "smooth"
+        behavior: "smooth",
+        block: "start"
       });
     }
   };
