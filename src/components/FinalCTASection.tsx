@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 
 const FinalCTASection = () => {
   const scrollToCalendar = () => {
-    const calendarSection = document.getElementById("book-call");
+    const calendarSection = document.getElementById("apply");
     if (calendarSection) {
       calendarSection.scrollIntoView({ behavior: "smooth", block: "start" });
     }

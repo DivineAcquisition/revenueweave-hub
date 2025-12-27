@@ -13,6 +13,6 @@ const CalendarSection = () => {
       }
     };
   }, []);
-  return;
+  return null;
 };
 export default CalendarSection;
