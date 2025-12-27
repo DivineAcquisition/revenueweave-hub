@@ -5,7 +5,7 @@ const FinalCTASection = () => {
   const scrollToCalendar = () => {
     const calendarSection = document.getElementById("book-call");
     if (calendarSection) {
-      calendarSection.scrollIntoView({ behavior: "smooth" });
+      calendarSection.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
