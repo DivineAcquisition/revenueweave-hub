@@ -4,11 +4,11 @@ import { Button } from "./ui/button";
 import logoFull from "@/assets/logo-full.png";
 const HeroSection = () => {
   const scrollToCalendar = () => {
-    const calendarSection = document.getElementById("book-call");
+    const calendarSection = document.getElementById("apply");
     if (calendarSection) {
       calendarSection.scrollIntoView({
         behavior: "smooth",
-        block: "start"
+        block: "start",
       });
     }
   };
