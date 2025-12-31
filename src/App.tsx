@@ -10,6 +10,7 @@ import Booked from "./pages/Booked";
 import NotAFit from "./pages/NotAFit";
 import NotReady from "./pages/NotReady";
 import LeakageAudit from "./pages/LeakageAudit";
+import BookingBCS from "./pages/BookingBCS";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
             <Route path="/backend-system/not-a-fit" element={<NotAFit />} />
             <Route path="/backend-system/not-ready" element={<NotReady />} />
             <Route path="/backend-system/leakage-audit" element={<LeakageAudit />} />
+            <Route path="/booking-bcs" element={<BookingBCS />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
