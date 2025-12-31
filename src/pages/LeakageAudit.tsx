@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowRight, ArrowLeft, Phone, Clock, FileText, Calendar, Users, Star, CheckCircle, AlertTriangle } from "lucide-react";
@@ -253,14 +254,23 @@ const LeakageAudit = () => {
                 />
               </div>
               <div>
-                <Label htmlFor="monthly_revenue">Average Monthly Revenue ($)</Label>
-                <Input
-                  id="monthly_revenue"
-                  type="number"
-                  value={data.monthly_revenue}
-                  onChange={(e) => updateData("monthly_revenue", parseInt(e.target.value) || 0)}
-                  placeholder="50000"
-                />
+                <Label>Average Monthly Revenue</Label>
+                <Select
+                  value={data.monthly_revenue.toString()}
+                  onValueChange={(v) => updateData("monthly_revenue", parseInt(v))}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select your monthly revenue" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="25000">$25,000 - $50,000</SelectItem>
+                    <SelectItem value="50000">$50,000 - $75,000</SelectItem>
+                    <SelectItem value="75000">$75,000 - $100,000</SelectItem>
+                    <SelectItem value="100000">$100,000 - $150,000</SelectItem>
+                    <SelectItem value="150000">$150,000 - $250,000</SelectItem>
+                    <SelectItem value="250000">$250,000+</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
             </div>
           </div>
@@ -283,24 +293,41 @@ const LeakageAudit = () => {
             
             <div className="space-y-4">
               <div>
-                <Label htmlFor="monthly_calls">How many inbound calls do you get per month?</Label>
-                <Input
-                  id="monthly_calls"
-                  type="number"
-                  value={data.monthly_calls}
-                  onChange={(e) => updateData("monthly_calls", parseInt(e.target.value) || 0)}
-                />
+                <Label>How many inbound calls do you get per month?</Label>
+                <Select
+                  value={data.monthly_calls.toString()}
+                  onValueChange={(v) => updateData("monthly_calls", parseInt(v))}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select monthly calls" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="50">Less than 50</SelectItem>
+                    <SelectItem value="100">50 - 100</SelectItem>
+                    <SelectItem value="200">100 - 200</SelectItem>
+                    <SelectItem value="350">200 - 500</SelectItem>
+                    <SelectItem value="750">500 - 1,000</SelectItem>
+                    <SelectItem value="1000">1,000+</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
               <div>
-                <Label htmlFor="missed_call_percentage">What % of calls do you estimate you miss?</Label>
-                <Input
-                  id="missed_call_percentage"
-                  type="number"
-                  value={data.missed_call_percentage}
-                  onChange={(e) => updateData("missed_call_percentage", parseInt(e.target.value) || 0)}
-                  min="0"
-                  max="100"
-                />
+                <Label>What % of calls do you estimate you miss?</Label>
+                <Select
+                  value={data.missed_call_percentage.toString()}
+                  onValueChange={(v) => updateData("missed_call_percentage", parseInt(v))}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select missed call %" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="5">Less than 10%</SelectItem>
+                    <SelectItem value="15">10% - 20%</SelectItem>
+                    <SelectItem value="27">20% - 35%</SelectItem>
+                    <SelectItem value="45">35% - 50%</SelectItem>
+                    <SelectItem value="60">More than 50%</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
               <div>
                 <Label>Do you have after-hours call answering?</Label>
@@ -340,13 +367,23 @@ const LeakageAudit = () => {
             
             <div className="space-y-4">
               <div>
-                <Label htmlFor="avg_response_time">Average time to respond to new leads (minutes)?</Label>
-                <Input
-                  id="avg_response_time"
-                  type="number"
-                  value={data.avg_response_time_minutes}
-                  onChange={(e) => updateData("avg_response_time_minutes", parseInt(e.target.value) || 0)}
-                />
+                <Label>Average time to respond to new leads?</Label>
+                <Select
+                  value={data.avg_response_time_minutes.toString()}
+                  onValueChange={(v) => updateData("avg_response_time_minutes", parseInt(v))}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select response time" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="2">Under 5 minutes</SelectItem>
+                    <SelectItem value="15">5 - 30 minutes</SelectItem>
+                    <SelectItem value="60">30 minutes - 1 hour</SelectItem>
+                    <SelectItem value="180">1 - 4 hours</SelectItem>
+                    <SelectItem value="480">4 - 24 hours</SelectItem>
+                    <SelectItem value="1440">More than 24 hours</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
               <div>
                 <Label>Do you have automated instant response for new leads?</Label>
@@ -386,35 +423,58 @@ const LeakageAudit = () => {
             
             <div className="space-y-4">
               <div>
-                <Label htmlFor="monthly_quotes">How many quotes do you send per month?</Label>
-                <Input
-                  id="monthly_quotes"
-                  type="number"
-                  value={data.monthly_quotes}
-                  onChange={(e) => updateData("monthly_quotes", parseInt(e.target.value) || 0)}
-                />
+                <Label>How many quotes do you send per month?</Label>
+                <Select
+                  value={data.monthly_quotes.toString()}
+                  onValueChange={(v) => updateData("monthly_quotes", parseInt(v))}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select monthly quotes" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="15">Less than 20</SelectItem>
+                    <SelectItem value="35">20 - 50</SelectItem>
+                    <SelectItem value="75">50 - 100</SelectItem>
+                    <SelectItem value="150">100 - 200</SelectItem>
+                    <SelectItem value="300">200+</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
               <div>
-                <Label htmlFor="current_close_rate">What is your current close rate (%)?</Label>
-                <Input
-                  id="current_close_rate"
-                  type="number"
-                  value={data.current_close_rate}
-                  onChange={(e) => updateData("current_close_rate", parseInt(e.target.value) || 0)}
-                  min="0"
-                  max="100"
-                />
+                <Label>What is your current close rate?</Label>
+                <Select
+                  value={data.current_close_rate.toString()}
+                  onValueChange={(v) => updateData("current_close_rate", parseInt(v))}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select close rate" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="10">Less than 15%</SelectItem>
+                    <SelectItem value="20">15% - 25%</SelectItem>
+                    <SelectItem value="30">25% - 35%</SelectItem>
+                    <SelectItem value="40">35% - 50%</SelectItem>
+                    <SelectItem value="55">More than 50%</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
               <div>
-                <Label htmlFor="follow_up_touches">How many follow-up touches per quote?</Label>
-                <Input
-                  id="follow_up_touches"
-                  type="number"
-                  value={data.follow_up_touches}
-                  onChange={(e) => updateData("follow_up_touches", parseInt(e.target.value) || 0)}
-                  min="0"
-                  max="12"
-                />
+                <Label>How many follow-up touches per quote?</Label>
+                <Select
+                  value={data.follow_up_touches.toString()}
+                  onValueChange={(v) => updateData("follow_up_touches", parseInt(v))}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select follow-up touches" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="0">None</SelectItem>
+                    <SelectItem value="1">1 follow-up</SelectItem>
+                    <SelectItem value="2">2 follow-ups</SelectItem>
+                    <SelectItem value="4">3 - 5 follow-ups</SelectItem>
+                    <SelectItem value="7">6+ follow-ups</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
               <div>
                 <Label>Do you have automated follow-up sequences?</Label>
@@ -454,24 +514,40 @@ const LeakageAudit = () => {
             
             <div className="space-y-4">
               <div>
-                <Label htmlFor="monthly_appointments">How many appointments do you book per month?</Label>
-                <Input
-                  id="monthly_appointments"
-                  type="number"
-                  value={data.monthly_appointments}
-                  onChange={(e) => updateData("monthly_appointments", parseInt(e.target.value) || 0)}
-                />
+                <Label>How many appointments do you book per month?</Label>
+                <Select
+                  value={data.monthly_appointments.toString()}
+                  onValueChange={(v) => updateData("monthly_appointments", parseInt(v))}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select monthly appointments" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="25">Less than 30</SelectItem>
+                    <SelectItem value="50">30 - 60</SelectItem>
+                    <SelectItem value="80">60 - 100</SelectItem>
+                    <SelectItem value="150">100 - 200</SelectItem>
+                    <SelectItem value="300">200+</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
               <div>
-                <Label htmlFor="no_show_percentage">What is your no-show rate (%)?</Label>
-                <Input
-                  id="no_show_percentage"
-                  type="number"
-                  value={data.no_show_percentage}
-                  onChange={(e) => updateData("no_show_percentage", parseInt(e.target.value) || 0)}
-                  min="0"
-                  max="100"
-                />
+                <Label>What is your no-show rate?</Label>
+                <Select
+                  value={data.no_show_percentage.toString()}
+                  onValueChange={(v) => updateData("no_show_percentage", parseInt(v))}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select no-show rate" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="5">Less than 10%</SelectItem>
+                    <SelectItem value="15">10% - 20%</SelectItem>
+                    <SelectItem value="25">20% - 30%</SelectItem>
+                    <SelectItem value="40">30% - 50%</SelectItem>
+                    <SelectItem value="55">More than 50%</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
               <div>
                 <Label>Do you have automated reminder systems?</Label>
@@ -511,24 +587,40 @@ const LeakageAudit = () => {
             
             <div className="space-y-4">
               <div>
-                <Label htmlFor="annual_customers">How many customers do you serve per year?</Label>
-                <Input
-                  id="annual_customers"
-                  type="number"
-                  value={data.annual_customers}
-                  onChange={(e) => updateData("annual_customers", parseInt(e.target.value) || 0)}
-                />
+                <Label>How many customers do you serve per year?</Label>
+                <Select
+                  value={data.annual_customers.toString()}
+                  onValueChange={(v) => updateData("annual_customers", parseInt(v))}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select annual customers" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="150">Less than 200</SelectItem>
+                    <SelectItem value="350">200 - 500</SelectItem>
+                    <SelectItem value="750">500 - 1,000</SelectItem>
+                    <SelectItem value="1500">1,000 - 2,000</SelectItem>
+                    <SelectItem value="3000">2,000+</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
               <div>
-                <Label htmlFor="repeat_customer_percentage">What % are repeat customers?</Label>
-                <Input
-                  id="repeat_customer_percentage"
-                  type="number"
-                  value={data.repeat_customer_percentage}
-                  onChange={(e) => updateData("repeat_customer_percentage", parseInt(e.target.value) || 0)}
-                  min="0"
-                  max="100"
-                />
+                <Label>What % are repeat customers?</Label>
+                <Select
+                  value={data.repeat_customer_percentage.toString()}
+                  onValueChange={(v) => updateData("repeat_customer_percentage", parseInt(v))}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select repeat customer %" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="5">Less than 10%</SelectItem>
+                    <SelectItem value="15">10% - 20%</SelectItem>
+                    <SelectItem value="25">20% - 30%</SelectItem>
+                    <SelectItem value="35">30% - 40%</SelectItem>
+                    <SelectItem value="50">More than 40%</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
               <div>
                 <Label>Do you have a customer retention system?</Label>
@@ -568,25 +660,40 @@ const LeakageAudit = () => {
             
             <div className="space-y-4">
               <div>
-                <Label htmlFor="current_google_rating">Current Google rating (1-5)</Label>
-                <Input
-                  id="current_google_rating"
-                  type="number"
-                  step="0.1"
-                  value={data.current_google_rating}
-                  onChange={(e) => updateData("current_google_rating", parseFloat(e.target.value) || 0)}
-                  min="1"
-                  max="5"
-                />
+                <Label>Current Google rating</Label>
+                <Select
+                  value={data.current_google_rating.toString()}
+                  onValueChange={(v) => updateData("current_google_rating", parseFloat(v))}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select your rating" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="3">Below 3.5 stars</SelectItem>
+                    <SelectItem value="3.5">3.5 - 4.0 stars</SelectItem>
+                    <SelectItem value="4">4.0 - 4.3 stars</SelectItem>
+                    <SelectItem value="4.5">4.3 - 4.7 stars</SelectItem>
+                    <SelectItem value="4.8">4.7+ stars</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
               <div>
-                <Label htmlFor="monthly_reviews">How many new reviews do you get per month?</Label>
-                <Input
-                  id="monthly_reviews"
-                  type="number"
-                  value={data.monthly_reviews}
-                  onChange={(e) => updateData("monthly_reviews", parseInt(e.target.value) || 0)}
-                />
+                <Label>How many new reviews do you get per month?</Label>
+                <Select
+                  value={data.monthly_reviews.toString()}
+                  onValueChange={(v) => updateData("monthly_reviews", parseInt(v))}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select monthly reviews" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="1">0 - 2 reviews</SelectItem>
+                    <SelectItem value="4">3 - 5 reviews</SelectItem>
+                    <SelectItem value="8">6 - 10 reviews</SelectItem>
+                    <SelectItem value="15">10 - 20 reviews</SelectItem>
+                    <SelectItem value="30">20+ reviews</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
               <div>
                 <Label>Do you respond to all reviews?</Label>
