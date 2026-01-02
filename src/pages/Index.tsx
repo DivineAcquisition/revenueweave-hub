@@ -6,7 +6,7 @@ import SolutionSection from "@/components/SolutionSection";
 import ROISection from "@/components/ROISection";
 import QualificationSection from "@/components/QualificationSection";
 import ProcessSection from "@/components/ProcessSection";
-import ApplicationForm from "@/components/ApplicationForm";
+
 import FAQSection from "@/components/FAQSection";
 import FinalCTASection from "@/components/FinalCTASection";
 import CalendarSection from "@/components/CalendarSection";
@@ -42,7 +42,7 @@ const Index = () => {
         <ROISection />
         <QualificationSection />
         <ProcessSection />
-        <ApplicationForm />
+        
         <FAQSection />
         <FinalCTASection />
         <CalendarSection />

@@ -1,19 +1,30 @@
+import { useEffect } from "react";
 import { ArrowRight, CheckCircle2, DollarSign } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import logoFull from "@/assets/logo-full.png";
+
 const HeroSection = () => {
-  const scrollToCalendar = () => {
-    const calendarSection = document.getElementById("apply");
-    if (calendarSection) {
-      calendarSection.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  };
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://app.iclosed.io/assets/widget.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      const existingScript = document.querySelector(
+        'script[src="https://app.iclosed.io/assets/widget.js"]'
+      );
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, []);
+
   const trustBadges = ["Built for Home Service Companies", "Works With Your Existing Ads", "Implemented in 14 Days"];
-  return <section className="hero-gradient min-h-screen flex items-center pt-20 pb-16 px-4">
+  
+  return (
+    <section className="hero-gradient min-h-screen flex flex-col items-center pt-20 pb-16 px-4">
       <div className="container mx-auto">
         <div className="max-w-4xl mx-auto text-center">
           {/* Logo */}
@@ -43,18 +54,26 @@ const HeroSection = () => {
           
           {/* Trust Badges */}
           <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-10 animate-fade-up animate-fade-up-delay-4">
-            {trustBadges.map((badge, index) => <div key={index} className="flex items-center gap-2 text-primary-foreground/80">
+            {trustBadges.map((badge, index) => (
+              <div key={index} className="flex items-center gap-2 text-primary-foreground/80">
                 <CheckCircle2 className="h-5 w-5 text-success" />
                 <span className="text-sm md:text-base font-medium">{badge}</span>
-              </div>)}
+              </div>
+            ))}
           </div>
           
-          {/* CTA Buttons */}
+          {/* Embedded Calendar */}
+          <div id="apply" className="max-w-3xl mx-auto mb-10 animate-fade-up animate-fade-up-delay-4">
+            <div
+              className="iclosed-widget bg-card border border-border rounded-2xl overflow-hidden shadow-lg"
+              data-url="https://app.iclosed.io/e/divineacquisitionn/homeservice"
+              title="Backend Conversion System"
+              style={{ width: "100%", height: "620px" }}
+            />
+          </div>
+          
+          {/* Secondary CTA */}
           <div className="flex flex-col gap-4 items-center animate-fade-up animate-fade-up-delay-4">
-            <Button variant="cta-hero" size="xl" onClick={scrollToCalendar} className="group">
-              See If You Qualify
-              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </Button>
             <Button variant="cta-outline" size="xl" asChild className="group">
               <Link to="/backend-system/leakage-audit">
                 <DollarSign className="h-5 w-5" />
@@ -64,6 +83,8 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default HeroSection;
