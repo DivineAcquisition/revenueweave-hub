@@ -6,11 +6,11 @@ import logoFull from "@/assets/logo-full.png";
 const HeroSection = () => {
   useEffect(() => {
     const script = document.createElement("script");
-    script.src = "https://app.iclosed.io/assets/widget.js";
+    script.src = "https://server.fillout.com/embed/v1/";
     script.async = true;
     document.body.appendChild(script);
     return () => {
-      const existingScript = document.querySelector('script[src="https://app.iclosed.io/assets/widget.js"]');
+      const existingScript = document.querySelector('script[src="https://server.fillout.com/embed/v1/"]');
       if (existingScript) {
         existingScript.remove();
       }
@@ -55,10 +55,16 @@ const HeroSection = () => {
           
           {/* Embedded Calendar */}
           <div id="apply" className="max-w-3xl mx-auto mb-10 animate-fade-up animate-fade-up-delay-4">
-            <div className="iclosed-widget bg-card border border-border rounded-2xl overflow-hidden shadow-lg" data-url="https://app.iclosed.io/e/divineacquisitionn/homeservice" title="Backend Conversion System" style={{
-            width: "100%",
-            height: "620px"
-          }} />
+            <div 
+              data-fillout-id="h3CnJQbcGCus" 
+              data-fillout-embed-type="standard" 
+              data-fillout-inherit-parameters
+              className="bg-card border border-border rounded-2xl overflow-hidden shadow-lg"
+              style={{
+                width: "100%",
+                height: "620px"
+              }}
+            />
           </div>
           
           {/* Secondary CTA */}
