@@ -3,37 +3,30 @@ import { ArrowRight, CheckCircle2, DollarSign } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import logoFull from "@/assets/logo-full.png";
-
 const HeroSection = () => {
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://app.iclosed.io/assets/widget.js";
     script.async = true;
     document.body.appendChild(script);
-
     return () => {
-      const existingScript = document.querySelector(
-        'script[src="https://app.iclosed.io/assets/widget.js"]'
-      );
+      const existingScript = document.querySelector('script[src="https://app.iclosed.io/assets/widget.js"]');
       if (existingScript) {
         existingScript.remove();
       }
     };
   }, []);
-
   const trustBadges = ["Built for Home Service Companies", "Works With Your Existing Ads", "Implemented in 14 Days"];
-  
-  return (
-    <section className="hero-gradient min-h-screen flex flex-col items-center pt-20 pb-16 px-4">
+  return <section className="hero-gradient min-h-screen flex flex-col items-center pt-20 pb-16 px-4">
       <div className="container mx-auto">
         <div className="max-w-4xl mx-auto text-center">
           {/* Logo */}
           <div className="flex justify-center mb-8 animate-fade-up">
-            <img src={logoFull} alt="DivineAcquisition" className="h-14 md:h-20 w-auto" />
+            <img src={logoFull} alt="DivineAcquisition" className="h-24 md:h-20 w-auto" />
           </div>
           
           {/* Pre-headline */}
-          <p className="text-accent font-medium text-sm md:text-base mb-6 animate-fade-up animate-fade-up-delay-1">For HVAC, Plumbing, Roofing & Contractors Doing $25K-$250K/Month</p>
+          <p className="text-accent font-medium text-sm md:text-base mb-6 animate-fade-up animate-fade-up-delay-1">For HVAC, Plumbing, Roofing & Contractors Doing $10K-$25K/Month</p>
           
           {/* Main Headline */}
           <h1 className="text-primary-foreground font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 animate-fade-up animate-fade-up-delay-2 text-balance">
@@ -54,22 +47,18 @@ const HeroSection = () => {
           
           {/* Trust Badges */}
           <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-10 animate-fade-up animate-fade-up-delay-4">
-            {trustBadges.map((badge, index) => (
-              <div key={index} className="flex items-center gap-2 text-primary-foreground/80">
+            {trustBadges.map((badge, index) => <div key={index} className="flex items-center gap-2 text-primary-foreground/80">
                 <CheckCircle2 className="h-5 w-5 text-success" />
                 <span className="text-sm md:text-base font-medium">{badge}</span>
-              </div>
-            ))}
+              </div>)}
           </div>
           
           {/* Embedded Calendar */}
           <div id="apply" className="max-w-3xl mx-auto mb-10 animate-fade-up animate-fade-up-delay-4">
-            <div
-              className="iclosed-widget bg-card border border-border rounded-2xl overflow-hidden shadow-lg"
-              data-url="https://app.iclosed.io/e/divineacquisitionn/homeservice"
-              title="Backend Conversion System"
-              style={{ width: "100%", height: "620px" }}
-            />
+            <div className="iclosed-widget bg-card border border-border rounded-2xl overflow-hidden shadow-lg" data-url="https://app.iclosed.io/e/divineacquisitionn/homeservice" title="Backend Conversion System" style={{
+            width: "100%",
+            height: "620px"
+          }} />
           </div>
           
           {/* Secondary CTA */}
@@ -83,8 +72,6 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HeroSection;
