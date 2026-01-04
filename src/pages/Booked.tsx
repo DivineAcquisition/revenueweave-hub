@@ -5,6 +5,16 @@ import { useEffect } from "react";
 
 const Booked = () => {
   useEffect(() => {
+    // Track Schedule event for Facebook Pixel
+    if (typeof (window as any).fbq === 'function') {
+      (window as any).fbq('track', 'Schedule', {
+        content_name: 'Backend System Call',
+        content_category: 'Appointment',
+        value: 500.00,
+        currency: 'USD'
+      });
+    }
+
     // Load Wistia scripts
     const wistiaPlayerScript = document.createElement('script');
     wistiaPlayerScript.src = 'https://fast.wistia.com/player.js';

@@ -5,6 +5,14 @@ import Footer from "@/components/Footer";
 
 const ThankYou = () => {
   useEffect(() => {
+    // Track Lead event for Facebook Pixel
+    if (typeof (window as any).fbq === 'function') {
+      (window as any).fbq('track', 'Lead', {
+        content_name: 'Backend System Audit',
+        content_category: 'Lead'
+      });
+    }
+
     // Load the iClosed widget script
     const script = document.createElement("script");
     script.src = "https://app.iclosed.io/assets/widget.js";

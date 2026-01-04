@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -5,6 +6,16 @@ import { ArrowRight } from "lucide-react";
 import Footer from "@/components/Footer";
 
 const NotReady = () => {
+  useEffect(() => {
+    // Track NotReady event for Facebook Pixel
+    if (typeof (window as any).fbq === 'function') {
+      (window as any).fbq('trackCustom', 'NotReady', {
+        content_name: 'Not Ready',
+        content_category: 'Nurture'
+      });
+    }
+  }, []);
+
   return (
     <>
       <Helmet>
