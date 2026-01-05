@@ -1,22 +1,9 @@
-import { useEffect } from "react";
 import { ArrowRight, CheckCircle2, DollarSign } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import logoFull from "@/assets/logo-full.png";
 
 const HeroSection = () => {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://app.iclosed.io/assets/widget.js";
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      const existingScript = document.querySelector('script[src="https://app.iclosed.io/assets/widget.js"]');
-      if (existingScript) {
-        existingScript.remove();
-      }
-    };
-  }, []);
   const trustBadges = ["Built for Home Service Companies", "Works With Your Existing Ads", "Implemented in 14 Days"];
   return <section className="hero-gradient min-h-screen flex flex-col items-center pt-20 pb-16 px-4">
       <div className="container mx-auto">
@@ -54,20 +41,14 @@ const HeroSection = () => {
               </div>)}
           </div>
           
-          {/* Embedded Calendar */}
-          <div id="apply" className="max-w-3xl mx-auto mb-10 animate-fade-up animate-fade-up-delay-4">
-            <div 
-              id="iclosed-scheduler"
-              className="bg-card border border-border rounded-2xl overflow-hidden shadow-lg"
-              style={{
-                width: "100%",
-                minHeight: "620px"
-              }}
-            />
-          </div>
-          
-          {/* Secondary CTA */}
-          <div className="flex flex-col gap-4 items-center animate-fade-up animate-fade-up-delay-4">
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-up animate-fade-up-delay-4">
+            <Button variant="cta" size="xl" asChild className="group">
+              <a href="https://divineacquisition.fillout.com/t/h3CnJQbcGCus" target="_blank" rel="noopener noreferrer">
+                See If You Qualify
+                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </a>
+            </Button>
             <Button variant="cta-outline" size="xl" asChild className="group">
               <Link to="/backend-system/leakage-audit">
                 <DollarSign className="h-5 w-5" />
