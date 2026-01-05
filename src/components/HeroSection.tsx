@@ -31,20 +31,26 @@ const HeroSection = () => {
           
           {/* Main Headline */}
           <h1 className="text-primary-foreground font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 animate-fade-up animate-fade-up-delay-2 text-balance">
-            You're Paying For Leads.
-            <br />
-            <span className="text-accent">We Make Sure They Actually Convert.</span>
+            Every Missed Call Is a Job Going to Your Competitor
           </h1>
           
           {/* Subheadline */}
-          <p className="text-primary-foreground/90 text-lg md:text-xl lg:text-2xl font-medium mb-6 animate-fade-up animate-fade-up-delay-2 text-balance">
-            The backend system that turns more ad leads into booked jobs — and more jobs into repeat customers who pay you every month.
+          <p className="text-primary-foreground/90 text-lg md:text-xl lg:text-2xl font-medium mb-8 animate-fade-up animate-fade-up-delay-2 text-balance">
+            See exactly where you're losing leads — and how to fix it in 20 minutes.
           </p>
           
-          {/* Supporting Text */}
-          <p className="text-primary-foreground/70 text-base md:text-lg max-w-3xl mx-auto mb-10 animate-fade-up animate-fade-up-delay-3">
-            Most home service companies lose 60%+ of their ad leads to missed calls, slow follow-up, and zero retention. We fix that with AI-powered capture, automated conversion sequences, and retention systems that work 24/7.
-          </p>
+          {/* Bullet Points */}
+          <div className="flex flex-col items-center gap-3 mb-10 animate-fade-up animate-fade-up-delay-3">
+            <p className="text-primary-foreground/90 text-base md:text-lg">
+              ✅ Find out how many calls you're missing (it's more than you think)
+            </p>
+            <p className="text-primary-foreground/90 text-base md:text-lg">
+              ✅ See why your quotes aren't closing
+            </p>
+            <p className="text-primary-foreground/90 text-base md:text-lg">
+              ✅ Get a simple plan to book more jobs — without more ad spend
+            </p>
+          </div>
           
           {/* Trust Badges */}
           <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-10 animate-fade-up animate-fade-up-delay-4">
