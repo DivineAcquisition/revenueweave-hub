@@ -7,11 +7,11 @@ import logoFull from "@/assets/logo-full.png";
 const HeroSection = () => {
   useEffect(() => {
     const script = document.createElement("script");
-    script.src = "https://server.fillout.com/embed/v1/";
+    script.src = "https://app.iclosed.io/assets/widget.js";
     script.async = true;
     document.body.appendChild(script);
     return () => {
-      const existingScript = document.querySelector('script[src="https://server.fillout.com/embed/v1/"]');
+      const existingScript = document.querySelector('script[src="https://app.iclosed.io/assets/widget.js"]');
       if (existingScript) {
         existingScript.remove();
       }
@@ -54,16 +54,14 @@ const HeroSection = () => {
               </div>)}
           </div>
           
-          {/* Embedded Form */}
+          {/* Embedded Calendar */}
           <div id="apply" className="max-w-3xl mx-auto mb-10 animate-fade-up animate-fade-up-delay-4">
             <div 
-              data-fillout-id="h3CnJQbcGCus" 
-              data-fillout-embed-type="standard" 
-              data-fillout-inherit-parameters
+              id="iclosed-scheduler"
               className="bg-card border border-border rounded-2xl overflow-hidden shadow-lg"
               style={{
                 width: "100%",
-                height: "620px"
+                minHeight: "620px"
               }}
             />
           </div>
