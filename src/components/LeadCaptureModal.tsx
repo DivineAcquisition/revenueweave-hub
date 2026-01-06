@@ -26,9 +26,10 @@ type FormData = z.infer<typeof formSchema>;
 interface LeadCaptureModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  onSuccess?: () => void;
 }
 
-const LeadCaptureModal = ({ open, onOpenChange }: LeadCaptureModalProps) => {
+const LeadCaptureModal = ({ open, onOpenChange, onSuccess }: LeadCaptureModalProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
@@ -69,6 +70,7 @@ const LeadCaptureModal = ({ open, onOpenChange }: LeadCaptureModalProps) => {
       });
 
       reset();
+      onSuccess?.();
       onOpenChange(false);
     } catch (error) {
       console.error("Error submitting form:", error);

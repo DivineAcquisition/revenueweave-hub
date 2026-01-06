@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
-import { CheckCircle2, DollarSign, FileText } from "lucide-react";
-import { Link } from "react-router-dom";
+import { CheckCircle2 } from "lucide-react";
+
 import { Button } from "./ui/button";
 import LeadCaptureModal from "./LeadCaptureModal";
 import logoFull from "@/assets/logo-full.png";
 
 const HeroSection = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+
   useEffect(() => {
     // Load Wistia player script
     const playerScript = document.createElement("script");
@@ -50,20 +52,22 @@ const HeroSection = () => {
           {/* Trust Badges */}
           
           
-          {/* Wistia VSL Video */}
-          <div className="w-full max-w-3xl mx-auto animate-fade-up animate-fade-up-delay-4 mb-8">
-            <style>{`
-              wistia-player[media-id='o2tstyl6cj']:not(:defined) {
-                background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/o2tstyl6cj/swatch');
-                display: block;
-                filter: blur(5px);
-                padding-top: 56.25%;
-              }
-            `}</style>
-            <div dangerouslySetInnerHTML={{
-            __html: '<wistia-player media-id="o2tstyl6cj" aspect="1.7777777777777777"></wistia-player>'
-          }} />
-          </div>
+          {/* Wistia VSL Video - Only shown after form submission */}
+          {hasSubmitted && (
+            <div className="w-full max-w-3xl mx-auto animate-fade-up animate-fade-up-delay-4 mb-8">
+              <style>{`
+                wistia-player[media-id='o2tstyl6cj']:not(:defined) {
+                  background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/o2tstyl6cj/swatch');
+                  display: block;
+                  filter: blur(5px);
+                  padding-top: 56.25%;
+                }
+              `}</style>
+              <div dangerouslySetInnerHTML={{
+                __html: '<wistia-player media-id="o2tstyl6cj" aspect="1.7777777777777777"></wistia-player>'
+              }} />
+            </div>
+          )}
 
           {/* Primary CTA */}
           <div className="animate-fade-up animate-fade-up-delay-4">
@@ -75,32 +79,21 @@ const HeroSection = () => {
             </Button>
           </div>
 
-          {/* Secondary CTA */}
-          <div className="mt-4 animate-fade-up animate-fade-up-delay-4">
-            <Button variant="cta-outline" size="xl" asChild className="group">
-              <Link to="/backend-system/leakage-audit">
-                <DollarSign className="h-5 w-5" />
-                See How Much Money I'm Losing
-              </Link>
-            </Button>
-          </div>
-
-          {/* Free Report CTA */}
-          <div className="mt-4 animate-fade-up animate-fade-up-delay-4">
-            <Button
-              variant="ghost"
-              size="lg"
-              onClick={() => setIsModalOpen(true)}
-              className="text-muted-foreground hover:text-foreground"
-            >
-              <FileText className="h-4 w-4" />
-              Get Free Industry Report
-            </Button>
-          </div>
         </div>
       </div>
 
-      <LeadCaptureModal open={isModalOpen} onOpenChange={setIsModalOpen} />
+      <LeadCaptureModal 
+        open={isModalOpen} 
+        onOpenChange={(open) => {
+          if (hasSubmitted) {
+            setIsModalOpen(open);
+          }
+        }}
+        onSuccess={() => {
+          setHasSubmitted(true);
+          setIsModalOpen(false);
+        }}
+      />
     </section>;
 };
 export default HeroSection;
