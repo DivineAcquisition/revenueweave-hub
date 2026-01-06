@@ -3,7 +3,6 @@ import { CheckCircle2, DollarSign } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import logoFull from "@/assets/logo-full.png";
-
 const HeroSection = () => {
   useEffect(() => {
     // Load Wistia player script
@@ -18,7 +17,6 @@ const HeroSection = () => {
     embedScript.async = true;
     embedScript.type = "module";
     document.body.appendChild(embedScript);
-
     return () => {
       document.body.removeChild(playerScript);
       document.body.removeChild(embedScript);
@@ -36,7 +34,7 @@ const HeroSection = () => {
           <p className="text-accent font-medium text-sm md:text-base mb-6 animate-fade-up animate-fade-up-delay-1">For HVAC, Plumbing, Roofing & Contractors Doing $10K-$25K/Month</p>
           
           {/* Main Headline */}
-          <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 animate-fade-up animate-fade-up-delay-2 text-balance text-primary">
+          <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 animate-fade-up animate-fade-up-delay-2 text-balance text-white">
             Every Missed Call Is a Job Going to Your Competitor
           </h1>
           
@@ -59,7 +57,9 @@ const HeroSection = () => {
                 padding-top: 56.25%;
               }
             `}</style>
-            <div dangerouslySetInnerHTML={{ __html: '<wistia-player media-id="o2tstyl6cj" aspect="1.7777777777777777"></wistia-player>' }} />
+            <div dangerouslySetInnerHTML={{
+            __html: '<wistia-player media-id="o2tstyl6cj" aspect="1.7777777777777777"></wistia-player>'
+          }} />
           </div>
 
           {/* Primary CTA */}
