@@ -53,7 +53,7 @@ const HeroSection = () => {
           </p>
           
           {/* Video Section */}
-          <div className="w-full max-w-3xl mx-auto animate-fade-up animate-fade-up-delay-4 mb-8">
+          <div className="w-full max-w-3xl mx-auto animate-fade-up animate-fade-up-delay-4 mb-12">
             <style>{`
               wistia-player[media-id='o2tstyl6cj']:not(:defined) {
                 background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/o2tstyl6cj/swatch');
@@ -67,14 +67,17 @@ const HeroSection = () => {
             }} />
           </div>
 
-          {/* Primary CTA */}
-          <div className="animate-fade-up animate-fade-up-delay-4">
-            <Button variant="cta" size="xl" asChild className="group">
-              <a href="https://divineacquisition.fillout.com/t/h3CnJQbcGCus" target="_blank" rel="noopener noreferrer">
-                <CheckCircle2 className="h-5 w-5" />
-                See If You Qualify
-              </a>
-            </Button>
+          {/* Calendar Section */}
+          <div className="w-full max-w-3xl mx-auto animate-fade-up animate-fade-up-delay-4">
+            <h2 className="font-display font-bold text-2xl md:text-3xl text-white mb-6 text-center">
+              Book Your <span className="text-accent">Free Strategy Call</span>
+            </h2>
+            <div 
+              className="iclosed-widget bg-card border border-border rounded-2xl overflow-hidden shadow-lg" 
+              data-url="https://app.iclosed.io/e/divineacquisitionn/homeservice" 
+              title="Backend Conversion System" 
+              style={{ width: "100%", height: "620px" }}
+            />
           </div>
         </div>
       </div>
