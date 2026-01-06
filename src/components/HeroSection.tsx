@@ -3,15 +3,25 @@ import { CheckCircle2, DollarSign } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import logoFull from "@/assets/logo-full.png";
+
 const HeroSection = () => {
-  const trustBadges = ["Built for Home Service Companies", "Works With Your Existing Ads", "Implemented in 14 Days"];
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://app.iclosed.io/assets/widget.js";
-    script.async = true;
-    document.body.appendChild(script);
+    // Load Wistia player script
+    const playerScript = document.createElement("script");
+    playerScript.src = "https://fast.wistia.com/player.js";
+    playerScript.async = true;
+    document.body.appendChild(playerScript);
+
+    // Load Wistia embed script
+    const embedScript = document.createElement("script");
+    embedScript.src = "https://fast.wistia.com/embed/o2tstyl6cj.js";
+    embedScript.async = true;
+    embedScript.type = "module";
+    document.body.appendChild(embedScript);
+
     return () => {
-      document.body.removeChild(script);
+      document.body.removeChild(playerScript);
+      document.body.removeChild(embedScript);
     };
   }, []);
   return <section className="hero-gradient min-h-screen flex flex-col items-center pt-20 pb-16 px-4">
@@ -39,16 +49,31 @@ const HeroSection = () => {
           {/* Trust Badges */}
           
           
-          {/* iClosed Calendar Widget */}
-          <div className="w-full max-w-3xl mx-auto animate-fade-up animate-fade-up-delay-4">
-            <div className="iclosed-widget rounded-xl overflow-hidden" data-url="https://app.iclosed.io/e/divineacquisitionn/homeservice" title="Backend Conversion System" style={{
-            width: "100%",
-            height: "620px"
-          }} />
+          {/* Wistia VSL Video */}
+          <div className="w-full max-w-3xl mx-auto animate-fade-up animate-fade-up-delay-4 mb-8">
+            <style>{`
+              wistia-player[media-id='o2tstyl6cj']:not(:defined) {
+                background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/o2tstyl6cj/swatch');
+                display: block;
+                filter: blur(5px);
+                padding-top: 56.25%;
+              }
+            `}</style>
+            <div dangerouslySetInnerHTML={{ __html: '<wistia-player media-id="o2tstyl6cj" aspect="1.7777777777777777"></wistia-player>' }} />
+          </div>
+
+          {/* Primary CTA */}
+          <div className="animate-fade-up animate-fade-up-delay-4">
+            <Button variant="cta" size="xl" asChild className="group">
+              <a href="https://divineacquisition.fillout.com/t/h3CnJQbcGCus" target="_blank" rel="noopener noreferrer">
+                <CheckCircle2 className="h-5 w-5" />
+                See If You Qualify
+              </a>
+            </Button>
           </div>
 
           {/* Secondary CTA */}
-          <div className="mt-8 animate-fade-up animate-fade-up-delay-4">
+          <div className="mt-4 animate-fade-up animate-fade-up-delay-4">
             <Button variant="cta-outline" size="xl" asChild className="group">
               <Link to="/backend-system/leakage-audit">
                 <DollarSign className="h-5 w-5" />
