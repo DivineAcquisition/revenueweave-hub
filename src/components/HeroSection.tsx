@@ -1,9 +1,12 @@
-import { useEffect } from "react";
-import { CheckCircle2, DollarSign } from "lucide-react";
+import { useEffect, useState } from "react";
+import { CheckCircle2, DollarSign, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
+import LeadCaptureModal from "./LeadCaptureModal";
 import logoFull from "@/assets/logo-full.png";
+
 const HeroSection = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   useEffect(() => {
     // Load Wistia player script
     const playerScript = document.createElement("script");
@@ -81,8 +84,23 @@ const HeroSection = () => {
               </Link>
             </Button>
           </div>
+
+          {/* Free Report CTA */}
+          <div className="mt-4 animate-fade-up animate-fade-up-delay-4">
+            <Button
+              variant="ghost"
+              size="lg"
+              onClick={() => setIsModalOpen(true)}
+              className="text-muted-foreground hover:text-foreground"
+            >
+              <FileText className="h-4 w-4" />
+              Get Free Industry Report
+            </Button>
+          </div>
         </div>
       </div>
+
+      <LeadCaptureModal open={isModalOpen} onOpenChange={setIsModalOpen} />
     </section>;
 };
 export default HeroSection;
