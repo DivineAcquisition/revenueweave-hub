@@ -80,6 +80,9 @@ const HeroSection = () => {
 
           {/* Calendar Section */}
           <div className="w-full max-w-3xl mx-auto animate-fade-up animate-fade-up-delay-4">
+            <p className="text-accent font-semibold text-sm md:text-base mb-3 text-center animate-pulse">
+              ⚡ Limited spots available this week
+            </p>
             <h2 className="font-display font-bold text-2xl md:text-3xl text-white mb-6 text-center">
               Book Your <span className="text-accent">Free Strategy Call</span>
             </h2>
