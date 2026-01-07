@@ -19,12 +19,21 @@ const HeroSection = () => {
     embedScript.type = "module";
     document.body.appendChild(embedScript);
 
+    // Load iClosed widget script
+    const iclosedScript = document.createElement("script");
+    iclosedScript.src = "https://app.iclosed.io/assets/widget.js";
+    iclosedScript.async = true;
+    document.body.appendChild(iclosedScript);
+
     return () => {
       if (document.body.contains(playerScript)) {
         document.body.removeChild(playerScript);
       }
       if (document.body.contains(embedScript)) {
         document.body.removeChild(embedScript);
+      }
+      if (document.body.contains(iclosedScript)) {
+        document.body.removeChild(iclosedScript);
       }
     };
   }, []);
