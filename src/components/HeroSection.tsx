@@ -59,7 +59,8 @@ const HeroSection = () => {
           
           {/* Subheadline */}
           <p className="text-primary-foreground/90 text-lg md:text-xl lg:text-2xl font-medium mb-8 animate-fade-up animate-fade-up-delay-2 text-balance">
-            See exactly where you're losing leads and how to fix it in 20 minutes.
+            The complete growth system for home service businesses —<br />
+            new jobs, closed quotes, repeat customers, all on autopilot.
           </p>
           
           {/* Video Section */}
