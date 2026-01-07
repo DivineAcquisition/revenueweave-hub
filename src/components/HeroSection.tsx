@@ -53,7 +53,8 @@ const HeroSection = () => {
           
           {/* Main Headline */}
           <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 animate-fade-up animate-fade-up-delay-2 text-balance text-white">
-            Every Missed Call Is a Job Going to Your Competitor
+            Ads That Bring Leads In. AI That Books Them.<br />
+            <span className="text-accent">Automation That Keeps Them Coming Back.</span>
           </h1>
           
           {/* Subheadline */}
