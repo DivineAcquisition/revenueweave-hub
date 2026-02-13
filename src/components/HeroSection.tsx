@@ -1,95 +1,97 @@
 import { useEffect } from "react";
-import { CheckCircle2 } from "lucide-react";
-
-import { Button } from "./ui/button";
+import { Star } from "lucide-react";
 import logoFull from "@/assets/logo-full.png";
 
 const HeroSection = () => {
   useEffect(() => {
-    // Load Wistia player script
     const playerScript = document.createElement("script");
     playerScript.src = "https://fast.wistia.com/player.js";
     playerScript.async = true;
     document.body.appendChild(playerScript);
 
-    // Load Wistia embed script
     const embedScript = document.createElement("script");
-    embedScript.src = "https://fast.wistia.com/embed/o2tstyl6cj.js";
+    embedScript.src = "https://fast.wistia.com/embed/39m0mb8bqn.js";
     embedScript.async = true;
     embedScript.type = "module";
     document.body.appendChild(embedScript);
 
-    // Load iClosed widget script
     const iclosedScript = document.createElement("script");
     iclosedScript.src = "https://app.iclosed.io/assets/widget.js";
     iclosedScript.async = true;
     document.body.appendChild(iclosedScript);
 
     return () => {
-      if (document.body.contains(playerScript)) {
-        document.body.removeChild(playerScript);
-      }
-      if (document.body.contains(embedScript)) {
-        document.body.removeChild(embedScript);
-      }
-      if (document.body.contains(iclosedScript)) {
-        document.body.removeChild(iclosedScript);
-      }
+      [playerScript, embedScript, iclosedScript].forEach((s) => {
+        if (document.body.contains(s)) document.body.removeChild(s);
+      });
     };
   }, []);
+
   return (
-    <section className="hero-gradient min-h-screen flex flex-col items-center pt-20 pb-16 px-4">
-      <div className="container mx-auto">
-        <div className="max-w-4xl mx-auto text-center">
+    <section className="min-h-screen flex flex-col bg-background">
+      {/* Top Banner */}
+      <div className="w-full bg-primary py-3 px-4 text-center">
+        <p className="text-primary-foreground text-sm md:text-base font-semibold tracking-wide uppercase">
+          For Residential Or Remote Cleaning Businesses Ready To Reach The Next Level
+        </p>
+      </div>
+
+      <div className="flex-1 flex flex-col items-center pt-12 pb-16 px-4">
+        <div className="max-w-4xl mx-auto w-full text-center">
           {/* Logo */}
           <div className="flex justify-center mb-8 animate-fade-up">
-            <img src={logoFull} alt="DivineAcquisition" className="h-24 md:h-20 w-auto" />
+            <img src={logoFull} alt="DivineAcquisition" className="h-20 md:h-24 w-auto" />
           </div>
-          
-          {/* Pre-headline */}
-          <p className="text-accent font-medium text-sm md:text-base mb-6 animate-fade-up animate-fade-up-delay-1">
-            For HVAC, Plumbing, Roofing & Contractors Doing $10K-$25K/Month
-          </p>
-          
-          {/* Main Headline */}
-          <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 animate-fade-up animate-fade-up-delay-2 text-balance text-white">
-            Ads That Bring Leads In. AI That Books Them.<br />
-            <span className="text-accent">Automation That Keeps Them Coming Back.</span>
+
+          {/* Badge */}
+          <div className="flex justify-center mb-6 animate-fade-up animate-fade-up-delay-1">
+            <span className="inline-flex items-center gap-2 bg-accent/15 text-accent border border-accent/30 rounded-full px-4 py-1.5 text-sm font-semibold">
+              <Star className="w-4 h-4 fill-accent text-accent" />
+              FREE GROWTH BLUEPRINT
+            </span>
+          </div>
+
+          {/* Headline */}
+          <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 animate-fade-up animate-fade-up-delay-2 text-balance text-foreground">
+            We Will Help You Get More Jobs & Turn Finished Jobs Into More{" "}
+            <span className="text-accent">Referrals & Recurring Jobs</span>
           </h1>
-          
+
           {/* Subheadline */}
-          <p className="text-primary-foreground/90 text-lg md:text-xl lg:text-2xl font-medium mb-8 animate-fade-up animate-fade-up-delay-2 text-balance">
-            The complete growth system for home service businesses —<br />
-            new jobs, closed quotes, repeat customers, all on autopilot.
+          <p className="text-muted-foreground text-lg md:text-xl lg:text-2xl font-medium mb-10 animate-fade-up animate-fade-up-delay-2 text-balance max-w-3xl mx-auto">
+            We install AI-powered booking + follow-up + retention systems for home service businesses, so you stop chasing leads and start building a real operation.
           </p>
-          
-          {/* Video Section */}
-          <div className="w-full max-w-3xl mx-auto animate-fade-up animate-fade-up-delay-4 mb-12">
+
+          {/* VSL */}
+          <div className="w-full max-w-3xl mx-auto animate-fade-up animate-fade-up-delay-3 mb-16">
             <style>{`
-              wistia-player[media-id='o2tstyl6cj']:not(:defined) {
-                background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/o2tstyl6cj/swatch');
+              wistia-player[media-id='39m0mb8bqn']:not(:defined) {
+                background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/39m0mb8bqn/swatch');
                 display: block;
                 filter: blur(5px);
                 padding-top: 56.25%;
               }
             `}</style>
-            <div dangerouslySetInnerHTML={{
-              __html: '<wistia-player media-id="o2tstyl6cj" aspect="1.7777777777777777"></wistia-player>'
-            }} />
+            <div
+              className="rounded-2xl overflow-hidden border border-border shadow-lg"
+              dangerouslySetInnerHTML={{
+                __html: '<wistia-player media-id="39m0mb8bqn" aspect="1.7777777777777777"></wistia-player>',
+              }}
+            />
           </div>
 
           {/* Calendar Section */}
           <div className="w-full max-w-3xl mx-auto animate-fade-up animate-fade-up-delay-4">
-            <p className="text-accent font-semibold text-sm md:text-base mb-3 text-center animate-pulse">
-              ⚡ Limited spots available this week
-            </p>
-            <h2 className="font-display font-bold text-2xl md:text-3xl text-white mb-6 text-center">
-              Book Your <span className="text-accent">Free Strategy Call</span>
+            <h2 className="font-display font-bold text-2xl md:text-3xl text-foreground mb-4">
+              Book Your <span className="text-accent">Growth Audit</span> Here
             </h2>
-            <div 
-              className="iclosed-widget bg-card border border-border rounded-2xl overflow-hidden shadow-lg" 
-              data-url="https://app.iclosed.io/e/divineacquisitionn/homeservice" 
-              title="Backend Conversion System" 
+            <p className="text-muted-foreground text-sm md:text-base mb-6 max-w-2xl mx-auto">
+              WE DON'T DO SPAM HERE. But Be Prepared — I Will Be Calling You To Learn More About Your Business. Don't Book A Call If You Aren't Serious About Your Business Growth.
+            </p>
+            <div
+              className="iclosed-widget bg-card border border-border rounded-2xl overflow-hidden shadow-lg"
+              data-url="https://app.iclosed.io/e/vistrial/growth-audit"
+              title="Growth Audit"
               style={{ width: "100%", height: "620px" }}
             />
           </div>
@@ -98,4 +100,5 @@ const HeroSection = () => {
     </section>
   );
 };
+
 export default HeroSection;
