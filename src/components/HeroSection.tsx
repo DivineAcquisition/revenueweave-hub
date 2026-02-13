@@ -90,8 +90,8 @@ const HeroSection = () => {
             </p>
             <div
               className="iclosed-widget bg-card border border-border rounded-2xl overflow-hidden shadow-lg"
-              data-url="https://app.iclosed.io/e/vistrial/growth-audit"
-              title="Growth Audit"
+              data-url="https://app.iclosed.io/e/divineacquisitionn/homeservice"
+              title="Strategy Session"
               style={{ width: "100%", height: "620px" }}
             />
           </div>
