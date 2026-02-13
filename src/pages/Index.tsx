@@ -1,51 +1,27 @@
 import { Helmet } from "react-helmet-async";
-
 import HeroSection from "@/components/HeroSection";
-import ProblemSection from "@/components/ProblemSection";
-import SolutionSection from "@/components/SolutionSection";
-import ROISection from "@/components/ROISection";
-import QualificationSection from "@/components/QualificationSection";
-import ProcessSection from "@/components/ProcessSection";
-
-import FAQSection from "@/components/FAQSection";
-import FinalCTASection from "@/components/FinalCTASection";
-import CalendarSection from "@/components/CalendarSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
     <>
       <Helmet>
-        <title>LeadConvert | Turn More Ad Leads Into Booked Jobs for Home Service Companies</title>
+        <title>DivineAcquisition | Get More Jobs & Recurring Customers for Your Cleaning Business</title>
         <meta 
           name="description" 
-          content="The backend conversion system for HVAC, plumbing & cleaning companies. AI-powered lead capture, automated follow-up, and retention systems that work 24/7. Implemented in 14 days." 
+          content="We install AI-powered booking, follow-up & retention systems for home service businesses. Stop chasing leads and start building a real operation." 
         />
-        <meta name="keywords" content="HVAC leads, plumbing leads, cleaning company leads, lead conversion, home service marketing, missed call text back, quote follow-up automation" />
         <link rel="canonical" href="https://leadconvert.com" />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content="LeadConvert | Turn More Ad Leads Into Booked Jobs" />
-        <meta property="og:description" content="The backend system that turns more ad leads into booked jobs — and more jobs into repeat customers who pay you every month." />
+        <meta property="og:title" content="DivineAcquisition | Get More Jobs & Recurring Customers" />
+        <meta property="og:description" content="We help you get more jobs and turn finished jobs into more referrals and recurring jobs." />
         <meta property="og:type" content="website" />
-        
-        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="LeadConvert | Turn More Ad Leads Into Booked Jobs" />
-        <meta name="twitter:description" content="The backend system that turns more ad leads into booked jobs — and more jobs into repeat customers who pay you every month." />
+        <meta name="twitter:title" content="DivineAcquisition | Get More Jobs & Recurring Customers" />
+        <meta name="twitter:description" content="We help you get more jobs and turn finished jobs into more referrals and recurring jobs." />
       </Helmet>
       
       <main className="overflow-hidden">
         <HeroSection />
-        <ProblemSection />
-        <SolutionSection />
-        <ROISection />
-        <QualificationSection />
-        <ProcessSection />
-        
-        <FAQSection />
-        <FinalCTASection />
-        <CalendarSection />
         <Footer />
       </main>
     </>
