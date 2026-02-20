@@ -10,7 +10,7 @@ const HeroSection = () => {
     document.body.appendChild(playerScript);
 
     const embedScript = document.createElement("script");
-    embedScript.src = "https://fast.wistia.com/embed/39m0mb8bqn.js";
+    embedScript.src = "https://fast.wistia.com/embed/ttvt5ujpfb.js";
     embedScript.async = true;
     embedScript.type = "module";
     document.body.appendChild(embedScript);
@@ -65,8 +65,8 @@ const HeroSection = () => {
           {/* VSL */}
           <div className="w-full max-w-3xl mx-auto animate-fade-up animate-fade-up-delay-3 mb-16">
             <style>{`
-              wistia-player[media-id='39m0mb8bqn']:not(:defined) {
-                background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/39m0mb8bqn/swatch');
+              wistia-player[media-id='ttvt5ujpfb']:not(:defined) {
+                background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/ttvt5ujpfb/swatch');
                 display: block;
                 filter: blur(5px);
                 padding-top: 56.25%;
@@ -75,7 +75,7 @@ const HeroSection = () => {
             <div
               className="rounded-2xl overflow-hidden border border-border shadow-lg"
               dangerouslySetInnerHTML={{
-                __html: '<wistia-player media-id="39m0mb8bqn" aspect="1.7777777777777777"></wistia-player>',
+                __html: '<wistia-player media-id="ttvt5ujpfb" aspect="1.7777777777777777"></wistia-player>',
               }}
             />
           </div>
