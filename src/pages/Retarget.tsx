@@ -49,12 +49,13 @@ const Retarget = () => {
 
               {/* Headline */}
               <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 animate-fade-up animate-fade-up-delay-2 text-balance text-foreground">
-                Still Thinking? <span className="text-accent">Let's Talk.</span>
+                More Jobs. More Referrals.{" "}
+                <span className="text-accent">More Recurring Revenue.</span>
               </h1>
 
               {/* Subheadline */}
               <p className="text-muted-foreground text-lg md:text-xl lg:text-2xl font-medium mb-10 animate-fade-up animate-fade-up-delay-2 text-balance max-w-3xl mx-auto">
-                You've seen what we do. Now let's map out how AI-powered booking, follow-up & retention systems can work for your business — no strings attached.
+                We'll install AI-powered booking, follow-up & retention systems so you stop chasing leads and start building a business that grows on autopilot. Book your free strategy session now.
               </p>
 
               {/* Calendar Section */}
