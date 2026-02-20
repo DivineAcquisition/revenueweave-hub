@@ -11,6 +11,7 @@ import NotAFit from "./pages/NotAFit";
 import NotReady from "./pages/NotReady";
 import LeakageAudit from "./pages/LeakageAudit";
 import BookingBCS from "./pages/BookingBCS";
+import Retarget from "./pages/Retarget";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
             <Route path="/backend-system/not-ready" element={<NotReady />} />
             <Route path="/backend-system/leakage-audit" element={<LeakageAudit />} />
             <Route path="/booking-bcs" element={<BookingBCS />} />
+            <Route path="/retarget" element={<Retarget />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

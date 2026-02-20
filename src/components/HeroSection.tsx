@@ -15,13 +15,13 @@ const HeroSection = () => {
     embedScript.type = "module";
     document.body.appendChild(embedScript);
 
-    const iclosedScript = document.createElement("script");
-    iclosedScript.src = "https://app.iclosed.io/assets/widget.js";
-    iclosedScript.async = true;
-    document.body.appendChild(iclosedScript);
+    const ghlScript = document.createElement("script");
+    ghlScript.src = "https://link.msgsndr.divineacquisition.io/js/form_embed.js";
+    ghlScript.type = "text/javascript";
+    document.body.appendChild(ghlScript);
 
     return () => {
-      [playerScript, embedScript, iclosedScript].forEach((s) => {
+      [playerScript, embedScript, ghlScript].forEach((s) => {
         if (document.body.contains(s)) document.body.removeChild(s);
       });
     };
@@ -88,12 +88,14 @@ const HeroSection = () => {
             <p className="text-muted-foreground text-sm md:text-base mb-6 max-w-2xl mx-auto">
               WE DON'T DO SPAM HERE. But Be Prepared — I Will Be Calling You To Learn More About Your Business. Don't Book A Call If You Aren't Serious About Your Business Growth.
             </p>
-            <div
-              className="iclosed-widget bg-card border border-border rounded-2xl overflow-hidden shadow-lg"
-              data-url="https://app.iclosed.io/e/divineacquisitionn/homeservice"
-              title="Strategy Session"
-              style={{ width: "100%", height: "620px" }}
-            />
+            <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-lg">
+              <iframe
+                src="https://link.msgsndr.divineacquisition.io/widget/booking/8HRU6QplAvtDfVINjDbk"
+                style={{ width: "100%", height: "620px", border: "none" }}
+                scrolling="no"
+                title="Growth Audit Booking"
+              />
+            </div>
           </div>
         </div>
       </div>
