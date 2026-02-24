@@ -12,6 +12,8 @@ import NotReady from "./pages/NotReady";
 import LeakageAudit from "./pages/LeakageAudit";
 import BookingBCS from "./pages/BookingBCS";
 import Retarget from "./pages/Retarget";
+import SdrCold from "./pages/SdrCold";
+import SdrWarm from "./pages/SdrWarm";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +34,8 @@ const App = () => (
             <Route path="/backend-system/leakage-audit" element={<LeakageAudit />} />
             <Route path="/booking-bcs" element={<BookingBCS />} />
             <Route path="/retarget" element={<Retarget />} />
+            <Route path="/sdr/:sdrName/cold" element={<SdrCold />} />
+            <Route path="/sdr/:sdrName/warm" element={<SdrWarm />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
