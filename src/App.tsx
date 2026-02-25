@@ -14,6 +14,7 @@ import BookingBCS from "./pages/BookingBCS";
 import Retarget from "./pages/Retarget";
 import SdrCold from "./pages/SdrCold";
 import SdrWarm from "./pages/SdrWarm";
+import PrepareCall from "./pages/PrepareCall";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const App = () => (
             <Route path="/retarget" element={<Retarget />} />
             <Route path="/sdr/:sdrName/cold" element={<SdrCold />} />
             <Route path="/sdr/:sdrName/warm" element={<SdrWarm />} />
+            <Route path="/demo" element={<PrepareCall />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
