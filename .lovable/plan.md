@@ -1,51 +1,45 @@
 
 
-# SDR Booking Pages with Dynamic Slugs
+# Demo Breakdown Page for DivineAcquisition
 
 ## Overview
-Create two new pages for your SDR team — one with the iClosed calendar (cold leads) and one with the GHL calendar (warm leads). Each page URL includes the SDR's name so you can track who set each call.
+Create a new "Demo Breakdown" page at `/demo` that shows a video walkthrough and a CTA to book a call via an iClosed calendar modal. Adapted from the Selestial template to match DivineAcquisition's existing dark theme and branding.
 
-## URL Structure
-- **Cold leads (iClosed):** `/sdr/:sdrName/cold`  
-  Example: `/sdr/john/cold`, `/sdr/sarah/cold`
-- **Warm leads (GHL):** `/sdr/:sdrName/warm`  
-  Example: `/sdr/john/warm`, `/sdr/sarah/warm`
+## What Gets Built
 
-The SDR name from the URL will be displayed on the page so leads see a personalized touch (e.g., "Booked via John").
-
-## Pages Created
-
-### 1. Cold Lead Page (`src/pages/SdrCold.tsx`)
-- Clean, focused layout with logo and headline
-- Headline: "Let's See How We Can Help You Grow"
-- Subtext encouraging them to pick a time
-- iClosed calendar widget embedded
-- SDR name extracted from URL and shown subtly (e.g., "Scheduled by [SDR Name]")
+### 1. New Page: `src/pages/PrepareCall.tsx`
+- DivineAcquisition logo at the top
+- Headline: "Demo Breakdown"
+- Subheadline about the AI-powered booking/retention system demo
+- Video player section (using an HTML5 `<video>` tag pointing to `public/videos/prepare-call.mp4` — you'll need to provide this file)
+- CTA section with a "Book Your Demo Call" button that opens the calendar modal
+- Note about receiving a text to customize setup before the call
 - Footer included
 
-### 2. Warm Lead Page (`src/pages/SdrWarm.tsx`)
-- Same clean layout
-- Headline: "You're One Call Away From Scaling Your Business"
-- GHL booking iframe embedded (same as main page)
-- SDR name extracted from URL and shown
-- Footer included
+### 2. New Component: `src/components/demo/BookCallModal.tsx`
+- Dialog/modal using the existing shadcn Dialog component
+- Loads iClosed calendar widget (`divineacquisitionn/homeservice`)
+- Three value prop cards:
+  - Optimized for Ad Traffic
+  - Proven Partner Results
+  - Built-in Retention Systems
+- Uses a ref to prevent duplicate script loading (fixes the duplicate calendar bug mentioned)
+- Styled with DivineAcquisition's existing card/border theme
 
-### 3. Route Registration (`src/App.tsx`)
-- Add two new routes:
-  - `/sdr/:sdrName/cold` → `SdrCold`
-  - `/sdr/:sdrName/warm` → `SdrWarm`
+### 3. CSS Addition: `glass-purple` class in `src/index.css`
+- Glassmorphism effect with purple tint matching the brand accent color
+- Used on value prop cards in the modal
 
-## Technical Details
+### 4. Route: `/demo` added to `src/App.tsx`
 
-### Files Created
-- **`src/pages/SdrCold.tsx`** — Uses `useParams()` to read `:sdrName`, loads iClosed widget script, renders iClosed calendar
-- **`src/pages/SdrWarm.tsx`** — Uses `useParams()` to read `:sdrName`, loads GHL form_embed.js script, renders GHL iframe
+## Files Created
+- `src/pages/PrepareCall.tsx`
+- `src/components/demo/BookCallModal.tsx`
 
-### Files Modified
-- **`src/App.tsx`** — Import both new pages and add the two `/sdr/:sdrName/cold` and `/sdr/:sdrName/warm` routes
+## Files Modified
+- `src/index.css` — add `.glass-purple` utility class
+- `src/App.tsx` — import PrepareCall and add `/demo` route
 
-### How SDR Identification Works
-- The SDR name is part of the URL path, so when a lead books, you can see which link they came from
-- The SDR name is also capitalized and displayed on the page for a personal touch
-- You simply share the right link with each SDR (e.g., give John the link `/sdr/john/cold`)
+## Note
+You will need to place your demo video file at `public/videos/prepare-call.mp4`. The video player will show a fallback message if the file is missing.
 
