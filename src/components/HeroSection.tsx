@@ -63,12 +63,11 @@ const HeroSection = () => {
               WE DON'T DO SPAM HERE. But Be Prepared — I Will Be Calling You To Learn More About Your Business. Don't Book A Call If You Aren't Serious About Your Business Growth.
             </p>
             <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-lg">
-              <iframe
-                src="https://link.msgsndr.divineacquisition.io/widget/booking/8HRU6QplAvtDfVINjDbk"
-                style={{ width: "100%", minHeight: "700px", height: "100%", border: "none", overflow: "hidden" }}
-                scrolling="no"
-                id="sJewwAfFLhmwqP9psUxK_1771554236845"
-                title="Growth Audit Booking"
+              <div
+                className="iclosed-widget"
+                data-url="https://app.iclosed.io/e/divineacquisitionn/homeservice"
+                title="DivineACQ™ Strategy Session"
+                style={{ width: "100%", height: "620px" }}
               />
             </div>
           </div>
