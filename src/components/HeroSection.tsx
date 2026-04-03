@@ -4,26 +4,13 @@ import logoFull from "@/assets/logo-full.png";
 
 const HeroSection = () => {
   useEffect(() => {
-    const playerScript = document.createElement("script");
-    playerScript.src = "https://fast.wistia.com/player.js";
-    playerScript.async = true;
-    document.body.appendChild(playerScript);
-
-    const embedScript = document.createElement("script");
-    embedScript.src = "https://fast.wistia.com/embed/ttvt5ujpfb.js";
-    embedScript.async = true;
-    embedScript.type = "module";
-    document.body.appendChild(embedScript);
-
     const ghlScript = document.createElement("script");
     ghlScript.src = "https://link.msgsndr.divineacquisition.io/js/form_embed.js";
     ghlScript.type = "text/javascript";
     document.body.appendChild(ghlScript);
 
     return () => {
-      [playerScript, embedScript, ghlScript].forEach((s) => {
-        if (document.body.contains(s)) document.body.removeChild(s);
-      });
+      if (document.body.contains(ghlScript)) document.body.removeChild(ghlScript);
     };
   }, []);
 
@@ -58,30 +45,12 @@ const HeroSection = () => {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-muted-foreground text-lg md:text-xl lg:text-2xl font-medium mb-10 animate-fade-up animate-fade-up-delay-2 text-balance max-w-3xl mx-auto">
+          <p className="text-muted-foreground text-lg md:text-xl lg:text-2xl font-medium mb-12 animate-fade-up animate-fade-up-delay-2 text-balance max-w-3xl mx-auto">
             We install AI-powered booking + follow-up + retention systems for home service businesses, so you stop chasing leads and start building a real operation.
           </p>
 
-          {/* VSL */}
-          <div className="w-full max-w-3xl mx-auto animate-fade-up animate-fade-up-delay-3 mb-16">
-            <style>{`
-              wistia-player[media-id='ttvt5ujpfb']:not(:defined) {
-                background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/ttvt5ujpfb/swatch');
-                display: block;
-                filter: blur(5px);
-                padding-top: 56.25%;
-              }
-            `}</style>
-            <div
-              className="rounded-2xl overflow-hidden border border-border shadow-lg"
-              dangerouslySetInnerHTML={{
-                __html: '<wistia-player media-id="ttvt5ujpfb" aspect="1.7777777777777777"></wistia-player>',
-              }}
-            />
-          </div>
-
           {/* Calendar Section */}
-          <div className="w-full max-w-3xl mx-auto animate-fade-up animate-fade-up-delay-4">
+          <div className="w-full max-w-3xl mx-auto animate-fade-up animate-fade-up-delay-3">
             <h2 className="font-display font-bold text-2xl md:text-3xl text-foreground mb-4">
               Book Your <span className="text-accent">Growth Audit</span> Here
             </h2>
