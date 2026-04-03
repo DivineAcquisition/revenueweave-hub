@@ -4,13 +4,13 @@ import logoFull from "@/assets/logo-full.png";
 
 const HeroSection = () => {
   useEffect(() => {
-    const ghlScript = document.createElement("script");
-    ghlScript.src = "https://link.msgsndr.divineacquisition.io/js/form_embed.js";
-    ghlScript.type = "text/javascript";
-    document.body.appendChild(ghlScript);
+    const iClosedScript = document.createElement("script");
+    iClosedScript.src = "https://app.iclosed.io/assets/widget.js";
+    iClosedScript.async = true;
+    document.body.appendChild(iClosedScript);
 
     return () => {
-      if (document.body.contains(ghlScript)) document.body.removeChild(ghlScript);
+      if (document.body.contains(iClosedScript)) document.body.removeChild(iClosedScript);
     };
   }, []);
 
