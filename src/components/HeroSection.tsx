@@ -40,13 +40,18 @@ const HeroSection = () => {
 
           {/* Headline */}
           <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 animate-fade-up animate-fade-up-delay-2 text-balance text-foreground">
-            We Will Help You Get More Jobs & Turn Finished Jobs Into More{" "}
-            <span className="text-accent">Referrals & Recurring Jobs</span>
+            Your Past Customers Are Worth Thousands.{" "}
+            <span className="text-accent">We'll Prove It In 21 Days.</span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-muted-foreground text-lg md:text-xl lg:text-2xl font-medium mb-12 animate-fade-up animate-fade-up-delay-2 text-balance max-w-3xl mx-auto">
-            We install AI-powered booking + follow-up + retention systems for home service businesses, so you stop chasing leads and start building a real operation.
+          <p className="text-muted-foreground text-lg md:text-xl lg:text-2xl font-medium mb-6 animate-fade-up animate-fade-up-delay-2 text-balance max-w-3xl mx-auto">
+            For home service companies doing $15K+/month — we turn your forgotten customers into booked jobs without spending another dollar on ads.
+          </p>
+
+          {/* Proof line */}
+          <p className="text-accent/90 text-sm md:text-base font-semibold mb-12 animate-fade-up animate-fade-up-delay-2 max-w-2xl mx-auto">
+            Our system identified $667 in average customer lifetime value and recovered 32% of lapsed customers for a recent client.
           </p>
 
           {/* Calendar Section */}
