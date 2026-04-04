@@ -1,19 +1,7 @@
-import { useEffect } from "react";
 import { Star } from "lucide-react";
 import logoFull from "@/assets/logo-full.png";
 
 const HeroSection = () => {
-  useEffect(() => {
-    const iClosedScript = document.createElement("script");
-    iClosedScript.src = "https://app.iclosed.io/assets/widget.js";
-    iClosedScript.async = true;
-    document.body.appendChild(iClosedScript);
-
-    return () => {
-      if (document.body.contains(iClosedScript)) document.body.removeChild(iClosedScript);
-    };
-  }, []);
-
   return (
     <section className="min-h-screen flex flex-col bg-background">
       {/* Top Banner */}
@@ -63,11 +51,13 @@ const HeroSection = () => {
               WE DON'T DO SPAM HERE. But Be Prepared — I Will Be Calling You To Learn More About Your Business. Don't Book A Call If You Aren't Serious About Your Business Growth.
             </p>
             <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-lg">
-              <div
-                className="iclosed-widget"
-                data-url="https://app.iclosed.io/e/divineacquisitionn/homeservice"
+              <iframe
+                src="https://api.leadconnectorhq.com/widget/booking/RMSpGvGsMO0JwShxjGqn"
+                style={{ width: "100%", border: "none", overflow: "hidden" }}
+                scrolling="no"
+                id="RMSpGvGsMO0JwShxjGqn_hero"
                 title="DivineACQ™ Strategy Session"
-                style={{ width: "100%", height: "620px" }}
+                className="min-h-[700px]"
               />
             </div>
           </div>
