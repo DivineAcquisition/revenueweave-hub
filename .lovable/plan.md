@@ -1,45 +1,31 @@
 
 
-# Demo Breakdown Page for DivineAcquisition
+# Refocus Funnel on Lead Conversion Systems
 
-## Overview
-Create a new "Demo Breakdown" page at `/demo` that shows a video walkthrough and a CTA to book a call via an iClosed calendar modal. Adapted from the Selestial template to match DivineAcquisition's existing dark theme and branding.
+## What changes
 
-## What Gets Built
+Update all copy across the landing page to shift the messaging from "past customer reactivation" to "converting more of the leads you're already getting into booked, paying jobs."
 
-### 1. New Page: `src/pages/PrepareCall.tsx`
-- DivineAcquisition logo at the top
-- Headline: "Demo Breakdown"
-- Subheadline about the AI-powered booking/retention system demo
-- Video player section (using an HTML5 `<video>` tag pointing to `public/videos/prepare-call.mp4` — you'll need to provide this file)
-- CTA section with a "Book Your Demo Call" button that opens the calendar modal
-- Note about receiving a text to customize setup before the call
-- Footer included
+## Hero Section (`src/components/HeroSection.tsx`)
 
-### 2. New Component: `src/components/demo/BookCallModal.tsx`
-- Dialog/modal using the existing shadcn Dialog component
-- Loads iClosed calendar widget (`divineacquisitionn/homeservice`)
-- Three value prop cards:
-  - Optimized for Ad Traffic
-  - Proven Partner Results
-  - Built-in Retention Systems
-- Uses a ref to prevent duplicate script loading (fixes the duplicate calendar bug mentioned)
-- Styled with DivineAcquisition's existing card/border theme
+1. **Top banner**: "For Home Service Companies Tired Of Losing Leads They Already Paid For"
+2. **Badge**: "FREE LEAD CONVERSION AUDIT" (replaces "FREE GROWTH BLUEPRINT")
+3. **Headline**: "You're Paying For Leads. We Make Sure They Actually Convert." + accent span: "More Booked Jobs In 21 Days — Guaranteed."
+4. **Subheadline**: "For home service companies doing $15K+/month — we install AI-powered systems that answer every call, follow up on every quote, and turn more leads into paying jobs."
+5. **Proof line**: "Our clients see 2-3x more leads convert to booked appointments within the first 30 days — without spending more on ads."
+6. **Calendar heading**: "Book Your Free Lead Conversion Audit" (replaces "Growth Audit")
 
-### 3. CSS Addition: `glass-purple` class in `src/index.css`
-- Glassmorphism effect with purple tint matching the brand accent color
-- Used on value prop cards in the modal
+## Meta / SEO (`src/pages/Index.tsx`)
 
-### 4. Route: `/demo` added to `src/App.tsx`
+Update `<title>` and meta descriptions to reflect lead conversion positioning instead of "recurring customers."
 
-## Files Created
-- `src/pages/PrepareCall.tsx`
-- `src/components/demo/BookCallModal.tsx`
+## Other sections (already in codebase but not currently rendered on Index)
 
-## Files Modified
-- `src/index.css` — add `.glass-purple` utility class
-- `src/App.tsx` — import PrepareCall and add `/demo` route
+No changes needed to ProblemSection, SolutionSection, etc. — they already align with lead conversion. These can be added back to the page later if desired.
 
-## Note
-You will need to place your demo video file at `public/videos/prepare-call.mp4`. The video player will show a fallback message if the file is missing.
+## Technical details
+
+- Only two files modified: `HeroSection.tsx` and `Index.tsx`
+- No structural, layout, or component changes — copy-only updates
+- Calendar embed and all integrations remain unchanged
 
