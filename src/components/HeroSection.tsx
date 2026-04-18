@@ -1,7 +1,16 @@
+import { useEffect } from "react";
 import { Star } from "lucide-react";
 import logoFull from "@/assets/logo-full.png";
 
 const HeroSection = () => {
+  useEffect(() => {
+    const src = "https://link.msgsndr.divineacquisition.io/js/form_embed.js";
+    if (document.querySelector(`script[src="${src}"]`)) return;
+    const script = document.createElement("script");
+    script.src = src;
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
   return (
     <section className="min-h-screen flex flex-col bg-background">
       {/* Top Banner */}
@@ -52,10 +61,10 @@ const HeroSection = () => {
             </p>
             <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-lg">
               <iframe
-                src="https://api.leadconnectorhq.com/widget/booking/RMSpGvGsMO0JwShxjGqn"
+                src="https://link.msgsndr.divineacquisition.io/widget/booking/OKuMznUQ5mQ643pUcS3q"
                 style={{ width: "100%", border: "none", overflow: "hidden" }}
                 scrolling="no"
-                id="RMSpGvGsMO0JwShxjGqn_hero"
+                id="sJewwAfFLhmwqP9psUxK_1776472943234"
                 title="DivineACQ™ Strategy Session"
                 className="min-h-[700px]"
               />
