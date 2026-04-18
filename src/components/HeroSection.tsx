@@ -37,13 +37,13 @@ const HeroSection = () => {
 
           {/* Headline */}
           <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 animate-fade-up animate-fade-up-delay-2 text-balance text-foreground">
-            You're Paying For Leads. We Make Sure They Actually Convert.{" "}
-            <span className="text-accent">More Booked Jobs In 21 Days Guaranteed.</span>
+            You're Paying for 80 Leads a Month. Your Guys Are Booking 30.{" "}
+            <span className="text-accent">We Build the System That Books 60 — In 14 Days, Done For You.</span>
           </h1>
 
           {/* Subheadline */}
           <p className="text-muted-foreground text-lg md:text-xl lg:text-2xl font-medium mb-6 animate-fade-up animate-fade-up-delay-2 text-balance max-w-3xl mx-auto">
-            For home service companies doing $15K+/month, We install AI-powered systems that answer every call, follow up on every quote, and turn more leads into paying jobs.
+            Custom sales and follow-up systems for cleaning, HVAC, landscaping, plumbing, and pest control companies. Every lead gets a callback in under 2 minutes. Every past customer gets a rebooking offer at the right time. Every job tracked on one screen.
           </p>
 
           {/* Proof line */}
