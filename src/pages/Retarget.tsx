@@ -6,14 +6,12 @@ import Footer from "@/components/Footer";
 
 const Retarget = () => {
   useEffect(() => {
-    const iclosedScript = document.createElement("script");
-    iclosedScript.src = "https://app.iclosed.io/assets/widget.js";
-    iclosedScript.async = true;
-    document.body.appendChild(iclosedScript);
-
-    return () => {
-      if (document.body.contains(iclosedScript)) document.body.removeChild(iclosedScript);
-    };
+    const src = "https://link.msgsndr.divineacquisition.io/js/form_embed.js";
+    if (document.querySelector(`script[src="${src}"]`)) return;
+    const script = document.createElement("script");
+    script.src = src;
+    script.async = true;
+    document.body.appendChild(script);
   }, []);
 
   return (
@@ -66,12 +64,16 @@ const Retarget = () => {
                 <p className="text-muted-foreground text-sm md:text-base mb-6 max-w-2xl mx-auto">
                   Pick a time that works for you. We'll dive into your business and show you exactly where you're leaving money on the table.
                 </p>
-                <div
-                  className="iclosed-widget bg-card border border-border rounded-2xl overflow-hidden shadow-lg"
-                  data-url="https://app.iclosed.io/e/divineacquisitionn/homeservice"
-                  title="Strategy Session"
-                  style={{ width: "100%", height: "620px" }}
-                />
+                <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-lg">
+                  <iframe
+                    src="https://link.msgsndr.divineacquisition.io/widget/booking/OKuMznUQ5mQ643pUcS3q"
+                    style={{ width: "100%", border: "none", overflow: "hidden" }}
+                    scrolling="no"
+                    id="sJewwAfFLhmwqP9psUxK_retarget"
+                    title="DivineACQ™ Strategy Session"
+                    className="min-h-[700px]"
+                  />
+                </div>
               </div>
             </div>
           </div>
