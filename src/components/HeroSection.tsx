@@ -38,7 +38,7 @@ const HeroSection = () => {
           {/* Headline */}
           <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 animate-fade-up animate-fade-up-delay-2 text-balance text-foreground">
             You're Paying For Leads. We Make Sure They Actually Convert.{" "}
-            <span className="text-accent">More Booked Jobs In 21 Days — Guaranteed.</span>
+            <span className="text-accent">More Booked Jobs In 21 Days Guaranteed.</span>
           </h1>
 
           {/* Subheadline */}
