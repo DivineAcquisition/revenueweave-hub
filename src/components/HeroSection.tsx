@@ -68,7 +68,6 @@ const HeroSection = () => {
                 title="DivineACQ™ Strategy Session"
                 className="min-h-[700px]"
               />
-              <script src="https://link.msgsndr.divineacquisition.io/js/form_embed.js" type="text/javascript" async></script>
             </div>
           </div>
         </div>
