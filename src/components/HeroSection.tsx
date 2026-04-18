@@ -43,12 +43,12 @@ const HeroSection = () => {
 
           {/* Subheadline */}
           <p className="text-muted-foreground text-lg md:text-xl lg:text-2xl font-medium mb-6 animate-fade-up animate-fade-up-delay-2 text-balance max-w-3xl mx-auto">
-            For home service companies doing $15K+/month — we install AI-powered systems that answer every call, follow up on every quote, and turn more leads into paying jobs.
+            For home service companies doing $15K+/month, We install AI-powered systems that answer every call, follow up on every quote, and turn more leads into paying jobs.
           </p>
 
           {/* Proof line */}
           <p className="text-accent/90 text-sm md:text-base font-semibold mb-12 animate-fade-up animate-fade-up-delay-2 max-w-2xl mx-auto">
-            Our clients see 2-3x more leads convert to booked appointments within the first 30 days — without spending more on ads.
+            Our clients see 2-3x more leads convert to booked appointments within the first 30 days without spending more on ads.
           </p>
 
           {/* Calendar Section */}
@@ -57,7 +57,7 @@ const HeroSection = () => {
               Book Your Free <span className="text-accent">Lead Conversion Audit</span>
             </h2>
             <p className="text-muted-foreground text-sm md:text-base mb-6 max-w-2xl mx-auto">
-              WE DON'T DO SPAM HERE. But Be Prepared — I Will Be Calling You To Learn More About Your Business. Don't Book A Call If You Aren't Serious About Your Business Growth.
+              WE DON'T DO SPAM HERE. But Be Prepared, I Will Be Calling You To Learn More About Your Business. Don't Book A Call If You Aren't Serious About Your Business Growth.
             </p>
             <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-lg">
               <iframe
