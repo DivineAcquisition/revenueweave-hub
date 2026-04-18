@@ -37,18 +37,18 @@ const HeroSection = () => {
 
           {/* Headline */}
           <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 animate-fade-up animate-fade-up-delay-2 text-balance text-foreground">
-            You're Paying for 80 Leads a Month. Your Guys Are Booking 30.{" "}
-            <span className="text-accent">We Build the System That Books 60 — In 14 Days, Done For You.</span>
+            Your Leads Are Calling. Your Ads Are Running. But Between Missed Callbacks, Zero Follow-Up, and No System to Bring Past Customers Back —{" "}
+            <span className="text-accent">You're Paying for Jobs You'll Never Book. We Fix That in 14 Days.</span>
           </h1>
 
           {/* Subheadline */}
           <p className="text-muted-foreground text-lg md:text-xl lg:text-2xl font-medium mb-6 animate-fade-up animate-fade-up-delay-2 text-balance max-w-3xl mx-auto">
-            Custom sales and follow-up systems for cleaning, HVAC, landscaping, plumbing, and pest control companies. Every lead gets a callback in under 2 minutes. Every past customer gets a rebooking offer at the right time. Every job tracked on one screen.
+            Done-for-you sales and retention systems built around how YOUR trade actually works — whether you're running crews, dispatching techs, or managing routes. Every lead followed up in under 2 minutes. Every past customer re-engaged before they call someone else.
           </p>
 
           {/* Proof line */}
           <p className="text-accent/90 text-sm md:text-base font-semibold mb-12 animate-fade-up animate-fade-up-delay-2 max-w-2xl mx-auto">
-            Our clients see 2-3x more leads convert to booked appointments within the first 30 days without spending more on ads.
+            I'll dig into how your operation actually runs — your booking flow, your follow-up, your customer retention — and hand you a visual game plan showing exactly what to fix. Free. Yours to keep.
           </p>
 
           {/* Calendar Section */}
