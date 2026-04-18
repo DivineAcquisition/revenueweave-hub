@@ -1,7 +1,16 @@
+import { useEffect } from "react";
 import { Star } from "lucide-react";
 import logoFull from "@/assets/logo-full.png";
 
 const HeroSection = () => {
+  useEffect(() => {
+    const src = "https://link.msgsndr.divineacquisition.io/js/form_embed.js";
+    if (document.querySelector(`script[src="${src}"]`)) return;
+    const script = document.createElement("script");
+    script.src = src;
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
   return (
     <section className="min-h-screen flex flex-col bg-background">
       {/* Top Banner */}
