@@ -36,7 +36,7 @@ const HeroSection = () => {
           </div>
 
           {/* Headline */}
-          <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 animate-fade-up animate-fade-up-delay-2 text-balance text-foreground">
+          <h1 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight mb-6 animate-fade-up animate-fade-up-delay-2 text-balance text-foreground">
             Your Leads Are Calling. Your Ads Are Running. But Between Missed Callbacks, Zero Follow-Up, and No System to Bring Past Customers Back —{" "}
             <span className="text-accent">You're Paying for Jobs You'll Never Book. We Fix That in 14 Days.</span>
           </h1>
@@ -54,7 +54,7 @@ const HeroSection = () => {
           {/* Calendar Section */}
           <div className="w-full max-w-3xl mx-auto animate-fade-up animate-fade-up-delay-3">
             <h2 className="font-display font-bold text-2xl md:text-3xl text-foreground mb-4">
-              Book Your Free <span className="text-accent">Lead Conversion Audit</span>
+              Grab Your Free <span className="text-accent">14-Day Game Plan Call</span>
             </h2>
             <p className="text-muted-foreground text-sm md:text-base mb-6 max-w-2xl mx-auto">
               WE DON'T DO SPAM HERE. But Be Prepared, I Will Be Calling You To Learn More About Your Business. Don't Book A Call If You Aren't Serious About Your Business Growth.
@@ -69,6 +69,14 @@ const HeroSection = () => {
                 className="min-h-[700px]"
               />
             </div>
+
+            {/* Headline Below Calendar */}
+            <h3 className="font-display font-bold text-xl md:text-2xl text-foreground mt-10 mb-3 text-balance">
+              Pick a Time. Show Up. <span className="text-accent">Walk Away With a Plan.</span>
+            </h3>
+            <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto">
+              No pitch deck. No fluff. Just a straight breakdown of where leads are leaking in your business — and exactly how to plug them in the next 14 days.
+            </p>
           </div>
         </div>
       </div>
