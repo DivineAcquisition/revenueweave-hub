@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import HeroSection from "@/components/HeroSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -22,6 +23,7 @@ const Index = () => {
       
       <main className="overflow-hidden">
         <HeroSection />
+        <TestimonialsSection />
         <Footer />
       </main>
     </>
