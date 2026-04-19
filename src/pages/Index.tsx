@@ -6,18 +6,18 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>DivineAcquisition | Convert More Leads Into Booked Jobs for Your Home Service Business</title>
+        <title>DivineAcquisition | Grow Your Residential & Remote Cleaning Business On Autopilot</title>
         <meta 
           name="description" 
-          content="We install AI-powered systems that answer every call, follow up on every quote, and turn more leads into paying jobs — without spending more on ads." 
+          content="AI-powered booking, follow-up & retention systems for residential and remote cleaning businesses. More jobs, more referrals, more recurring revenue." 
         />
-        <link rel="canonical" href="https://leadconvert.com" />
-        <meta property="og:title" content="DivineAcquisition | Convert More Leads Into Booked Jobs" />
-        <meta property="og:description" content="Stop losing the leads you already paid for. We install AI systems that convert more leads into booked, paying jobs." />
+        <link rel="canonical" href="https://go.divineacquisition.io" />
+        <meta property="og:title" content="DivineAcquisition | Grow Your Cleaning Business On Autopilot" />
+        <meta property="og:description" content="AI-powered booking, follow-up & retention systems built for residential and remote cleaning businesses ready to scale." />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="DivineAcquisition | Convert More Leads Into Booked Jobs" />
-        <meta name="twitter:description" content="Stop losing the leads you already paid for. We install AI systems that convert more leads into booked, paying jobs." />
+        <meta name="twitter:title" content="DivineAcquisition | Grow Your Cleaning Business On Autopilot" />
+        <meta name="twitter:description" content="AI-powered booking, follow-up & retention systems built for residential and remote cleaning businesses ready to scale." />
       </Helmet>
       
       <main className="overflow-hidden">
