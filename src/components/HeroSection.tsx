@@ -16,7 +16,7 @@ const HeroSection = () => {
       {/* Top Banner */}
       <div className="w-full bg-primary py-3 px-4 text-center">
         <p className="text-primary-foreground text-sm md:text-base font-semibold tracking-wide uppercase">
-          For Remote-Operated Cleaning Companies
+          For Remote-Operated Cleaning Companies Doing 15K+ In Revenue
         </p>
       </div>
 
