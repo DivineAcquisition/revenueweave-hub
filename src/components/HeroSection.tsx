@@ -46,11 +46,6 @@ const HeroSection = () => {
             We'll install AI-powered booking, follow-up & retention systems so you stop chasing leads and start building a business that grows on autopilot. Book your free strategy session now.
           </p>
 
-          {/* Subheadline */}
-          <p className="text-muted-foreground text-lg md:text-xl lg:text-2xl font-medium mb-10 animate-fade-up animate-fade-up-delay-2 text-balance max-w-3xl mx-auto">
-            We'll install AI-powered booking, follow-up & retention systems so you stop chasing leads and start building a business that grows on autopilot. Book your free strategy session now.
-          </p>
-
           {/* Calendar Section */}
           <div className="w-full max-w-3xl mx-auto animate-fade-up animate-fade-up-delay-3">
             <h2 className="font-display font-bold text-2xl md:text-3xl text-foreground mb-4">
