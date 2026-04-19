@@ -52,7 +52,7 @@ const HeroSection = () => {
               Book Your <span className="text-accent">Strategy Session</span> Here
             </h2>
             <p className="text-muted-foreground text-sm md:text-base mb-6 max-w-2xl mx-auto">
-              Pick a time that works for you. We'll dive into your business and show you exactly where you're leaving money on the table.
+              Pick a time that works for you. We'll give you a quick call at your scheduled time to dive into your business and show you exactly where you're leaving money on the table. No spam, no sales pitch — just real strategy.
             </p>
             <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-lg">
               <iframe
