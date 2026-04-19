@@ -36,12 +36,14 @@ const HeroSection = () => {
           </div>
 
           {/* Headline */}
-          <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 animate-fade-up animate-fade-up-delay-2 text-balance text-foreground">
-            More Jobs. More Referrals.{" "}
-            <span className="text-accent">More Recurring Revenue.</span>
+          <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 animate-fade-up animate-fade-up-delay-2 text-balance">
+            <span className="text-accent">More Jobs. More Referrals. More Recurring Revenue.</span>{" "}
+            <span className="text-foreground">Built for remote cleaning companies that run on systems, not phone calls.</span>
           </h1>
-          <p className="font-display font-semibold text-xl md:text-2xl lg:text-3xl text-foreground mb-6 animate-fade-up animate-fade-up-delay-2 text-balance max-w-3xl mx-auto">
-            Built for remote cleaning companies that run on systems, not phone calls.
+
+          {/* Subheadline */}
+          <p className="text-muted-foreground text-lg md:text-xl lg:text-2xl font-medium mb-10 animate-fade-up animate-fade-up-delay-2 text-balance max-w-3xl mx-auto">
+            We'll install AI-powered booking, follow-up & retention systems so you stop chasing leads and start building a business that grows on autopilot. Book your free strategy session now.
           </p>
 
           {/* Subheadline */}
