@@ -40,6 +40,9 @@ const HeroSection = () => {
             More Jobs. More Referrals.{" "}
             <span className="text-accent">More Recurring Revenue.</span>
           </h1>
+          <p className="font-display font-semibold text-xl md:text-2xl lg:text-3xl text-foreground mb-6 animate-fade-up animate-fade-up-delay-2 text-balance max-w-3xl mx-auto">
+            Built for remote cleaning companies that run on systems, not phone calls.
+          </p>
 
           {/* Subheadline */}
           <p className="text-muted-foreground text-lg md:text-xl lg:text-2xl font-medium mb-10 animate-fade-up animate-fade-up-delay-2 text-balance max-w-3xl mx-auto">
