@@ -53,6 +53,15 @@ const HeroSection = () => {
             We'll install AI-powered booking, follow-up & retention systems so you stop chasing leads and start building a business that grows on autopilot. Book your free strategy session now.
           </p>
 
+          {/* VSL */}
+          <div className="w-full max-w-3xl mx-auto mb-12 animate-fade-up animate-fade-up-delay-3">
+            <style>{`wistia-player[media-id='ttvt5ujpfb']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/ttvt5ujpfb/swatch'); display: block; filter: blur(5px); aspect-ratio: 16/9; width: 100%; }`}</style>
+            <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-lg aspect-video">
+              {/* @ts-expect-error wistia custom element */}
+              <wistia-player media-id="ttvt5ujpfb" aspect="1.7777777777777777" style={{ width: "100%", height: "100%", display: "block" }}></wistia-player>
+            </div>
+          </div>
+
           {/* Calendar Section */}
           <div className="w-full max-w-3xl mx-auto animate-fade-up animate-fade-up-delay-3">
             <h2 className="font-display font-bold text-2xl md:text-3xl text-foreground mb-4">
