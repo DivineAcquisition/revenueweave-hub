@@ -4,12 +4,19 @@ import logoFull from "@/assets/logo-full.png";
 
 const HeroSection = () => {
   useEffect(() => {
-    const src = "https://link.msgsndr.divineacquisition.io/js/form_embed.js";
-    if (document.querySelector(`script[src="${src}"]`)) return;
-    const script = document.createElement("script");
-    script.src = src;
-    script.async = true;
-    document.body.appendChild(script);
+    const scripts = [
+      "https://link.msgsndr.divineacquisition.io/js/form_embed.js",
+      "https://fast.wistia.com/player.js",
+      "https://fast.wistia.com/embed/ttvt5ujpfb.js",
+    ];
+    scripts.forEach((src) => {
+      if (document.querySelector(`script[src="${src}"]`)) return;
+      const script = document.createElement("script");
+      script.src = src;
+      script.async = true;
+      if (src.includes("ttvt5ujpfb.js")) script.type = "module";
+      document.body.appendChild(script);
+    });
   }, []);
   return (
     <section className="min-h-screen flex flex-col bg-background">
@@ -45,6 +52,15 @@ const HeroSection = () => {
           <p className="text-muted-foreground text-lg md:text-xl lg:text-2xl font-medium mb-10 animate-fade-up animate-fade-up-delay-2 text-balance max-w-3xl mx-auto">
             We'll install AI-powered booking, follow-up & retention systems so you stop chasing leads and start building a business that grows on autopilot. Book your free strategy session now.
           </p>
+
+          {/* VSL */}
+          <div className="w-full max-w-3xl mx-auto mb-12 animate-fade-up animate-fade-up-delay-3">
+            <style>{`wistia-player[media-id='ttvt5ujpfb']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/ttvt5ujpfb/swatch'); display: block; filter: blur(5px); aspect-ratio: 16/9; width: 100%; }`}</style>
+            <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-lg aspect-video">
+              {/* @ts-expect-error wistia custom element */}
+              <wistia-player media-id="ttvt5ujpfb" aspect="1.7777777777777777" style={{ width: "100%", height: "100%", display: "block" }}></wistia-player>
+            </div>
+          </div>
 
           {/* Calendar Section */}
           <div className="w-full max-w-3xl mx-auto animate-fade-up animate-fade-up-delay-3">
