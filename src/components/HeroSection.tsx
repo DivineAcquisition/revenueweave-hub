@@ -4,12 +4,19 @@ import logoFull from "@/assets/logo-full.png";
 
 const HeroSection = () => {
   useEffect(() => {
-    const src = "https://link.msgsndr.divineacquisition.io/js/form_embed.js";
-    if (document.querySelector(`script[src="${src}"]`)) return;
-    const script = document.createElement("script");
-    script.src = src;
-    script.async = true;
-    document.body.appendChild(script);
+    const scripts = [
+      "https://link.msgsndr.divineacquisition.io/js/form_embed.js",
+      "https://fast.wistia.com/player.js",
+      "https://fast.wistia.com/embed/ttvt5ujpfb.js",
+    ];
+    scripts.forEach((src) => {
+      if (document.querySelector(`script[src="${src}"]`)) return;
+      const script = document.createElement("script");
+      script.src = src;
+      script.async = true;
+      if (src.includes("ttvt5ujpfb.js")) script.type = "module";
+      document.body.appendChild(script);
+    });
   }, []);
   return (
     <section className="min-h-screen flex flex-col bg-background">
