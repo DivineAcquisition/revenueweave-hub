@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Star, Maximize2, X } from "lucide-react";
 import logoFull from "@/assets/logo-full.png";
@@ -6,6 +6,17 @@ import Footer from "@/components/Footer";
 
 const Retarget = () => {
   const [vslOpen, setVslOpen] = useState(false);
+  const iclosedRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!iclosedRef.current) return;
+    const src = "https://app.iclosed.io/assets/widget.js";
+    if (document.querySelector(`script[src="${src}"]`)) return;
+    const script = document.createElement("script");
+    script.src = src;
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
 
   useEffect(() => {
     if (vslOpen) {
@@ -134,14 +145,13 @@ const Retarget = () => {
                 <p className="text-muted-foreground text-sm md:text-base mb-6 max-w-2xl mx-auto">
                   Pick a time that works for you. We'll dive into your business and show you exactly where you're leaving money on the table.
                 </p>
-                <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-lg">
-                  <iframe
-                    src="https://link.msgsndr.divineacquisition.io/widget/booking/OKuMznUQ5mQ643pUcS3q"
-                    style={{ width: "100%", border: "none", overflow: "hidden" }}
-                    scrolling="no"
-                    id="sJewwAfFLhmwqP9psUxK_retarget"
-                    title="DivineACQ™ Strategy Session"
-                    className="min-h-[700px]"
+                <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-lg p-2">
+                  <div
+                    ref={iclosedRef}
+                    className="iclosed-widget"
+                    data-url="https://app.iclosed.io/e/divineacquisitionn/ai-operations-audit"
+                    title="DivineACQ™ AI Operations Audit"
+                    style={{ width: "100%", height: "620px" }}
                   />
                 </div>
               </div>
