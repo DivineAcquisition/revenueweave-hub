@@ -1,17 +1,42 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Star } from "lucide-react";
+import { Star, Maximize2, X } from "lucide-react";
 import logoFull from "@/assets/logo-full.png";
 import Footer from "@/components/Footer";
 
 const Retarget = () => {
+  const [vslOpen, setVslOpen] = useState(false);
+
   useEffect(() => {
-    const src = "https://link.msgsndr.divineacquisition.io/js/form_embed.js";
-    if (document.querySelector(`script[src="${src}"]`)) return;
-    const script = document.createElement("script");
-    script.src = src;
-    script.async = true;
-    document.body.appendChild(script);
+    if (vslOpen) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => { document.body.style.overflow = prev; };
+    }
+  }, [vslOpen]);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setVslOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  useEffect(() => {
+    const scripts = [
+      "https://link.msgsndr.divineacquisition.io/js/form_embed.js",
+      "https://fast.wistia.com/player.js",
+      "https://fast.wistia.com/embed/ttvt5ujpfb.js",
+    ];
+    scripts.forEach((src) => {
+      if (document.querySelector(`script[src="${src}"]`)) return;
+      const script = document.createElement("script");
+      script.src = src;
+      script.async = true;
+      if (src.includes("ttvt5ujpfb.js")) script.type = "module";
+      document.body.appendChild(script);
+    });
   }, []);
 
   return (
