@@ -1,17 +1,42 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Star } from "lucide-react";
+import { Star, Maximize2, X } from "lucide-react";
 import logoFull from "@/assets/logo-full.png";
 import Footer from "@/components/Footer";
 
 const Retarget = () => {
+  const [vslOpen, setVslOpen] = useState(false);
+
   useEffect(() => {
-    const src = "https://link.msgsndr.divineacquisition.io/js/form_embed.js";
-    if (document.querySelector(`script[src="${src}"]`)) return;
-    const script = document.createElement("script");
-    script.src = src;
-    script.async = true;
-    document.body.appendChild(script);
+    if (vslOpen) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => { document.body.style.overflow = prev; };
+    }
+  }, [vslOpen]);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setVslOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  useEffect(() => {
+    const scripts = [
+      "https://link.msgsndr.divineacquisition.io/js/form_embed.js",
+      "https://fast.wistia.com/player.js",
+      "https://fast.wistia.com/embed/ttvt5ujpfb.js",
+    ];
+    scripts.forEach((src) => {
+      if (document.querySelector(`script[src="${src}"]`)) return;
+      const script = document.createElement("script");
+      script.src = src;
+      script.async = true;
+      if (src.includes("ttvt5ujpfb.js")) script.type = "module";
+      document.body.appendChild(script);
+    });
   }, []);
 
   return (
@@ -55,6 +80,51 @@ const Retarget = () => {
               <p className="text-muted-foreground text-lg md:text-xl lg:text-2xl font-medium mb-10 animate-fade-up animate-fade-up-delay-2 text-balance max-w-3xl mx-auto">
                 We'll install AI-powered booking, follow-up & retention systems so you stop chasing leads and start building a business that grows on autopilot. Book your free strategy session now.
               </p>
+
+              {/* VSL */}
+              <div className="w-full max-w-3xl mx-auto mb-12 animate-fade-up animate-fade-up-delay-3">
+                <style>{`wistia-player[media-id='ttvt5ujpfb']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/ttvt5ujpfb/swatch'); display: block; filter: blur(5px); aspect-ratio: 16/9; width: 100%; }`}</style>
+                <div className="relative bg-card border border-border rounded-2xl overflow-hidden shadow-lg aspect-video">
+                  {/* @ts-expect-error wistia custom element */}
+                  <wistia-player media-id="ttvt5ujpfb" aspect="1.7777777777777777" style={{ width: "100%", height: "100%", display: "block" }}></wistia-player>
+                  <button
+                    type="button"
+                    onClick={() => setVslOpen(true)}
+                    aria-label="Expand video to fullscreen"
+                    className="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 bg-background/80 hover:bg-background text-foreground border border-border backdrop-blur-sm rounded-lg px-3 py-1.5 text-xs font-semibold shadow-md transition-all"
+                  >
+                    <Maximize2 className="w-3.5 h-3.5" />
+                    Expand
+                  </button>
+                </div>
+              </div>
+
+              {/* VSL Lightbox */}
+              {vslOpen && (
+                <div
+                  className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 md:p-10 animate-fade-up"
+                  onClick={() => setVslOpen(false)}
+                  role="dialog"
+                  aria-modal="true"
+                  aria-label="Video player"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setVslOpen(false)}
+                    aria-label="Close video"
+                    className="absolute top-4 right-4 z-10 inline-flex items-center justify-center w-10 h-10 rounded-full bg-background/90 hover:bg-background text-foreground border border-border shadow-lg transition-all"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                  <div
+                    className="w-full max-w-6xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {/* @ts-expect-error wistia custom element */}
+                    <wistia-player media-id="ttvt5ujpfb" aspect="1.7777777777777777" style={{ width: "100%", height: "100%", display: "block" }}></wistia-player>
+                  </div>
+                </div>
+              )}
 
               {/* Calendar Section */}
               <div className="w-full max-w-3xl mx-auto animate-fade-up animate-fade-up-delay-3">
