@@ -6,6 +6,17 @@ import Footer from "@/components/Footer";
 
 const Retarget = () => {
   const [vslOpen, setVslOpen] = useState(false);
+  const iclosedRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!iclosedRef.current) return;
+    const src = "https://app.iclosed.io/assets/widget.js";
+    if (document.querySelector(`script[src="${src}"]`)) return;
+    const script = document.createElement("script");
+    script.src = src;
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
 
   useEffect(() => {
     if (vslOpen) {
