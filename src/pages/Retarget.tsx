@@ -38,14 +38,14 @@ const Retarget = () => {
     const scripts = [
       "https://link.msgsndr.divineacquisition.io/js/form_embed.js",
       "https://fast.wistia.com/player.js",
-      "https://fast.wistia.com/embed/ttvt5ujpfb.js",
+      "https://fast.wistia.com/embed/wl1hcmrxj5.js",
     ];
     scripts.forEach((src) => {
       if (document.querySelector(`script[src="${src}"]`)) return;
       const script = document.createElement("script");
       script.src = src;
       script.async = true;
-      if (src.includes("ttvt5ujpfb.js")) script.type = "module";
+      if (src.includes("wl1hcmrxj5.js")) script.type = "module";
       document.body.appendChild(script);
     });
   }, []);
@@ -94,10 +94,10 @@ const Retarget = () => {
 
               {/* VSL */}
               <div className="w-full max-w-3xl mx-auto mb-12 animate-fade-up animate-fade-up-delay-3">
-                <style>{`wistia-player[media-id='ttvt5ujpfb']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/ttvt5ujpfb/swatch'); display: block; filter: blur(5px); aspect-ratio: 16/9; width: 100%; }`}</style>
+                <style>{`wistia-player[media-id='wl1hcmrxj5']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/wl1hcmrxj5/swatch'); display: block; filter: blur(5px); aspect-ratio: 16/9; width: 100%; }`}</style>
                 <div className="relative bg-card border border-border rounded-2xl overflow-hidden shadow-lg aspect-video">
                   {/* @ts-expect-error wistia custom element */}
-                  <wistia-player media-id="ttvt5ujpfb" aspect="1.7777777777777777" style={{ width: "100%", height: "100%", display: "block" }}></wistia-player>
+                  <wistia-player media-id="wl1hcmrxj5" aspect="1.7777777777777777" style={{ width: "100%", height: "100%", display: "block" }}></wistia-player>
                   <button
                     type="button"
                     onClick={() => setVslOpen(true)}
@@ -132,7 +132,7 @@ const Retarget = () => {
                     onClick={(e) => e.stopPropagation()}
                   >
                     {/* @ts-expect-error wistia custom element */}
-                    <wistia-player media-id="ttvt5ujpfb" aspect="1.7777777777777777" style={{ width: "100%", height: "100%", display: "block" }}></wistia-player>
+                    <wistia-player media-id="wl1hcmrxj5" aspect="1.7777777777777777" style={{ width: "100%", height: "100%", display: "block" }}></wistia-player>
                   </div>
                 </div>
               )}
