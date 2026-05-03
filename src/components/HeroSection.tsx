@@ -1,9 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Star, Maximize2, X } from "lucide-react";
 import logoFull from "@/assets/logo-full.png";
 
 const HeroSection = () => {
   const [vslOpen, setVslOpen] = useState(false);
+  const inlineHostRef = useRef<HTMLDivElement>(null);
+  const modalHostRef = useRef<HTMLDivElement>(null);
+  const playerRef = useRef<HTMLElement | null>(null);
+
+  // Move the single Wistia player between inline and modal containers so
+  // playback state (current time, play/pause) is preserved across open/close.
+  useEffect(() => {
+    const player = playerRef.current;
+    if (!player) return;
+    const target = vslOpen ? modalHostRef.current : inlineHostRef.current;
+    if (target && player.parentElement !== target) {
+      target.appendChild(player);
+    }
+  }, [vslOpen]);
 
   useEffect(() => {
     if (vslOpen) {
