@@ -88,8 +88,25 @@ const HeroSection = () => {
           <div className="w-full max-w-3xl mx-auto mb-12 animate-fade-up animate-fade-up-delay-3">
             <style>{`wistia-player[media-id='wl1hcmrxj5']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/wl1hcmrxj5/swatch'); display: block; filter: blur(5px); aspect-ratio: 16/9; width: 100%; }`}</style>
             <div className="relative bg-card border border-border rounded-2xl overflow-hidden shadow-lg aspect-video">
-              {/* @ts-expect-error wistia custom element */}
-              <wistia-player media-id="wl1hcmrxj5" aspect="1.7777777777777777" style={{ width: "100%", height: "100%", display: "block" }}></wistia-player>
+              <div
+                ref={inlineHostRef}
+                className="w-full h-full"
+                style={{ display: vslOpen ? "none" : "block" }}
+              >
+                <div
+                  ref={(node) => {
+                    if (node && !playerRef.current) {
+                      const player = document.createElement("wistia-player");
+                      player.setAttribute("media-id", "wl1hcmrxj5");
+                      player.setAttribute("aspect", "1.7777777777777777");
+                      (player as HTMLElement).style.cssText = "width:100%;height:100%;display:block;";
+                      playerRef.current = player;
+                      node.appendChild(player);
+                    }
+                  }}
+                  className="w-full h-full"
+                />
+              </div>
               <button
                 type="button"
                 onClick={() => setVslOpen(true)}
@@ -120,12 +137,10 @@ const HeroSection = () => {
                 <X className="w-5 h-5" />
               </button>
               <div
+                ref={modalHostRef}
                 className="w-full max-w-6xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl"
                 onClick={(e) => e.stopPropagation()}
-              >
-                {/* @ts-expect-error wistia custom element */}
-                <wistia-player media-id="wl1hcmrxj5" aspect="1.7777777777777777" style={{ width: "100%", height: "100%", display: "block" }}></wistia-player>
-              </div>
+              />
             </div>
           )}
 
