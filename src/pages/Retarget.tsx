@@ -7,6 +7,18 @@ import Footer from "@/components/Footer";
 const Retarget = () => {
   const [vslOpen, setVslOpen] = useState(false);
   const iclosedRef = useRef<HTMLDivElement>(null);
+  const inlineHostRef = useRef<HTMLDivElement>(null);
+  const modalHostRef = useRef<HTMLDivElement>(null);
+  const playerRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const player = playerRef.current;
+    if (!player) return;
+    const target = vslOpen ? modalHostRef.current : inlineHostRef.current;
+    if (target && player.parentElement !== target) {
+      target.appendChild(player);
+    }
+  }, [vslOpen]);
 
   useEffect(() => {
     if (!iclosedRef.current) return;
