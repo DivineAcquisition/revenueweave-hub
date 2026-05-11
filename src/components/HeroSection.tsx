@@ -72,8 +72,8 @@ const HeroSection = () => {
 
           {/* Badge */}
           <div className="flex justify-center mb-6 animate-fade-up animate-fade-up-delay-1">
-            <span className="inline-flex items-center gap-2 bg-accent/15 text-accent border border-accent/30 rounded-full px-4 py-1.5 text-sm font-semibold">
-              <Star className="w-4 h-4 fill-accent text-accent" />
+            <span className="group inline-flex items-center gap-2 bg-gradient-to-r from-accent/20 to-primary/20 text-accent border border-accent/40 rounded-full px-4 py-1.5 text-sm font-semibold backdrop-blur-sm shadow-[0_0_30px_-8px_hsl(var(--accent)/0.6)]">
+              <Star className="w-4 h-4 fill-accent text-accent animate-pulse" />
               FREE GROWTH BLUEPRINT
             </span>
           </div>
