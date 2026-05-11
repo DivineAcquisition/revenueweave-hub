@@ -144,15 +144,17 @@ const HeroSection = () => {
             <p className="text-muted-foreground text-sm md:text-base mb-6 max-w-2xl mx-auto">
               Pick a time that works for you. We'll give you a quick call at your scheduled time to dive into your business and show you exactly where you're leaving money on the table. No spam, no sales pitch — just real strategy.
             </p>
-            <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-lg">
-              <iframe
-                src="https://link.msgsndr.divineacquisition.io/widget/booking/OKuMznUQ5mQ643pUcS3q"
-                style={{ width: "100%", border: "none", overflow: "hidden" }}
-                scrolling="no"
-                id="sJewwAfFLhmwqP9psUxK_1776472943234"
-                title="DivineACQ™ Strategy Session"
-                className="min-h-[700px]"
-              />
+            <div className="rounded-2xl p-[1.5px] bg-gradient-to-br from-primary/50 via-accent/30 to-primary/50 shadow-[0_20px_80px_-20px_hsl(var(--primary)/0.5)]">
+              <div className="bg-card rounded-2xl overflow-hidden">
+                <iframe
+                  src="https://link.msgsndr.divineacquisition.io/widget/booking/OKuMznUQ5mQ643pUcS3q"
+                  style={{ width: "100%", border: "none", overflow: "hidden" }}
+                  scrolling="no"
+                  id="sJewwAfFLhmwqP9psUxK_1776472943234"
+                  title="DivineACQ™ Strategy Session"
+                  className="min-h-[700px]"
+                />
+              </div>
             </div>
           </div>
         </div>
