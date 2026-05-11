@@ -36,15 +36,34 @@ const HeroSection = () => {
     });
   }, []);
   return (
-    <section className="min-h-screen flex flex-col bg-background">
+    <section className="relative min-h-screen flex flex-col bg-background overflow-hidden">
+      {/* Aesthetic background layers */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+        {/* Radial purple glow top */}
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full blur-3xl opacity-30"
+             style={{ background: "radial-gradient(closest-side, hsl(var(--primary) / 0.55), transparent 70%)" }} />
+        {/* Accent glow bottom-right */}
+        <div className="absolute bottom-0 right-[-200px] w-[600px] h-[600px] rounded-full blur-3xl opacity-20"
+             style={{ background: "radial-gradient(closest-side, hsl(var(--accent) / 0.6), transparent 70%)" }} />
+        {/* Subtle grid */}
+        <div className="absolute inset-0 opacity-[0.04]"
+             style={{
+               backgroundImage:
+                 "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
+               backgroundSize: "48px 48px",
+               maskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+               WebkitMaskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+             }} />
+      </div>
+
       {/* Top Banner */}
-      <div className="w-full bg-primary py-3 px-4 text-center">
+      <div className="relative w-full bg-gradient-to-r from-primary via-primary to-accent py-3 px-4 text-center shadow-[0_8px_30px_-10px_hsl(var(--primary)/0.6)]">
         <p className="text-primary-foreground text-sm md:text-base font-semibold tracking-wide uppercase">
           For Remote-Operated Cleaning Companies Doing 15K+ In Revenue
         </p>
       </div>
 
-      <div className="flex-1 flex flex-col items-center pt-12 pb-16 px-4">
+      <div className="relative flex-1 flex flex-col items-center pt-12 pb-16 px-4">
         <div className="max-w-4xl mx-auto w-full text-center">
           {/* Logo */}
           <div className="flex justify-center mb-8 animate-fade-up">
