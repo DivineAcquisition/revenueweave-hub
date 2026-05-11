@@ -36,15 +36,34 @@ const HeroSection = () => {
     });
   }, []);
   return (
-    <section className="min-h-screen flex flex-col bg-background">
+    <section className="relative min-h-screen flex flex-col bg-background overflow-hidden">
+      {/* Aesthetic background layers */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+        {/* Radial purple glow top */}
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full blur-3xl opacity-30"
+             style={{ background: "radial-gradient(closest-side, hsl(var(--primary) / 0.55), transparent 70%)" }} />
+        {/* Accent glow bottom-right */}
+        <div className="absolute bottom-0 right-[-200px] w-[600px] h-[600px] rounded-full blur-3xl opacity-20"
+             style={{ background: "radial-gradient(closest-side, hsl(var(--accent) / 0.6), transparent 70%)" }} />
+        {/* Subtle grid */}
+        <div className="absolute inset-0 opacity-[0.04]"
+             style={{
+               backgroundImage:
+                 "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
+               backgroundSize: "48px 48px",
+               maskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+               WebkitMaskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+             }} />
+      </div>
+
       {/* Top Banner */}
-      <div className="w-full bg-primary py-3 px-4 text-center">
+      <div className="relative w-full bg-gradient-to-r from-primary via-primary to-accent py-3 px-4 text-center shadow-[0_8px_30px_-10px_hsl(var(--primary)/0.6)]">
         <p className="text-primary-foreground text-sm md:text-base font-semibold tracking-wide uppercase">
           For Remote-Operated Cleaning Companies Doing 15K+ In Revenue
         </p>
       </div>
 
-      <div className="flex-1 flex flex-col items-center pt-12 pb-16 px-4">
+      <div className="relative flex-1 flex flex-col items-center pt-12 pb-16 px-4">
         <div className="max-w-4xl mx-auto w-full text-center">
           {/* Logo */}
           <div className="flex justify-center mb-8 animate-fade-up">
@@ -53,8 +72,8 @@ const HeroSection = () => {
 
           {/* Badge */}
           <div className="flex justify-center mb-6 animate-fade-up animate-fade-up-delay-1">
-            <span className="inline-flex items-center gap-2 bg-accent/15 text-accent border border-accent/30 rounded-full px-4 py-1.5 text-sm font-semibold">
-              <Star className="w-4 h-4 fill-accent text-accent" />
+            <span className="group inline-flex items-center gap-2 bg-gradient-to-r from-accent/20 to-primary/20 text-accent border border-accent/40 rounded-full px-4 py-1.5 text-sm font-semibold backdrop-blur-sm shadow-[0_0_30px_-8px_hsl(var(--accent)/0.6)]">
+              <Star className="w-4 h-4 fill-accent text-accent animate-pulse" />
               FREE GROWTH BLUEPRINT
             </span>
           </div>
@@ -73,18 +92,20 @@ const HeroSection = () => {
           {/* VSL */}
           <div className="w-full max-w-3xl mx-auto mb-12 animate-fade-up animate-fade-up-delay-3">
             <style>{`wistia-player[media-id='wl1hcmrxj5']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/wl1hcmrxj5/swatch'); display: block; filter: blur(5px); aspect-ratio: 16/9; width: 100%; }`}</style>
-            <div className="relative bg-card border border-border rounded-2xl overflow-hidden shadow-lg aspect-video">
-              {/* @ts-expect-error wistia custom element */}
-              <wistia-player media-id="wl1hcmrxj5" aspect="1.7777777777777777" style={{ width: "100%", height: "100%", display: "block" }}></wistia-player>
-              <button
-                type="button"
-                onClick={() => setVslOpen(true)}
-                aria-label="Expand video to fullscreen"
-                className="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 bg-background/80 hover:bg-background text-foreground border border-border backdrop-blur-sm rounded-lg px-3 py-1.5 text-xs font-semibold shadow-md transition-all"
-              >
-                <Maximize2 className="w-3.5 h-3.5" />
-                Expand
-              </button>
+            <div className="relative rounded-2xl p-[1.5px] bg-gradient-to-br from-accent/60 via-primary/40 to-accent/60 shadow-[0_20px_80px_-20px_hsl(var(--primary)/0.6)]">
+              <div className="relative bg-card rounded-2xl overflow-hidden aspect-video">
+                {/* @ts-expect-error wistia custom element */}
+                <wistia-player media-id="wl1hcmrxj5" aspect="1.7777777777777777" style={{ width: "100%", height: "100%", display: "block" }}></wistia-player>
+                <button
+                  type="button"
+                  onClick={() => setVslOpen(true)}
+                  aria-label="Expand video to fullscreen"
+                  className="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 bg-background/80 hover:bg-background text-foreground border border-border backdrop-blur-sm rounded-lg px-3 py-1.5 text-xs font-semibold shadow-md transition-all"
+                >
+                  <Maximize2 className="w-3.5 h-3.5" />
+                  Expand
+                </button>
+              </div>
             </div>
           </div>
 
@@ -123,15 +144,17 @@ const HeroSection = () => {
             <p className="text-muted-foreground text-sm md:text-base mb-6 max-w-2xl mx-auto">
               Pick a time that works for you. We'll give you a quick call at your scheduled time to dive into your business and show you exactly where you're leaving money on the table. No spam, no sales pitch — just real strategy.
             </p>
-            <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-lg">
-              <iframe
-                src="https://link.msgsndr.divineacquisition.io/widget/booking/OKuMznUQ5mQ643pUcS3q"
-                style={{ width: "100%", border: "none", overflow: "hidden" }}
-                scrolling="no"
-                id="sJewwAfFLhmwqP9psUxK_1776472943234"
-                title="DivineACQ™ Strategy Session"
-                className="min-h-[700px]"
-              />
+            <div className="rounded-2xl p-[1.5px] bg-gradient-to-br from-primary/50 via-accent/30 to-primary/50 shadow-[0_20px_80px_-20px_hsl(var(--primary)/0.5)]">
+              <div className="bg-card rounded-2xl overflow-hidden">
+                <iframe
+                  src="https://link.msgsndr.divineacquisition.io/widget/booking/OKuMznUQ5mQ643pUcS3q"
+                  style={{ width: "100%", border: "none", overflow: "hidden" }}
+                  scrolling="no"
+                  id="sJewwAfFLhmwqP9psUxK_1776472943234"
+                  title="DivineACQ™ Strategy Session"
+                  className="min-h-[700px]"
+                />
+              </div>
             </div>
           </div>
         </div>
