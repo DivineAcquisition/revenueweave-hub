@@ -24,6 +24,16 @@ const Retarget = () => {
   }, []);
 
   useEffect(() => {
+    const filloutSrc = "https://server.fillout.com/embed/v1/";
+    if (!document.querySelector(`script[src="${filloutSrc}"]`)) {
+      const script = document.createElement("script");
+      script.src = filloutSrc;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }, []);
+
+  useEffect(() => {
     const scripts = [
       "https://link.msgsndr.divineacquisition.io/js/form_embed.js",
       "https://fast.wistia.com/player.js",
