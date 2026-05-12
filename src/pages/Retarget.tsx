@@ -134,14 +134,11 @@ const Retarget = () => {
                 <p className="text-muted-foreground text-sm md:text-base mb-6 max-w-2xl mx-auto">
                   Pick a time that works for you. We'll dive into your business and show you exactly where you're leaving money on the table.
                 </p>
-                <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-lg p-2">
-                  <div
-                    ref={iclosedRef}
-                    className="iclosed-widget"
-                    data-url="https://app.iclosed.io/e/divineacquisitionn/ai-operations-audit"
-                    title="DivineACQ™ AI Operations Audit"
-                    style={{ width: "100%", height: "620px" }}
-                  />
+                <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-lg">
+                  <div className="relative w-full" style={{ height: "700px" }}>
+                    <div data-fillout-id="5AxHKhv5Jjus" data-fillout-embed-type="fullscreen" style={{ width: "100%", height: "100%" }} data-fillout-inherit-parameters></div>
+                    <script src="https://server.fillout.com/embed/v1/"></script>
+                  </div>
                 </div>
               </div>
             </div>
