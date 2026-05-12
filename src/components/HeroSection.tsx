@@ -20,6 +20,17 @@ const HeroSection = () => {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
+
+  useEffect(() => {
+    const filloutSrc = "https://server.fillout.com/embed/v1/";
+    if (!document.querySelector(`script[src="${filloutSrc}"]`)) {
+      const script = document.createElement("script");
+      script.src = filloutSrc;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }, []);
+
   useEffect(() => {
     const scripts = [
       "https://link.msgsndr.divineacquisition.io/js/form_embed.js",
@@ -146,14 +157,9 @@ const HeroSection = () => {
             </p>
             <div className="rounded-2xl p-[1.5px] bg-gradient-to-br from-primary/50 via-accent/30 to-primary/50 shadow-[0_20px_80px_-20px_hsl(var(--primary)/0.5)]">
               <div className="bg-card rounded-2xl overflow-hidden">
-                <iframe
-                  src="https://link.msgsndr.divineacquisition.io/widget/booking/OKuMznUQ5mQ643pUcS3q"
-                  style={{ width: "100%", border: "none", overflow: "hidden" }}
-                  scrolling="no"
-                  id="sJewwAfFLhmwqP9psUxK_1776472943234"
-                  title="DivineACQ™ Strategy Session"
-                  className="min-h-[700px]"
-                />
+                <div className="relative w-full" style={{ height: "700px" }}>
+                  <div data-fillout-id="5AxHKhv5Jjus" data-fillout-embed-type="fullscreen" style={{ width: "100%", height: "100%" }} data-fillout-inherit-parameters />
+                </div>
               </div>
             </div>
           </div>
