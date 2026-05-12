@@ -146,8 +146,7 @@ const Retarget = () => {
                 </p>
                 <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-lg">
                   <div className="relative w-full" style={{ height: "700px" }}>
-                    <div data-fillout-id="5AxHKhv5Jjus" data-fillout-embed-type="fullscreen" style={{ width: "100%", height: "100%" }} data-fillout-inherit-parameters></div>
-                    <script src="https://server.fillout.com/embed/v1/"></script>
+                    <div data-fillout-id="5AxHKhv5Jjus" data-fillout-embed-type="fullscreen" style={{ width: "100%", height: "100%" }} data-fillout-inherit-parameters />
                   </div>
                 </div>
               </div>
