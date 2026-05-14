@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 
 const Retarget = () => {
   const [vslOpen, setVslOpen] = useState(false);
+  const iclosedScriptLoaded = useRef(false);
 
   useEffect(() => {
     if (vslOpen) {
