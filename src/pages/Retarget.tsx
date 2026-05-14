@@ -25,12 +25,12 @@ const Retarget = () => {
   }, []);
 
   useEffect(() => {
-    const filloutSrc = "https://server.fillout.com/embed/v1/";
-    if (!document.querySelector(`script[src="${filloutSrc}"]`)) {
+    if (!iclosedScriptLoaded.current) {
       const script = document.createElement("script");
-      script.src = filloutSrc;
+      script.src = "https://app.iclosed.io/assets/widget.js";
       script.async = true;
       document.body.appendChild(script);
+      iclosedScriptLoaded.current = true;
     }
   }, []);
 
@@ -146,9 +146,12 @@ const Retarget = () => {
                   Pick a time that works for you. We'll dive into your business and show you exactly where you're leaving money on the table.
                 </p>
                 <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-lg">
-                  <div className="relative w-full" style={{ height: "700px" }}>
-                    <div data-fillout-id="5AxHKhv5Jjus" data-fillout-embed-type="fullscreen" style={{ width: "100%", height: "100%" }} data-fillout-inherit-parameters />
-                  </div>
+                  <div
+                    className="iclosed-widget"
+                    data-url="https://app.iclosed.io/e/divineacquisitionn/ai-operations-audit"
+                    title="DivineACQ™ AI Operations Audit"
+                    style={{ width: "100%", height: "620px" }}
+                  />
                 </div>
               </div>
             </div>
