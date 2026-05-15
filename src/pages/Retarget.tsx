@@ -148,8 +148,8 @@ const Retarget = () => {
                 <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-lg">
                   <div
                     className="iclosed-widget"
-                    data-url="https://app.iclosed.io/e/divineacquisitionn/ai-operations-audit"
-                    title="DivineACQ™ AI Operations Audit"
+                    data-url="https://app.iclosed.io/e/divineacquisitionn/homeservice"
+                    title="DivineACQ™ Cleaning Company Audit"
                     style={{ width: "100%", height: "620px" }}
                   />
                 </div>
