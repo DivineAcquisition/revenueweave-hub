@@ -103,13 +103,15 @@ const TestimonialsSection = () => {
               {t.videoId && (
                 <div className="mb-6">
                   <style>{`wistia-player[media-id='${t.videoId}']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/${t.videoId}/swatch'); display: block; filter: blur(5px); width: 100%; height: 100%; }`}</style>
-                  <div className="rounded-xl overflow-hidden bg-black w-full aspect-video flex items-center justify-center">
-                    {/* @ts-expect-error wistia custom element */}
-                    <wistia-player
-                      media-id={t.videoId}
-                      aspect={t.videoAspect === "9/16" ? "0.5625" : "1.7777777777777777"}
-                      style={{ width: "100%", height: "100%", display: "block" }}
-                    />
+                  <div className="relative rounded-2xl p-[1.5px] bg-gradient-to-br from-accent/60 via-primary/40 to-accent/60 shadow-[0_20px_60px_-20px_hsl(var(--primary)/0.5)]">
+                    <div className="rounded-2xl overflow-hidden bg-black w-full aspect-video flex items-center justify-center">
+                      {/* @ts-expect-error wistia custom element */}
+                      <wistia-player
+                        media-id={t.videoId}
+                        aspect={t.videoAspect === "9/16" ? "0.5625" : "1.7777777777777777"}
+                        style={{ width: "100%", height: "100%", display: "block" }}
+                      />
+                    </div>
                   </div>
                 </div>
               )}
