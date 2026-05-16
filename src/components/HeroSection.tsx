@@ -216,11 +216,11 @@ const HeroSection = () => {
               <div className="bg-card rounded-2xl overflow-hidden">
                 <iframe
                   src="https://link.msgsndr.divineacquisition.io/widget/booking/OKuMznUQ5mQ643pUcS3q"
-                  style={{ width: "100%", border: "none", overflow: "hidden" }}
+                  style={{ width: "100%", border: "none", overflow: "hidden", height: "750px" }}
                   scrolling="no"
                   id="sJewwAfFLhmwqP9psUxK_1776472943234"
                   title="DivineACQ™ Strategy Session"
-                  className="min-h-[700px]"
+                  className="min-h-[750px]"
                 />
               </div>
             </div>
