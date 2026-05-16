@@ -90,6 +90,9 @@ const HeroSection = () => {
           </p>
 
           {/* VSL */}
+          <p className="text-center text-accent font-semibold text-sm md:text-base uppercase tracking-wider mb-3 animate-fade-up animate-fade-up-delay-3">
+            Watch This "3 min breakdown (Important)"
+          </p>
           <div className="w-full max-w-3xl mx-auto mb-12 animate-fade-up animate-fade-up-delay-3">
             <style>{`wistia-player[media-id='wl1hcmrxj5']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/wl1hcmrxj5/swatch'); display: block; filter: blur(5px); aspect-ratio: 16/9; width: 100%; }`}</style>
             <div className="relative rounded-2xl p-[1.5px] bg-gradient-to-br from-accent/60 via-primary/40 to-accent/60 shadow-[0_20px_80px_-20px_hsl(var(--primary)/0.6)]">
