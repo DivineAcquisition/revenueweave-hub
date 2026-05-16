@@ -205,7 +205,7 @@ const HeroSection = () => {
           )}
 
           {/* Calendar Section */}
-          <div className="w-full max-w-3xl mx-auto animate-fade-up animate-fade-up-delay-3">
+          <div id="calendar-section" className="w-full max-w-3xl mx-auto animate-fade-up animate-fade-up-delay-3 scroll-mt-20">
             <h2 className="font-display font-bold text-2xl md:text-3xl text-foreground mb-4">
               Book Your <span className="text-accent">Strategy Session</span> Here
             </h2>
