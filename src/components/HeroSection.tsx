@@ -29,10 +29,29 @@ const HeroSection = () => {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
   useEffect(() => {
+    if (vslOpen || demoOpen) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => { document.body.style.overflow = prev; };
+    }
+  }, [vslOpen, demoOpen]);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setVslOpen(false);
+        setDemoOpen(false);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+  useEffect(() => {
     const scripts = [
       "https://link.msgsndr.divineacquisition.io/js/form_embed.js",
       "https://fast.wistia.com/player.js",
       "https://fast.wistia.com/embed/wl1hcmrxj5.js",
+      "https://fast.wistia.com/embed/odrdmxlrvq.js",
     ];
     scripts.forEach((src) => {
       if (document.querySelector(`script[src="${src}"]`)) return;
