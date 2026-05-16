@@ -3,9 +3,9 @@ import { Video } from "lucide-react";
 
 const testimonials = [
   {
-    initials: "BL",
-    name: "BadgerLuxClean",
-    role: "Remote-Operated Residential Cleaning",
+    initials: "NA",
+    name: "Nathan",
+    role: "Founder, BadgerLuxClean",
     quote:
       "We processed 1,740 bookings and tracked $510K in revenue through Selestial. 32% of our one-time customers converted to recurring service at the booking page — not after weeks of follow-up. That's the number that matters.",
     stats: [
