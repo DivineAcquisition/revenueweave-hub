@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { Star, Maximize2, X } from "lucide-react";
 import logoFull from "@/assets/logo-full.png";
 import Footer from "@/components/Footer";
+import TestimonialsSection from "@/components/TestimonialsSection";
 
 const Retarget = () => {
   const [vslOpen, setVslOpen] = useState(false);
