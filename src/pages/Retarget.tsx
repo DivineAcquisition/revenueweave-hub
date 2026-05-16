@@ -160,6 +160,7 @@ const Retarget = () => {
             </div>
           </div>
         </section>
+        <TestimonialsSection />
         <Footer />
       </main>
     </>
