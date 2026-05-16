@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Video } from "lucide-react";
 
 const testimonials = [
@@ -12,6 +13,8 @@ const testimonials = [
       { value: "$510K", label: "Tracked Revenue" },
       { value: "32.3%", label: "Recurring Conversion Rate" },
     ],
+    videoId: null as string | null,
+    videoAspect: "16/9",
   },
   {
     initials: "BA",
@@ -24,10 +27,42 @@ const testimonials = [
       { value: "24/7", label: "Booking Capture" },
       { value: "Q2 2025", label: "Live Since" },
     ],
+    videoId: "2a8dvtqmfd",
+    videoAspect: "16/9",
+  },
+  {
+    initials: "WC",
+    name: "Will Cole",
+    role: "Owner, Mean Cleaning & Restoration",
+    quote:
+      "Just want to take the time out to thank Malik for his patience, for just being very resourceful and having a passion for my business as much as I do. And also, with Malik, he's very, very informative and very prompt, and there's nothing that Malik doesn't know when it comes to growing your business.",
+    stats: [
+      { value: "$16K", label: "MRR Added in 91 Days" },
+      { value: "21", label: "New Bookings" },
+      { value: "41%", label: "Conversion Rate" },
+    ],
+    videoId: "6p65esjllh",
+    videoAspect: "9/16",
   },
 ];
 
 const TestimonialsSection = () => {
+  useEffect(() => {
+    const scripts = [
+      "https://fast.wistia.com/player.js",
+      "https://fast.wistia.com/embed/2a8dvtqmfd.js",
+      "https://fast.wistia.com/embed/6p65esjllh.js",
+    ];
+    scripts.forEach((src) => {
+      if (document.querySelector(`script[src="${src}"]`)) return;
+      const s = document.createElement("script");
+      s.src = src;
+      s.async = true;
+      if (src.endsWith(".js") && src.includes("/embed/")) s.type = "module";
+      document.body.appendChild(s);
+    });
+  }, []);
+
   return (
     <section className="bg-background py-16 md:py-24 px-4">
       <div className="max-w-6xl mx-auto">
@@ -40,22 +75,50 @@ const TestimonialsSection = () => {
             Built on <span className="text-accent">Live Revenue.</span> Not Theory.
           </h2>
           <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto text-balance">
-            Two remote-operated cleaning companies are running Selestial right now. Here's what it's doing for them — with live interviews coming soon.
+            Real cleaning company owners running Selestial right now. Here's what it's doing for them.
           </p>
         </div>
 
         {/* Testimonial Cards */}
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {testimonials.map((t) => (
             <article
               key={t.name}
               className="relative bg-card border border-border rounded-2xl p-6 md:p-8 shadow-lg flex flex-col"
             >
-              {/* Live Interview Badge */}
-              <div className="absolute -top-3 right-6 inline-flex items-center gap-1.5 bg-accent text-accent-foreground rounded-full px-3 py-1 text-xs font-semibold shadow-md">
-                <Video className="w-3.5 h-3.5" />
-                Live Interview Coming Soon
-              </div>
+              {/* Badge */}
+              {t.videoId ? (
+                <div className="absolute -top-3 right-6 inline-flex items-center gap-1.5 bg-accent text-accent-foreground rounded-full px-3 py-1 text-xs font-semibold shadow-md">
+                  <Video className="w-3.5 h-3.5" />
+                  Live Testimonial
+                </div>
+              ) : (
+                <div className="absolute -top-3 right-6 inline-flex items-center gap-1.5 bg-accent text-accent-foreground rounded-full px-3 py-1 text-xs font-semibold shadow-md">
+                  <Video className="w-3.5 h-3.5" />
+                  Live Interview Coming Soon
+                </div>
+              )}
+
+              {/* Video */}
+              {t.videoId && (
+                <div className="mb-6">
+                  <style>{`wistia-player[media-id='${t.videoId}']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/${t.videoId}/swatch'); display: block; filter: blur(5px); aspect-ratio: ${t.videoAspect}; width: 100%; }`}</style>
+                  <div
+                    className="rounded-xl overflow-hidden bg-black mx-auto"
+                    style={{
+                      aspectRatio: t.videoAspect,
+                      maxWidth: t.videoAspect === "9/16" ? "240px" : "100%",
+                    }}
+                  >
+                    {/* @ts-expect-error wistia custom element */}
+                    <wistia-player
+                      media-id={t.videoId}
+                      aspect={t.videoAspect === "9/16" ? "0.5625" : "1.7777777777777777"}
+                      style={{ width: "100%", height: "100%", display: "block" }}
+                    />
+                  </div>
+                </div>
+              )}
 
               {/* Quote */}
               <blockquote className="text-foreground text-base md:text-lg leading-relaxed mb-6 flex-1">
