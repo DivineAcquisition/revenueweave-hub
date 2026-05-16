@@ -95,18 +95,20 @@ const Retarget = () => {
               {/* VSL */}
               <div className="w-full max-w-3xl mx-auto mb-12 animate-fade-up animate-fade-up-delay-3">
                 <style>{`wistia-player[media-id='wl1hcmrxj5']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/wl1hcmrxj5/swatch'); display: block; filter: blur(5px); aspect-ratio: 16/9; width: 100%; }`}</style>
-                <div className="relative bg-card border border-border rounded-2xl overflow-hidden shadow-lg aspect-video">
-                  {/* @ts-expect-error wistia custom element */}
-                  <wistia-player media-id="wl1hcmrxj5" aspect="1.7777777777777777" style={{ width: "100%", height: "100%", display: "block" }}></wistia-player>
-                  <button
-                    type="button"
-                    onClick={() => setVslOpen(true)}
-                    aria-label="Expand video to fullscreen"
-                    className="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 bg-background/80 hover:bg-background text-foreground border border-border backdrop-blur-sm rounded-lg px-3 py-1.5 text-xs font-semibold shadow-md transition-all"
-                  >
-                    <Maximize2 className="w-3.5 h-3.5" />
-                    Expand
-                  </button>
+                <div className="relative rounded-2xl p-[1.5px] bg-gradient-to-br from-accent/60 via-primary/40 to-accent/60 shadow-[0_20px_80px_-20px_hsl(var(--primary)/0.6)]">
+                  <div className="relative bg-card rounded-2xl overflow-hidden aspect-video">
+                    {/* @ts-expect-error wistia custom element */}
+                    <wistia-player media-id="wl1hcmrxj5" aspect="1.7777777777777777" style={{ width: "100%", height: "100%", display: "block" }}></wistia-player>
+                    <button
+                      type="button"
+                      onClick={() => setVslOpen(true)}
+                      aria-label="Expand video to fullscreen"
+                      className="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 bg-background/80 hover:bg-background text-foreground border border-border backdrop-blur-sm rounded-lg px-3 py-1.5 text-xs font-semibold shadow-md transition-all"
+                    >
+                      <Maximize2 className="w-3.5 h-3.5" />
+                      Expand
+                    </button>
+                  </div>
                 </div>
               </div>
 
