@@ -4,34 +4,47 @@ import logoFull from "@/assets/logo-full.png";
 
 const HeroSection = () => {
   const [vslOpen, setVslOpen] = useState(false);
+  const [demoOpen, setDemoOpen] = useState(false);
+
+  const scrollToCalendar = () => {
+    setDemoOpen(false);
+    setTimeout(() => {
+      document.getElementById("calendar-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 100);
+  };
 
   useEffect(() => {
-    if (vslOpen) {
+    if (vslOpen || demoOpen) {
       const prev = document.body.style.overflow;
       document.body.style.overflow = "hidden";
       return () => { document.body.style.overflow = prev; };
     }
-  }, [vslOpen]);
+  }, [vslOpen, demoOpen]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setVslOpen(false);
+      if (e.key === "Escape") {
+        setVslOpen(false);
+        setDemoOpen(false);
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
+
   useEffect(() => {
     const scripts = [
       "https://link.msgsndr.divineacquisition.io/js/form_embed.js",
       "https://fast.wistia.com/player.js",
       "https://fast.wistia.com/embed/wl1hcmrxj5.js",
+      "https://fast.wistia.com/embed/odrdmxlrvq.js",
     ];
     scripts.forEach((src) => {
       if (document.querySelector(`script[src="${src}"]`)) return;
       const script = document.createElement("script");
       script.src = src;
       script.async = true;
-      if (src.includes("wl1hcmrxj5.js")) script.type = "module";
+      if (src.includes("wl1hcmrxj5.js") || src.includes("odrdmxlrvq.js")) script.type = "module";
       document.body.appendChild(script);
     });
   }, []);
@@ -112,6 +125,58 @@ const HeroSection = () => {
             </div>
           </div>
 
+          {/* Demo link */}
+          <p className="text-center text-foreground text-base md:text-lg mb-12 animate-fade-up animate-fade-up-delay-3">
+            See our{" "}
+            <button
+              type="button"
+              onClick={() => setDemoOpen(true)}
+              className="text-accent font-semibold underline underline-offset-4 decoration-accent/50 hover:decoration-accent transition-colors"
+            >
+              AI Booking Layer Live
+            </button>
+            .
+          </p>
+
+          {/* Demo Lightbox */}
+          {demoOpen && (
+            <div
+              className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 md:p-10 animate-fade-up"
+              onClick={() => setDemoOpen(false)}
+              role="dialog"
+              aria-modal="true"
+              aria-label="AI Booking Layer Demo"
+            >
+              <button
+                type="button"
+                onClick={() => setDemoOpen(false)}
+                aria-label="Close video"
+                className="absolute top-4 right-4 z-10 inline-flex items-center justify-center w-10 h-10 rounded-full bg-background/90 hover:bg-background text-foreground border border-border shadow-lg transition-all"
+              >
+                <X className="w-5 h-5" />
+              </button>
+              <div
+                className="w-full max-w-5xl flex flex-col gap-4"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <style>{`wistia-player[media-id='odrdmxlrvq']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/odrdmxlrvq/swatch'); display: block; filter: blur(5px); aspect-ratio: 16/9; width: 100%; }`}</style>
+                <div className="aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl">
+                  {/* @ts-expect-error wistia custom element */}
+                  <wistia-player media-id="odrdmxlrvq" aspect="1.7777777777777777" style={{ width: "100%", height: "100%", display: "block" }}></wistia-player>
+                </div>
+                <div className="flex justify-center">
+                  <button
+                    type="button"
+                    onClick={scrollToCalendar}
+                    className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold px-6 py-3 rounded-xl shadow-[0_10px_40px_-10px_hsl(var(--primary)/0.8)] hover:opacity-95 transition-opacity"
+                  >
+                    Book a Strategy Call
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* VSL Lightbox */}
           {vslOpen && (
             <div
@@ -140,7 +205,7 @@ const HeroSection = () => {
           )}
 
           {/* Calendar Section */}
-          <div className="w-full max-w-3xl mx-auto animate-fade-up animate-fade-up-delay-3">
+          <div id="calendar-section" className="w-full max-w-3xl mx-auto animate-fade-up animate-fade-up-delay-3 scroll-mt-20">
             <h2 className="font-display font-bold text-2xl md:text-3xl text-foreground mb-4">
               Book Your <span className="text-accent">Strategy Session</span> Here
             </h2>
