@@ -4,6 +4,14 @@ import logoFull from "@/assets/logo-full.png";
 
 const HeroSection = () => {
   const [vslOpen, setVslOpen] = useState(false);
+  const [demoOpen, setDemoOpen] = useState(false);
+
+  const scrollToCalendar = () => {
+    setDemoOpen(false);
+    setTimeout(() => {
+      document.getElementById("calendar-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 100);
+  };
 
   useEffect(() => {
     if (vslOpen) {
