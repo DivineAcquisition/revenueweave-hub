@@ -3,9 +3,9 @@ import { Video } from "lucide-react";
 
 const testimonials = [
   {
-    initials: "BL",
-    name: "BadgerLuxClean",
-    role: "Remote-Operated Residential Cleaning",
+    initials: "NA",
+    name: "Nathan",
+    role: "Founder, BadgerLuxClean",
     quote:
       "We processed 1,740 bookings and tracked $510K in revenue through Selestial. 32% of our one-time customers converted to recurring service at the booking page — not after weeks of follow-up. That's the number that matters.",
     stats: [
@@ -17,9 +17,9 @@ const testimonials = [
     videoAspect: "16/9",
   },
   {
-    initials: "BA",
-    name: "Bay Area Cleaning Pros",
-    role: "Remote-Operated Residential Cleaning | Bay Area, CA",
+    initials: "MA",
+    name: "Maurisa Alexis Louis",
+    role: "Founder, Bay Area Cleaning Pros | Bay Area, CA",
     quote:
       "We added $50K in new annual revenue from bookings that would've been phone tag before Selestial. Customers see the price, pick their time, and the job's on the calendar before I'd even have called them back.",
     stats: [
