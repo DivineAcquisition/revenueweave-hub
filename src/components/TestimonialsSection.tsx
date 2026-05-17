@@ -19,7 +19,7 @@ const testimonials = [
   {
     initials: "MA",
     name: "Maurisa Alexis Louis",
-    role: "Founder, Bay Area Cleaning Pros | Bay Area, CA",
+    role: "Founder, Bay Area Cleaning Pros",
     quote:
       "We added $50K in new annual revenue from bookings that would've been phone tag before Selestial. Customers see the price, pick their time, and the job's on the calendar before I'd even have called them back.",
     stats: [
