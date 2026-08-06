@@ -126,7 +126,7 @@ const HeroSection = () => {
           </div>
 
           {/* Pricing */}
-          <p className="text-center text-accent font-bold text-lg md:text-xl mb-3 animate-fade-up animate-fade-up-delay-3">
+          <p className="text-center text-accent font-bold text-sm md:text-base mb-3 animate-fade-up animate-fade-up-delay-3">
             Billed monthly. $797/month. 3 month engagement.
           </p>
 
