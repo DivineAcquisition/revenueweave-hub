@@ -12,3 +12,6 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Host: go.divineacquisition.io
+Sitemap: https://go.divineacquisition.io/sitemap.xml

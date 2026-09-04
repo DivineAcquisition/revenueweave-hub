@@ -13,6 +13,7 @@ import ROISection from "@/components/ROISection";
 import SolutionSection from "@/components/SolutionSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import { FOUNDING_OFFER, INCLUDED, INCLUDED_FOOTNOTE, INCLUDED_HEADLINE } from "@/lib/marketing/copy";
+import { SITE_URL } from "@/lib/site";
 
 const Index = () => {
   return (
@@ -23,7 +24,8 @@ const Index = () => {
           name="description"
           content="AI-powered booking, follow-up & retention systems for residential and remote cleaning businesses. More jobs, more referrals, more recurring revenue."
         />
-        <link rel="canonical" href="https://go.divineacquisition.io" />
+        <link rel="canonical" href={SITE_URL} />
+        <meta property="og:url" content={SITE_URL} />
         <meta property="og:title" content="Divine Acquisition | Grow Your Cleaning Business On Autopilot" />
         <meta
           property="og:description"
