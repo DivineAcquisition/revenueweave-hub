@@ -105,7 +105,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative overflow-hidden pb-16 pt-10 sm:pb-20 sm:pt-16">
+    <section className="relative overflow-hidden pb-8 pt-10 sm:pb-10 sm:pt-16">
       <Particles className="absolute inset-0 z-0" quantity={48} color="#9A88FC" ease={80} size={0.5} />
 
       <div className={cn(marketingPageGutter, "relative z-10")}>
