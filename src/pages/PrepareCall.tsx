@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import BookCallModal from "@/components/demo/BookCallModal";
-import { Calendar } from "lucide-react";
 import { Helmet } from "react-helmet-async";
-import logoFull from "@/assets/logo-full.png";
-import Footer from "@/components/Footer";
+
+import BookCallModal from "@/components/demo/BookCallModal";
+import { MarketingShell } from "@/components/marketing/MarketingShell";
+import { PageIntro } from "@/components/marketing/PageIntro";
+import { MediaFrame } from "@/components/marketing/primitives";
 
 export default function PrepareCall() {
   const [showCalendar, setShowCalendar] = useState(false);
@@ -12,68 +12,36 @@ export default function PrepareCall() {
   return (
     <>
       <Helmet>
-        <title>Demo Breakdown | DivineAcquisition</title>
-        <meta name="description" content="Watch the DivineAcquisition demo breakdown and book your strategy call." />
+        <title>Demo Breakdown | Divine Acquisition</title>
+        <meta name="description" content="Watch the Divine Acquisition demo breakdown and book your strategy call." />
       </Helmet>
 
-      <div className="min-h-screen bg-background text-foreground">
-        {/* Header */}
-        <header className="py-6 px-4">
-          <div className="container mx-auto max-w-4xl flex justify-center">
-            <img src={logoFull} alt="DivineAcquisition" className="h-10" />
+      <MarketingShell>
+        <PageIntro
+          eyebrow="Demo"
+          title="Get more cleaning jobs with AI-powered booking & "
+          accent="follow-up"
+          body="Watch how the system turns missed calls into booked jobs, no-shows into loyal clients, and one-time cleans into recurring revenue."
+        />
+
+        <div className="px-5 pb-16 pt-10 sm:px-6">
+          <MediaFrame>
+            <video controls className="aspect-video w-full bg-black" preload="metadata">
+              <source src="/videos/prepare-call.mp4" type="video/mp4" />
+            </video>
+          </MediaFrame>
+
+          <div className="mt-10 text-center">
+            <h2 className="acq-headline text-2xl font-semibold text-white">Ready to get started?</h2>
+            <p className="mx-auto mt-3 max-w-xl text-silver">
+              Book your demo call and see how Divine Acquisition can transform booking and retention.
+            </p>
+            <button type="button" className="acq-button mx-auto mt-6" onClick={() => setShowCalendar(true)}>
+              Book your demo call
+            </button>
           </div>
-        </header>
-
-        {/* Main Content */}
-        <main className="px-4 pb-16">
-          <div className="container mx-auto max-w-4xl">
-            {/* Headline */}
-            <div className="text-center mb-10">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">Get More Cleaning Jobs With AI-Powered Booking & Follow-Up</h1>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Watch how our system turns missed calls into booked jobs, no-shows into loyal clients, and one-time cleans into recurring revenue.
-              </p>
-            </div>
-
-            {/* Video Player */}
-            <div className="rounded-xl overflow-hidden border border-border bg-card mb-12">
-              <video
-                controls
-                className="w-full aspect-video bg-black"
-                poster=""
-                preload="metadata"
-              >
-                <source src="/videos/prepare-call.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-
-            {/* CTA Section */}
-            <div className="text-center space-y-6">
-              <h2 className="text-2xl md:text-3xl font-bold">Ready to Get Started?</h2>
-              <p className="text-muted-foreground max-w-xl mx-auto">
-                Book your demo call now and see how DivineAcquisition can transform your booking and retention system.
-              </p>
-              <p className="text-sm text-accent">
-                📱 Please use a valid phone number — you'll receive a text with a form to customize your setup before the call!
-              </p>
-              <Button
-                variant="cta"
-                size="xl"
-                onClick={() => setShowCalendar(true)}
-              >
-                <Calendar className="mr-2 h-5 w-5" />
-                Book Your Demo Call
-              </Button>
-              <p className="text-xs text-muted-foreground">
-                No credit card required • Get set up in minutes • Full support included
-              </p>
-            </div>
-          </div>
-        </main>
-
-        <Footer />
-      </div>
+        </div>
+      </MarketingShell>
 
       <BookCallModal open={showCalendar} onOpenChange={setShowCalendar} />
     </>

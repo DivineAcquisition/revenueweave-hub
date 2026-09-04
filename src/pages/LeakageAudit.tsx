@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import Footer from "@/components/Footer";
+import { MarketingShell } from "@/components/marketing/MarketingShell";
+import { PageIntro } from "@/components/marketing/PageIntro";
+import { Panel } from "@/components/ui/panel";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -924,17 +926,15 @@ const LeakageAudit = () => {
         />
       </Helmet>
 
-      <main className="min-h-screen bg-background pt-8 pb-16">
-        <div className="container mx-auto px-4">
-          {/* Header */}
-          <div className="max-w-3xl mx-auto text-center mb-8">
-            <h1 className="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-foreground mb-4">
-              📊 Free Revenue Leakage Audit
-            </h1>
-            <p className="text-muted-foreground text-lg">
-              Find out exactly how much money your business is losing — and how to fix it.
-            </p>
-          </div>
+      <MarketingShell>
+        <div className="container mx-auto px-4 pb-16">
+          <PageIntro
+            eyebrow="Free tool"
+            title="Revenue leakage "
+            accent="audit"
+            body="Find out exactly how much money your business is losing — and how to fix it."
+            className="mb-8"
+          />
 
           {/* Progress Bar */}
           {step < totalSteps - 1 && (
@@ -949,7 +949,7 @@ const LeakageAudit = () => {
 
           {/* Form Card */}
           <div className="max-w-2xl mx-auto">
-            <div className="bg-card border border-border rounded-2xl p-6 md:p-8">
+            <Panel className="p-6 md:p-8">
               {renderStep()}
 
               {/* Navigation */}
@@ -977,12 +977,10 @@ const LeakageAudit = () => {
                   )}
                 </div>
               )}
-            </div>
+            </Panel>
           </div>
         </div>
-      </main>
-
-      <Footer />
+      </MarketingShell>
     </>
   );
 };

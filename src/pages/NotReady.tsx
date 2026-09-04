@@ -1,97 +1,59 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
+import { Link } from "react-router-dom";
 
-import Footer from "@/components/Footer";
+import { MarketingShell } from "@/components/marketing/MarketingShell";
+import { PageIntro } from "@/components/marketing/PageIntro";
+import { MagicCard } from "@/components/ui/magic-card";
+import { Panel } from "@/components/ui/panel";
+import { trackCustomPixel } from "@/lib/pixel";
 
 const NotReady = () => {
   useEffect(() => {
-    // Track NotReady event for Facebook Pixel
-    if (typeof (window as any).fbq === 'function') {
-      (window as any).fbq('trackCustom', 'NotReady', {
-        content_name: 'Not Ready',
-        content_category: 'Nurture'
+    trackCustomPixel("NotReady", {
+        content_name: "Not Ready",
+        content_category: "Nurture",
       });
-    }
   }, []);
 
   return (
     <>
       <Helmet>
-        <title>Timing Isn't Right — We'll Be Here | DivineAcquisition</title>
+        <title>Timing Isn't Right — We'll Be Here | Divine Acquisition</title>
         <meta name="description" content="When you're ready to fix your backend, we'll be here. Get our free Lead Leakage Audit guide in the meantime." />
       </Helmet>
-      
-      <main className="min-h-screen bg-background pt-16 pb-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h1 className="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-foreground mb-4">
-              No Problem — Sounds Like Timing Isn't Right
-            </h1>
-            <p className="text-muted-foreground text-lg md:text-xl">
-              When you're ready to fix your backend, we'll be here.
-            </p>
-          </div>
 
-          <div className="max-w-2xl mx-auto space-y-8">
-            {/* Explanation */}
-            <div className="bg-card border border-border rounded-2xl p-6 md:p-8 text-center">
-              <p className="text-muted-foreground leading-relaxed">
-                Building real systems takes commitment, and it sounds like now might not be the right time for that. Totally get it. In the meantime, here's something that might help:
-              </p>
-            </div>
+      <MarketingShell>
+        <PageIntro
+          eyebrow="Timing"
+          title="No problem — sounds like timing isn't "
+          accent="right"
+          body="When you're ready to fix your backend, we'll be here."
+        />
 
-            {/* Free Resource Offer */}
-            <div className="bg-gradient-to-br from-accent/10 to-primary/10 border border-accent/20 rounded-2xl p-6 md:p-8">
-              <div className="text-center mb-6">
-                <p className="text-accent font-semibold text-sm uppercase tracking-wider mb-2">
-                  Free Tool
-                </p>
-                <h2 className="font-display font-bold text-2xl md:text-3xl text-foreground mb-2">
-                  The Revenue Leakage Audit
-                </h2>
-                <p className="text-muted-foreground">
-                  Find exactly where you're losing leads and revenue with our interactive 5-minute audit.
-                </p>
-              </div>
-              
-              <ul className="space-y-3 text-muted-foreground mb-8">
-                <li className="flex items-start gap-3">
-                  <span className="text-accent font-bold">✓</span>
-                  <span>5-minute interactive self-assessment</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-accent font-bold">✓</span>
-                  <span>Calculates your exact revenue leakage</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-accent font-bold">✓</span>
-                  <span>Actionable fix recommendations for each issue</span>
-                </li>
+        <div className="mx-auto max-w-2xl space-y-6 px-5 py-12 sm:px-6">
+          <Panel className="overflow-hidden border-brand-500/25 p-0">
+            <MagicCard className="rounded-2xl p-6 sm:p-8">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-300">Free tool</p>
+              <h2 className="acq-headline mt-2 text-2xl font-semibold text-white">The revenue leakage audit</h2>
+              <p className="mt-2 text-silver">Find exactly where you're losing leads and revenue with a 5-minute audit.</p>
+              <ul className="mt-6 space-y-3">
+                {["5-minute interactive self-assessment", "Calculates your exact revenue leakage", "Actionable fix recommendations"].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-silver">
+                    <Check className="mt-0.5 size-4 text-brand-300" />
+                    {item}
+                  </li>
+                ))}
               </ul>
-
-              <div className="text-center">
-                <Button size="lg" asChild>
-                  <a href="/backend-system/leakage-audit">
-                    Take The Free Audit
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </a>
-                </Button>
-              </div>
-            </div>
-
-            {/* Footer Note */}
-            <div className="text-center">
-              <p className="text-muted-foreground text-sm">
-                No email required. Get instant results and actionable insights.
-              </p>
-            </div>
-          </div>
+              <Link to="/backend-system/leakage-audit" className="acq-button mt-8 inline-flex">
+                Take the free audit
+                <ArrowRight className="size-4" />
+              </Link>
+            </MagicCard>
+          </Panel>
         </div>
-      </main>
-
-      <Footer />
+      </MarketingShell>
     </>
   );
 };

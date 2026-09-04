@@ -1,5 +1,9 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
+
+import { MarketingShell } from "@/components/marketing/MarketingShell";
+import { PageIntro } from "@/components/marketing/PageIntro";
 
 const NotFound = () => {
   const location = useLocation();
@@ -9,15 +13,14 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-muted">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
-        <a href="/" className="text-primary underline hover:text-primary/90">
-          Return to Home
-        </a>
+    <MarketingShell>
+      <PageIntro eyebrow="404" title="This page isn't " accent="here" body="The link may be old, or the page moved." />
+      <div className="flex justify-center px-5 pb-20 pt-8">
+        <Link to="/" className="acq-button">
+          Return home
+        </Link>
       </div>
-    </div>
+    </MarketingShell>
   );
 };
 

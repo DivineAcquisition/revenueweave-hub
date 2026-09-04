@@ -1,5 +1,8 @@
-import { useEffect } from "react";
-import { Video } from "lucide-react";
+import { MagicCard } from "@/components/ui/magic-card";
+import { Panel } from "@/components/ui/panel";
+import { MarketingSection } from "@/components/marketing/primitives";
+import { WistiaSwatchStyle } from "@/components/marketing/WistiaSwatchStyle";
+import { useExternalScripts } from "@/lib/scripts";
 
 const testimonials = [
   {
@@ -9,12 +12,11 @@ const testimonials = [
     quote:
       "We processed 1,740 bookings and tracked $510K in revenue through Selestial. 32% of our one-time customers converted to recurring service at the booking page — not after weeks of follow-up. That's the number that matters.",
     stats: [
-      { value: "1,740", label: "Bookings Processed" },
-      { value: "$510K", label: "Tracked Revenue" },
-      { value: "32.3%", label: "Recurring Conversion Rate" },
+      { value: "1,740", label: "Bookings processed" },
+      { value: "$510K", label: "Tracked revenue" },
+      { value: "32.3%", label: "Recurring conversion" },
     ],
     videoId: null as string | null,
-    videoAspect: "16/9",
   },
   {
     initials: "MA",
@@ -23,88 +25,64 @@ const testimonials = [
     quote:
       "We added $50K in new annual revenue from bookings that would've been phone tag before Selestial. Customers see the price, pick their time, and the job's on the calendar before I'd even have called them back.",
     stats: [
-      { value: "$50K", label: "New Annual Revenue" },
-      { value: "24/7", label: "Booking Capture" },
-      { value: "Q2 2025", label: "Live Since" },
+      { value: "$50K", label: "New annual revenue" },
+      { value: "24/7", label: "Booking capture" },
+      { value: "Q2 2025", label: "Live since" },
     ],
     videoId: "2a8dvtqmfd",
-    videoAspect: "16/9",
   },
   {
     initials: "WC",
     name: "Will Cole",
     role: "Owner, Mean Cleaning & Restoration",
     quote:
-      "Just want to take the time out to thank Malik for his patience, for just being very resourceful and having a passion for my business as much as I do. And also, with Malik, he's very, very informative and very prompt, and there's nothing that Malik doesn't know when it comes to growing your business.",
+      "Just want to take the time out to thank Malik for his patience, for just being very resourceful and having a passion for my business as much as I do. And also, with Malik, he's very, very informative and very prompt.",
     stats: [
-      { value: "$16K", label: "MRR Added in 91 Days" },
-      { value: "21", label: "New Bookings" },
-      { value: "41%", label: "Conversion Rate" },
+      { value: "$16K", label: "MRR added in 91 days" },
+      { value: "21", label: "New bookings" },
+      { value: "41%", label: "Conversion rate" },
     ],
     videoId: "6p65esjllh",
     videoAspect: "9/16",
   },
 ];
 
+const TESTIMONIAL_SCRIPTS = [
+  "https://fast.wistia.com/player.js",
+  "https://fast.wistia.com/embed/2a8dvtqmfd.js",
+  "https://fast.wistia.com/embed/6p65esjllh.js",
+];
+
 const TestimonialsSection = () => {
-  useEffect(() => {
-    const scripts = [
-      "https://fast.wistia.com/player.js",
-      "https://fast.wistia.com/embed/2a8dvtqmfd.js",
-      "https://fast.wistia.com/embed/6p65esjllh.js",
-    ];
-    scripts.forEach((src) => {
-      if (document.querySelector(`script[src="${src}"]`)) return;
-      const s = document.createElement("script");
-      s.src = src;
-      s.async = true;
-      if (src.endsWith(".js") && src.includes("/embed/")) s.type = "module";
-      document.body.appendChild(s);
-    });
-  }, []);
+  useExternalScripts(TESTIMONIAL_SCRIPTS);
 
   return (
-    <section className="bg-background py-16 md:py-24 px-4">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12 md:mb-16">
-          <span className="inline-flex items-center gap-2 bg-accent/15 text-accent border border-accent/30 rounded-full px-4 py-1.5 text-sm font-semibold mb-5 uppercase tracking-wide">
-            Real Results
-          </span>
-          <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-foreground mb-4 text-balance">
-            Built on <span className="text-accent">Live Revenue.</span> Not Theory.
-          </h2>
-          <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto text-balance">
-            Real cleaning company owners running Selestial right now. Here's what it's doing for them.
-          </p>
-        </div>
-
-        {/* Testimonial Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {testimonials.map((t) => (
-            <article
-              key={t.name}
-              className="relative bg-card border border-border rounded-2xl p-6 md:p-8 shadow-lg flex flex-col"
-            >
-              {/* Badge */}
-              {t.videoId ? (
-                <div className="absolute -top-3 right-6 inline-flex items-center gap-1.5 bg-accent text-accent-foreground rounded-full px-3 py-1 text-xs font-semibold shadow-md">
-                  <Video className="w-3.5 h-3.5" />
-                  Live Testimonial
+    <MarketingSection
+      id="results"
+      eyebrow="Real results"
+      headline="Built on live revenue. Not theory."
+      lead={<p>Cleaning company owners running the system right now.</p>}
+      align="center"
+    >
+      <div className="grid gap-5 lg:grid-cols-3">
+        {testimonials.map((t) => (
+          <Panel key={t.name} className="h-full overflow-hidden p-0 panel-hover" as="article">
+            <MagicCard className="flex h-full flex-col rounded-2xl p-5 sm:p-6">
+              <div className="flex items-center gap-3">
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-full border border-brand-500/30 bg-brand-500/12 text-sm font-bold text-brand-200">
+                  {t.initials}
                 </div>
-              ) : (
-                <div className="absolute -top-3 right-6 inline-flex items-center gap-1.5 bg-accent text-accent-foreground rounded-full px-3 py-1 text-xs font-semibold shadow-md">
-                  <Video className="w-3.5 h-3.5" />
-                  Live Interview Coming Soon
+                <div>
+                  <p className="acq-headline text-[15px] font-semibold text-white">{t.name}</p>
+                  <p className="text-sm text-dim">{t.role}</p>
                 </div>
-              )}
+              </div>
 
-              {/* Video */}
-              {t.videoId && (
-                <div className="mb-6">
-                  <style>{`wistia-player[media-id='${t.videoId}']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/${t.videoId}/swatch'); display: block; filter: blur(5px); width: 100%; height: 100%; }`}</style>
-                  <div className="relative rounded-2xl p-[1.5px] bg-gradient-to-br from-accent/60 via-primary/40 to-accent/60 shadow-[0_20px_60px_-20px_hsl(var(--primary)/0.5)]">
-                    <div className="rounded-2xl overflow-hidden bg-black w-full aspect-video flex items-center justify-center">
+              <div className="mt-5">
+                {t.videoId ? (
+                  <>
+                    <WistiaSwatchStyle mediaId={t.videoId} />
+                    <div className="overflow-hidden rounded-xl bg-black">
                       {/* @ts-expect-error wistia custom element */}
                       <wistia-player
                         media-id={t.videoId}
@@ -112,49 +90,33 @@ const TestimonialsSection = () => {
                         style={{ width: "100%", height: "100%", display: "block" }}
                       />
                     </div>
+                  </>
+                ) : (
+                  <div className="flex aspect-video items-center justify-center overflow-hidden rounded-xl border border-white/[0.06] bg-ink-900">
+                    <p className="px-4 text-center text-sm font-medium text-silver">Live interview coming soon</p>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
 
-              {/* Quote */}
-              <blockquote className="text-foreground text-base md:text-lg leading-relaxed mb-6 flex-1">
-                "{t.quote}"
+              <blockquote className="mt-5 flex-1 text-[15px] leading-relaxed text-silver">
+                “{t.quote}”
               </blockquote>
 
-              {/* Attribution */}
-              <div className="flex items-center gap-3 mb-6 pb-6 border-b border-border">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-primary-foreground font-display font-bold text-base shrink-0">
-                  {t.initials}
-                </div>
-                <div>
-                  <div className="font-display font-bold text-foreground text-base">
-                    {t.name}
-                  </div>
-                  <div className="text-muted-foreground text-sm">{t.role}</div>
-                </div>
-              </div>
-
-              {/* Stats Row */}
-              <div className="grid grid-cols-3 gap-2 md:gap-3">
+              <ul className="mt-5 flex flex-wrap gap-2">
                 {t.stats.map((s) => (
-                  <div
+                  <li
                     key={s.label}
-                    className="bg-muted/40 border border-border rounded-xl px-2 py-3 text-center"
+                    className="rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1.5 text-[11px] font-medium text-neutral-300"
                   >
-                    <div className="font-display font-extrabold text-accent text-lg md:text-xl leading-tight">
-                      {s.value}
-                    </div>
-                    <div className="text-muted-foreground text-[10px] md:text-xs mt-1 leading-tight">
-                      {s.label}
-                    </div>
-                  </div>
+                    <span className="text-brand-300">{s.value}</span> {s.label}
+                  </li>
                 ))}
-              </div>
-            </article>
-          ))}
-        </div>
+              </ul>
+            </MagicCard>
+          </Panel>
+        ))}
       </div>
-    </section>
+    </MarketingSection>
   );
 };
 

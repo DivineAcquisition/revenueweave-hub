@@ -1,69 +1,59 @@
 import { Check, X } from "lucide-react";
 
+import { MagicCard } from "@/components/ui/magic-card";
+import { Panel } from "@/components/ui/panel";
+import { MarketingSection } from "@/components/marketing/primitives";
+
 const forYou = [
-  "You run an HVAC, Plumbing, or Cleaning company",
-  "You're doing $25K - $250K/month",
-  "You have 3-20 technicians or cleaners",
-  "You're already running ads (or about to)",
-  "You know leads are slipping through",
-  "You're tired of the revenue rollercoaster",
-  "You want systems that work while you sleep",
+  "You run a residential or remote cleaning company",
+  "You're doing $15K–$250K/month",
+  "You have a team in place — or you're running ops remotely",
+  "You're already generating demand and losing jobs after the lead comes in",
 ];
 
 const notForYou = [
-  "You're a solo operator with no team",
+  "You're a solo operator with no plan to hire",
   "You're doing under $15K/month",
-  "You're not running ads with no plans to",
-  "You want someone to \"do your marketing\"",
-  "You want a quick fix, not a real system",
-  "You're not willing to invest in infrastructure",
+  "You want someone to 'do your marketing' instead of install systems",
+  "You're not willing to run the stack we put in place",
 ];
 
 const QualificationSection = () => {
   return (
-    <section className="py-20 md:py-28 px-4 section-alt">
-      <div className="container mx-auto">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* For You Column */}
-            <div className="bg-card border border-success/30 rounded-2xl p-6 md:p-8">
-              <h3 className="font-display font-bold text-xl md:text-2xl text-foreground mb-6 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-success/10 flex items-center justify-center">
-                  <Check className="h-5 w-5 text-success" />
-                </div>
-                This Is For You If...
-              </h3>
-              <ul className="space-y-4">
-                {forYou.map((item, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <Check className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span className="text-foreground">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            {/* Not For You Column */}
-            <div className="bg-card border border-destructive/30 rounded-2xl p-6 md:p-8">
-              <h3 className="font-display font-bold text-xl md:text-2xl text-foreground mb-6 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-destructive/10 flex items-center justify-center">
-                  <X className="h-5 w-5 text-destructive" />
-                </div>
-                This Is Not For You If...
-              </h3>
-              <ul className="space-y-4">
-                {notForYou.map((item, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <X className="h-5 w-5 text-destructive flex-shrink-0 mt-0.5" />
-                    <span className="text-muted-foreground">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
+    <MarketingSection eyebrow="Fit" headline="This is for operators who already have demand.">
+      <div className="grid gap-5 lg:grid-cols-2">
+        <Panel className="overflow-hidden p-0">
+          <MagicCard className="h-full rounded-2xl p-6 sm:p-8">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-300">This is for you if</p>
+            <ul className="mt-6 space-y-3">
+              {forYou.map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-md bg-brand-500/15 text-brand-300">
+                    <Check className="size-3.5" aria-hidden />
+                  </span>
+                  <span className="text-[15px] font-medium text-white">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </MagicCard>
+        </Panel>
+        <Panel className="overflow-hidden p-0">
+          <MagicCard className="h-full rounded-2xl p-6 sm:p-8">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-dim">This is not for you if</p>
+            <ul className="mt-6 space-y-3">
+              {notForYou.map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-md bg-white/[0.04] text-silver">
+                    <X className="size-3.5" aria-hidden />
+                  </span>
+                  <span className="text-[15px] text-silver">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </MagicCard>
+        </Panel>
       </div>
-    </section>
+    </MarketingSection>
   );
 };
 

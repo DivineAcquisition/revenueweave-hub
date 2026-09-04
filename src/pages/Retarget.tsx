@@ -1,19 +1,36 @@
 import { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Star, Maximize2, X } from "lucide-react";
-import logoFull from "@/assets/logo-full.png";
-import Footer from "@/components/Footer";
+import { Maximize2, X } from "lucide-react";
+
+import { MarketingShell } from "@/components/marketing/MarketingShell";
+import { MediaFrame, StatusPill } from "@/components/marketing/primitives";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import { HEADLINE_ACCENT, HEADLINE_BEFORE, PILL_BANNER, SUBHEADLINE } from "@/lib/marketing/copy";
+import { marketingHeroTitle, marketingPageGutter, marketingSubhead } from "@/lib/marketing/ui";
+import { WistiaSwatchStyle } from "@/components/marketing/WistiaSwatchStyle";
+import { useExternalScripts } from "@/lib/scripts";
+import { cn } from "@/lib/utils";
+
+const VSL_ID = "wl1hcmrxj5";
+const RETARGET_SCRIPTS = [
+  "https://link.msgsndr.divineacquisition.io/js/form_embed.js",
+  "https://fast.wistia.com/player.js",
+  `https://fast.wistia.com/embed/${VSL_ID}.js`,
+];
 
 const Retarget = () => {
   const [vslOpen, setVslOpen] = useState(false);
   const iclosedScriptLoaded = useRef(false);
 
+  useExternalScripts(RETARGET_SCRIPTS);
+
   useEffect(() => {
     if (vslOpen) {
       const prev = document.body.style.overflow;
       document.body.style.overflow = "hidden";
-      return () => { document.body.style.overflow = prev; };
+      return () => {
+        document.body.style.overflow = prev;
+      };
     }
   }, [vslOpen]);
 
@@ -26,143 +43,93 @@ const Retarget = () => {
   }, []);
 
   useEffect(() => {
-    if (!iclosedScriptLoaded.current) {
-      const script = document.createElement("script");
-      script.src = "https://app.iclosed.io/assets/widget.js";
-      script.async = true;
-      document.body.appendChild(script);
-      iclosedScriptLoaded.current = true;
-    }
-  }, []);
-
-  useEffect(() => {
-    const scripts = [
-      "https://link.msgsndr.divineacquisition.io/js/form_embed.js",
-      "https://fast.wistia.com/player.js",
-      "https://fast.wistia.com/embed/wl1hcmrxj5.js",
-    ];
-    scripts.forEach((src) => {
-      if (document.querySelector(`script[src="${src}"]`)) return;
-      const script = document.createElement("script");
-      script.src = src;
-      script.async = true;
-      if (src.includes("wl1hcmrxj5.js")) script.type = "module";
-      document.body.appendChild(script);
-    });
+    if (iclosedScriptLoaded.current) return;
+    const script = document.createElement("script");
+    script.src = "https://app.iclosed.io/assets/widget.js";
+    script.async = true;
+    document.body.appendChild(script);
+    iclosedScriptLoaded.current = true;
   }, []);
 
   return (
     <>
       <Helmet>
-        <title>Book Your Strategy Session | DivineAcquisition</title>
+        <title>Book Your Strategy Session | Divine Acquisition</title>
         <meta name="description" content="Still thinking? Let's talk about growing your cleaning business with AI-powered systems." />
       </Helmet>
 
-      <main className="overflow-hidden">
-        <section className="min-h-screen flex flex-col bg-background">
-          {/* Top Banner */}
-          <div className="w-full bg-primary py-3 px-4 text-center">
-            <p className="text-primary-foreground text-sm md:text-base font-semibold tracking-wide uppercase">
-              For Residential Or Remote Cleaning Businesses Ready To Reach The Next Level
+      <MarketingShell>
+        <section className={cn(marketingPageGutter, "pb-16 pt-12 text-center sm:pt-16")}>
+          <StatusPill>{PILL_BANNER}</StatusPill>
+          <h1 className={cn(marketingHeroTitle, "mx-auto mt-6 max-w-[920px]")}>
+            {HEADLINE_BEFORE}
+            <em className="acq-headline-accent">{HEADLINE_ACCENT}</em>
+          </h1>
+          <p className={cn(marketingSubhead, "mx-auto mt-5 max-w-[34rem]")}>{SUBHEADLINE}</p>
+
+          <div className="relative mx-auto mt-10 w-full max-w-4xl">
+            <WistiaSwatchStyle mediaId={VSL_ID} />
+            <MediaFrame>
+              <div className="relative aspect-video bg-black">
+                {/* @ts-expect-error wistia custom element */}
+                <wistia-player media-id={VSL_ID} aspect="1.7777777777777777" style={{ width: "100%", height: "100%", display: "block" }} />
+                <button
+                  type="button"
+                  onClick={() => setVslOpen(true)}
+                  aria-label="Expand video"
+                  className="absolute right-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-ink-950/80 px-3 py-1.5 text-xs font-semibold text-white"
+                >
+                  <Maximize2 className="size-3.5" />
+                  Expand
+                </button>
+              </div>
+            </MediaFrame>
+          </div>
+
+          <div className="mx-auto mt-14 max-w-3xl">
+            <h2 className="acq-headline text-[1.85rem] font-semibold leading-[1.12] sm:text-4xl">
+              Book your <em className="acq-headline-accent">strategy session</em>
+            </h2>
+            <p className="mx-auto mt-4 max-w-md text-base text-silver">
+              Pick a time. We'll dive into your business and show you exactly where you're leaving money on the table.
             </p>
           </div>
-
-          <div className="flex-1 flex flex-col items-center pt-12 pb-16 px-4">
-            <div className="max-w-4xl mx-auto w-full text-center">
-              {/* Logo */}
-              <div className="flex justify-center mb-8 animate-fade-up">
-                <img src={logoFull} alt="DivineAcquisition" className="h-20 md:h-24 w-auto" />
-              </div>
-
-              {/* Badge */}
-              <div className="flex justify-center mb-6 animate-fade-up animate-fade-up-delay-1">
-                <span className="inline-flex items-center gap-2 bg-accent/15 text-accent border border-accent/30 rounded-full px-4 py-1.5 text-sm font-semibold">
-                  <Star className="w-4 h-4 fill-accent text-accent" />
-                  FREE GROWTH BLUEPRINT
-                </span>
-              </div>
-
-              {/* Headline */}
-              <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 animate-fade-up animate-fade-up-delay-2 text-balance text-foreground">
-                More Jobs. More Referrals.{" "}
-                <span className="text-accent">More Recurring Revenue.</span>
-              </h1>
-
-              {/* Subheadline */}
-              <p className="text-muted-foreground text-lg md:text-xl lg:text-2xl font-medium mb-10 animate-fade-up animate-fade-up-delay-2 text-balance max-w-3xl mx-auto">
-                We'll install AI-powered booking, follow-up & retention systems so you stop chasing leads and start building a business that grows on autopilot. Book your free strategy session now.
-              </p>
-
-              {/* VSL */}
-              <div className="w-full max-w-3xl mx-auto mb-12 animate-fade-up animate-fade-up-delay-3">
-                <style>{`wistia-player[media-id='wl1hcmrxj5']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/wl1hcmrxj5/swatch'); display: block; filter: blur(5px); aspect-ratio: 16/9; width: 100%; }`}</style>
-                <div className="relative rounded-2xl p-[1.5px] bg-gradient-to-br from-accent/60 via-primary/40 to-accent/60 shadow-[0_20px_80px_-20px_hsl(var(--primary)/0.6)]">
-                  <div className="relative bg-card rounded-2xl overflow-hidden aspect-video">
-                    {/* @ts-expect-error wistia custom element */}
-                    <wistia-player media-id="wl1hcmrxj5" aspect="1.7777777777777777" style={{ width: "100%", height: "100%", display: "block" }}></wistia-player>
-                    <button
-                      type="button"
-                      onClick={() => setVslOpen(true)}
-                      aria-label="Expand video to fullscreen"
-                      className="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 bg-background/80 hover:bg-background text-foreground border border-border backdrop-blur-sm rounded-lg px-3 py-1.5 text-xs font-semibold shadow-md transition-all"
-                    >
-                      <Maximize2 className="w-3.5 h-3.5" />
-                      Expand
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* VSL Lightbox */}
-              {vslOpen && (
-                <div
-                  className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 md:p-10 animate-fade-up"
-                  onClick={() => setVslOpen(false)}
-                  role="dialog"
-                  aria-modal="true"
-                  aria-label="Video player"
-                >
-                  <button
-                    type="button"
-                    onClick={() => setVslOpen(false)}
-                    aria-label="Close video"
-                    className="absolute top-4 right-4 z-10 inline-flex items-center justify-center w-10 h-10 rounded-full bg-background/90 hover:bg-background text-foreground border border-border shadow-lg transition-all"
-                  >
-                    <X className="w-5 h-5" />
-                  </button>
-                  <div
-                    className="w-full max-w-6xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    {/* @ts-expect-error wistia custom element */}
-                    <wistia-player media-id="wl1hcmrxj5" aspect="1.7777777777777777" style={{ width: "100%", height: "100%", display: "block" }}></wistia-player>
-                  </div>
-                </div>
-              )}
-
-              {/* Calendar Section */}
-              <div className="w-full max-w-3xl mx-auto animate-fade-up animate-fade-up-delay-3">
-                <h2 className="font-display font-bold text-2xl md:text-3xl text-foreground mb-4">
-                  Book Your <span className="text-accent">Strategy Session</span> Here
-                </h2>
-                <p className="text-muted-foreground text-sm md:text-base mb-6 max-w-2xl mx-auto">
-                  Pick a time that works for you. We'll dive into your business and show you exactly where you're leaving money on the table.
-                </p>
-                <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-lg">
-                  <div
-                    className="iclosed-widget"
-                    data-url="https://app.iclosed.io/e/divineacquisitionn/homeservice"
-                    title="DivineACQ™ Cleaning Company Audit"
-                    style={{ width: "100%", height: "620px" }}
-                  />
-                </div>
-              </div>
-            </div>
+          <div className="mt-10">
+            <MediaFrame>
+              <div
+                className="iclosed-widget"
+                data-url="https://app.iclosed.io/e/divineacquisitionn/homeservice"
+                title="Divine Acquisition Cleaning Company Audit"
+                style={{ width: "100%", height: "620px" }}
+              />
+            </MediaFrame>
           </div>
         </section>
+
         <TestimonialsSection />
-        <Footer />
-      </main>
+      </MarketingShell>
+
+      {vslOpen ? (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
+          onClick={() => setVslOpen(false)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <button
+            type="button"
+            onClick={() => setVslOpen(false)}
+            aria-label="Close video"
+            className="absolute right-4 top-4 inline-flex size-10 items-center justify-center rounded-full border border-white/10 bg-ink-900 text-white"
+          >
+            <X className="size-5" />
+          </button>
+          <div className="aspect-video w-full max-w-6xl overflow-hidden rounded-2xl bg-black" onClick={(e) => e.stopPropagation()}>
+            {/* @ts-expect-error wistia custom element */}
+            <wistia-player media-id={VSL_ID} aspect="1.7777777777777777" style={{ width: "100%", height: "100%", display: "block" }} />
+          </div>
+        </div>
+      ) : null}
     </>
   );
 };
