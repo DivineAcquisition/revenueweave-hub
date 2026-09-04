@@ -120,7 +120,7 @@ const HeroSection = () => {
             {HEADLINE_AFTER}
           </h1>
 
-          <p className={cn(marketingSubhead, "animate-rise delay-2 mx-auto mt-4 max-w-2xl sm:mt-5")}>{SUBHEADLINE}</p>
+          <p className={cn(marketingSubhead, "animate-rise delay-2 mx-auto mt-4 max-w-[34rem] sm:mt-5")}>{SUBHEADLINE}</p>
         </div>
 
         <div className="animate-rise delay-3 mt-10">

@@ -1,11 +1,11 @@
 export const PILL_BANNER = "For remote-operated residential cleaning companies doing $15K+/month";
 
 export const HEADLINE_BEFORE = "More jobs. More referrals. ";
-export const HEADLINE_ACCENT = "More recurring cleans.";
-export const HEADLINE_AFTER = " Built for owners who run the company from a laptop, not from the phone in a client's kitchen.";
+export const HEADLINE_ACCENT = "More recurring revenue.";
+export const HEADLINE_AFTER = " Built for remote cleaning companies that run on systems, not phone calls.";
 
 export const SUBHEADLINE =
-  "We'll install missed-call booking, quote follow-up, and recurring conversion so Facebook and Google leads stop dying in voicemail. You keep Jobber or Housecall Pro. You keep the ads. The backend finally matches the spend.";
+  "We'll install AI-powered booking, follow-up, and retention so you stop chasing leads and start building a business that grows on autopilot.";
 
 export const CTA_LABEL = "Book a strategy session";
 export const PRICING_LINE = "Billed monthly. $397/month. 90-day engagement.";
