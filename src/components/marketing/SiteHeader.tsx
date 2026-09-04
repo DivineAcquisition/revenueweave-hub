@@ -36,7 +36,7 @@ export function SiteHeader() {
         </div>
 
         <div className="flex items-center gap-2">
-          <BookCta className="hidden !min-h-10 !px-4 !py-2 !text-[13px] sm:inline-flex" />
+          <BookCta className="hidden !min-h-10 !px-4 !py-2 !text-[13px] sm:inline-flex">{NAV.waitlist}</BookCta>
           <button
             type="button"
             className="inline-flex size-10 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.03] text-white md:hidden"

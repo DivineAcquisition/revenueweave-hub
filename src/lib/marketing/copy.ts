@@ -9,7 +9,7 @@ export const SUBHEADLINE =
 
 export const CTA_LABEL = "Book a strategy session";
 export const PRICING_LINE = "Billed monthly. $397/month. 3 month engagement.";
-export const DEMO_LABEL = "See our AI booking layer live";
+export const DEMO_LABEL = "AI booking layer live";
 export const VIDEO_LABEL = 'Watch this 3 min breakdown';
 
 export const CALENDAR = {
