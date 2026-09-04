@@ -1,5 +1,5 @@
 export const marketingHeroTitle =
-  "acq-headline text-[1.45rem] font-semibold leading-[1.16] tracking-tight text-white sm:text-[2.05rem] md:text-[2.4rem] md:leading-[1.12]";
+  "acq-headline text-[1.45rem] font-bold leading-[1.16] tracking-tight text-white sm:text-[2.05rem] md:text-[2.4rem] md:leading-[1.12]";
 
 export const marketingSectionTitle =
   "acq-headline max-w-3xl text-2xl font-semibold tracking-tight text-white sm:text-[2rem] sm:leading-tight";

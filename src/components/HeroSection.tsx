@@ -1,5 +1,8 @@
 import { useEffect, useState, type CSSProperties, type ReactNode } from "react";
+import { Link } from "react-router-dom";
 import { Maximize2, X } from "lucide-react";
+
+import Logo from "@/components/brand/logo";
 
 import { BookCta, MediaFrame, StatusPill } from "@/components/marketing/primitives";
 import { Particles } from "@/components/ui/particles";
@@ -110,17 +113,20 @@ const HeroSection = () => {
 
       <div className={cn(marketingPageGutter, "relative z-10")}>
         <div className="mx-auto max-w-[900px] text-center">
-          <div className="acq-headline animate-rise">
+          <Link to="/" aria-label="Divine Acquisition home" className="mb-8 inline-flex animate-rise">
+            <Logo className="h-7 w-auto sm:h-8" />
+          </Link>
+          <div className="acq-headline animate-rise delay-1">
             <StatusPill>{PILL_BANNER}</StatusPill>
           </div>
 
-          <h1 className={cn(marketingHeroTitle, "animate-rise delay-1 mx-auto mt-6 max-w-[920px]")}>
+          <h1 className={cn(marketingHeroTitle, "animate-rise delay-2 mx-auto mt-6 max-w-[920px]")}>
             {HEADLINE_BEFORE}
             <em className="acq-headline-accent">{HEADLINE_ACCENT}</em>
             {HEADLINE_AFTER}
           </h1>
 
-          <p className={cn(marketingSubhead, "animate-rise delay-2 mx-auto mt-4 max-w-[34rem] sm:mt-5")}>{SUBHEADLINE}</p>
+          <p className={cn(marketingSubhead, "animate-rise delay-3 mx-auto mt-4 max-w-[34rem] sm:mt-5")}>{SUBHEADLINE}</p>
         </div>
 
         <div className="animate-rise delay-3 mt-10">

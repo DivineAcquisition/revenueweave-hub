@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Maximize2, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
+import Logo from "@/components/brand/logo";
 import { MarketingShell } from "@/components/marketing/MarketingShell";
 import { MediaFrame, StatusPill } from "@/components/marketing/primitives";
 import TestimonialsSection from "@/components/TestimonialsSection";
@@ -60,6 +62,9 @@ const Retarget = () => {
 
       <MarketingShell>
         <section className={cn(marketingPageGutter, "pb-16 pt-12 text-center sm:pt-16")}>
+          <Link to="/" aria-label="Divine Acquisition home" className="mb-8 inline-flex">
+            <Logo className="h-7 w-auto sm:h-8" />
+          </Link>
           <StatusPill>{PILL_BANNER}</StatusPill>
           <h1 className={cn(marketingHeroTitle, "mx-auto mt-6 max-w-[920px]")}>
             {HEADLINE_BEFORE}
