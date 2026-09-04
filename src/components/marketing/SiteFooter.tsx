@@ -17,11 +17,11 @@ export function SiteFooter() {
               <Logo className="h-6 w-auto" />
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-dim">
-              AI-powered booking, follow-up, and retention for remote cleaning companies.
+              Missed-call booking, quote follow-up, and recurring conversion for remote residential cleaning companies.
             </p>
           </div>
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-dim">Product</p>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-dim">System</p>
             <ul className="mt-4 space-y-2.5">
               <li>
                 <a href="/#product" className={footerLinkClass}>

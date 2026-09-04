@@ -12,7 +12,7 @@ import QualificationSection from "@/components/QualificationSection";
 import ROISection from "@/components/ROISection";
 import SolutionSection from "@/components/SolutionSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
-import { FOUNDING_OFFER, INCLUDED, INCLUDED_FOOTNOTE, INCLUDED_HEADLINE } from "@/lib/marketing/copy";
+import { FOUNDING_OFFER, INCLUDED, INCLUDED_FOOTNOTE, INCLUDED_HEADLINE, INCLUDED_TITLE } from "@/lib/marketing/copy";
 
 const Index = () => {
   return (
@@ -21,25 +21,26 @@ const Index = () => {
         <title>Divine Acquisition | Grow Your Residential & Remote Cleaning Business On Autopilot</title>
         <meta
           name="description"
-          content="AI-powered booking, follow-up & retention systems for residential and remote cleaning businesses. More jobs, more referrals, more recurring revenue."
+          content="Missed-call booking, quote follow-up, and recurring conversion for remote residential cleaning companies. $397/month. Live in 14 days."
         />
         <link rel="canonical" href="https://go.divineacquisition.io" />
-        <meta property="og:title" content="Divine Acquisition | Grow Your Cleaning Business On Autopilot" />
+        <meta property="og:title" content="Divine Acquisition | More recurring cleans from the leads you already buy" />
         <meta
           property="og:description"
-          content="AI-powered booking, follow-up & retention systems built for residential and remote cleaning businesses ready to scale."
+          content="We install the booking and follow-up backend so Facebook and Google leads stop dying in voicemail. Keep Jobber or Housecall Pro."
         />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Divine Acquisition | Grow Your Cleaning Business On Autopilot" />
+        <meta name="twitter:title" content="Divine Acquisition | More recurring cleans from the leads you already buy" />
         <meta
           name="twitter:description"
-          content="AI-powered booking, follow-up & retention systems built for residential and remote cleaning businesses ready to scale."
+          content="We install the booking and follow-up backend so Facebook and Google leads stop dying in voicemail. Keep Jobber or Housecall Pro."
         />
       </Helmet>
 
       <MarketingShell>
         <HeroSection />
+        <TestimonialsSection />
 
         <div className="relative overflow-hidden border-y border-white/[0.07]">
           <Marquee pauseOnHover className="[--duration:36s]">
@@ -51,7 +52,7 @@ const Index = () => {
           </Marquee>
         </div>
 
-        <MarketingSection eyebrow={INCLUDED_HEADLINE} headline="What gets installed.">
+        <MarketingSection id="product" eyebrow={INCLUDED_HEADLINE} headline={INCLUDED_TITLE}>
           <IncludedCards items={INCLUDED} />
           <p className="mt-6 text-sm leading-relaxed text-silver">{INCLUDED_FOOTNOTE}</p>
         </MarketingSection>
@@ -61,7 +62,6 @@ const Index = () => {
         <ProcessSection />
         <ROISection />
         <QualificationSection />
-        <TestimonialsSection />
 
         <MarketingSection eyebrow={FOUNDING_OFFER.eyebrow} headline={FOUNDING_OFFER.lead}>
           <p className="max-w-xl text-sm leading-relaxed text-silver sm:text-[15px]">{FOUNDING_OFFER.body}</p>

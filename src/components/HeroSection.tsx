@@ -120,7 +120,7 @@ const HeroSection = () => {
             {HEADLINE_AFTER}
           </h1>
 
-          <p className={cn(marketingSubhead, "animate-rise delay-2 mx-auto mt-4 max-w-[34rem] sm:mt-5")}>{SUBHEADLINE}</p>
+          <p className={cn(marketingSubhead, "animate-rise delay-2 mx-auto mt-4 max-w-2xl sm:mt-5")}>{SUBHEADLINE}</p>
         </div>
 
         <div className="animate-rise delay-3 mt-10">
@@ -163,8 +163,9 @@ const HeroSection = () => {
           <h2 className="acq-headline mt-3 text-[1.85rem] font-semibold leading-[1.12] sm:text-4xl">
             {CALENDAR.titleBefore}
             <em className="acq-headline-accent">{CALENDAR.titleAccent}</em>
+            {CALENDAR.titleAfter}
           </h2>
-          <p className="mx-auto mt-5 max-w-md text-base leading-relaxed text-silver">{CALENDAR.body}</p>
+          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-silver">{CALENDAR.body}</p>
         </div>
         <div className="mt-10">
           <MediaFrame>
